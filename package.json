@@ -1,0 +1,41 @@
+{
+  "name": "sqlite",
+  "version": "0.0.2",
+  "description": "SQLite client for Node.js applications",
+  "repository": "kriasoft/node-sqlite",
+  "author": "Kriasoft <hello@kriasoft.com> (http://www.kriasoft.com)",
+  "contributors": [
+    "Konstantin Tarkus <hello@tarkus.me>"
+  ],
+  "keywords": [
+    "sqlite",
+    "database",
+    "db",
+    "sql",
+    "node",
+    "node5",
+    "es6",
+    "babel"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "dependencies": {
+    "sqlite3": "^3.1.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.3.17",
+    "babel-preset-node5": "^10.1.2",
+    "babel-register": "^6.3.13",
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^2.1.1",
+    "jscs": "^2.7.0",
+    "mocha": "^2.3.4",
+    "rimraf": "^2.5.0"
+  },
+  "scripts": {
+    "lint": "eslint src test && jscs src test",
+    "test": "eslint src test && jscs src test && mocha test --compilers js:babel-register",
+    "build": "rimraf lib && babel src --out-dir lib --source-maps",
+    "prepublish": "rimraf lib && babel src --out-dir lib --source-maps"
+  }
+}
