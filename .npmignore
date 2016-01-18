@@ -7,5 +7,4 @@
 .npmignore
 .travis.yml
 *.tgz
-lib
 test
