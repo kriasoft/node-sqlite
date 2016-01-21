@@ -111,4 +111,6 @@ function prepare(sql, ...params) {
   });
 }
 
-export default { open, close, run, get, all, each, exec, prepare };
+/* eslint-disable object-shorthand */
+export default { get: get, open, close, run, all, each, exec, prepare };
+/* eslint-enable object-shorthand */
