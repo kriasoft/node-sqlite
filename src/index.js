@@ -111,4 +111,4 @@ function prepare(sql, ...params) {
   });
 }
 
-export default { open, close, run, get, all, each, exec, prepare };
+export default { open, close, run, get: get, all, each, exec, prepare };
