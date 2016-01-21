@@ -1,6 +1,6 @@
 {
   "name": "sqlite",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "SQLite client for Node.js applications",
   "repository": "kriasoft/node-sqlite",
   "author": "Kriasoft <hello@kriasoft.com> (http://www.kriasoft.com)",
