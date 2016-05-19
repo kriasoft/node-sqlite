@@ -1,11 +1,12 @@
 {
+  "private": true,
   "name": "sqlite",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "SQLite client for Node.js applications",
   "repository": "kriasoft/node-sqlite",
   "author": "Kriasoft <hello@kriasoft.com> (http://www.kriasoft.com)",
   "contributors": [
-    "Konstantin Tarkus <hello@tarkus.me>"
+    "Konstantin Tarkus <hello@tarkus.me> (https://twitter.com/koistya)"
   ],
   "keywords": [
     "sqlite",
@@ -14,28 +15,46 @@
     "sql",
     "node",
     "node5",
+    "babel",
     "es6",
-    "babel"
+    "async",
+    "promise",
+    "promises"
   ],
   "license": "MIT",
-  "main": "lib/index.js",
+  "main": "main.js",
+  "jsnext:main": "main.mjs",
+  "babel": {
+    "plugins": [
+      "transform-es2015-modules-commonjs"
+    ]
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": "airbnb/base"
+  },
   "dependencies": {
-    "sqlite3": "^3.1.1"
+    "sqlite3": "^3.1.4"
   },
   "devDependencies": {
-    "babel-cli": "^6.4.0",
-    "babel-preset-node5": "^10.3.0",
-    "babel-register": "^6.4.3",
-    "eslint": "^1.10.3",
-    "eslint-config-airbnb": "^3.1.0",
-    "jscs": "^2.8.0",
-    "mocha": "^2.3.4",
-    "rimraf": "^2.5.0"
+    "babel-cli": "^6.9.0",
+    "babel-eslint": "^6.0.4",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.8.0",
+    "babel-preset-es2015-rollup": "^1.1.1",
+    "babel-register": "^6.9.0",
+    "chai": "^3.5.0",
+    "del": "^2.2.0",
+    "eslint": "^2.10.2",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.8.0",
+    "mocha": "^2.4.5",
+    "rollup": "^0.26.3",
+    "rollup-plugin-babel": "^2.4.0",
+    "rollup-plugin-uglify": "^0.3.1"
   },
   "scripts": {
-    "lint": "eslint src test && jscs src test",
-    "test": "eslint src test && jscs src test && mocha test --compilers js:babel-register",
-    "build": "rimraf lib && babel src --out-dir lib --source-maps",
-    "prepublish": "rimraf lib && babel src --out-dir lib"
+    "lint": "eslint src test tools",
+    "test": "node tools/build && mocha",
+    "build": "node tools/build"
   }
 }

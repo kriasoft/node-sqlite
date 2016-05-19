@@ -8,22 +8,28 @@
 
 > This is just a wrapper library that adds ES6 promises to [sqlite3](https://github.com/mapbox/node-sqlite3/) ([docs](https://github.com/mapbox/node-sqlite3/wiki)).
 
-### Prerequisites
+### How to Install
 
-* [Node.js](https://nodejs.org/) v5 or higher
-* [Babel](http://babeljs.io/) JavaScript compiler (optional, but highly recommended)
+```sh
+$ npm install sqlite --save
+```
 
-### Usage Sample
+### How to Use
+
+This module has the same API as the original [SQLite3](https://github.com/mapbox/node-sqlite3/wiki/API)
+library except that all its API methods return promises and do not accept callback arguments.
+
+Below is an example of how to use it with Node.js/Express and [Babel](http://babeljs.io/):
 
 ```js
 import express from 'express';
 import Promise from 'bluebird';
 import db from 'sqlite';
 
-const server = express();
+const app = express();
 const port = process.env.PORT || 3000;
 
-server.get('/', async (req, res, next) => {
+app.get('/', async (req, res, next) => {
   try {
     const row = await db.get(`SELECT * FROM tableName WHERE id = ?`, 123);
     res.send(`Hello, ${row.columnName}!`);
@@ -32,22 +38,27 @@ server.get('/', async (req, res, next) => {
   }
 });
 
-db.open('./db.sqlite', { verbose: true, Promise })
+// Connect to the database before launching Node.js app
+db.open('./database.sqlite', { verbose: true, Promise })
   .catch(err => console.error(err))
   .finally(() => {
-    server.listen(port, () => {
+    app.listen(port, () => {
       console.log(`Node.js app is running at http://localhost:${port}/`);
     });
   });
 ```
 
+**NOTE**: For Node.js v5 and below use `var db = require('sqlite/legacy');` instead.
+
 ### Related Projects
 
-  * [React Starter Kit](https://github.com/kriasoft/react-starter-kit) — Isomorphic web app boilerplate
+* [React Starter Kit](https://github.com/kriasoft/react-starter-kit) — Isomorphic web app boilerplate (Node.js/Express, React.js, GraphQL)
+* [Babel Starter Kit](https://github.com/kriasoft/babel-starter-kit) — JavaScript library boilerplate (ES2015, Babel, Rollup)
+* [Membership Database](https://github.com/membership/membership.db) — SQL database boilerplate for web app users, roles and auth tokens
 
 ### License
 
-The MIT License © 2015 Kriasoft, LLC. All rights reserved.
+The MIT License © 2015-2016 Kriasoft, LLC. All rights reserved.
 
 ---
-Made with ♥ by Konstantin Tarkus ([@koistya](https://twitter.com/koistya))
+Made with ♥ by Konstantin Tarkus ([@koistya](https://twitter.com/koistya)) and [contributors](https://github.com/kriasoft/node-sqlite/graphs/contributors)
