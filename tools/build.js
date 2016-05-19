@@ -11,7 +11,6 @@ const fs = require('fs');
 const del = require('del');
 const rollup = require('rollup');
 const babel = require('rollup-plugin-babel');
-const uglify = require('rollup-plugin-uglify');
 const pkg = require('../package.json');
 
 // The source files to be compiled by Rollup
@@ -39,7 +38,7 @@ for (const file of files) {
         presets: file.presets,
         plugins: file.plugins,
       })),
-    ].concat(file.minify ? [uglify()] : []),
+    ],
   }).then(bundle => bundle.write({
     dest: `build/${file.output || 'main'}${file.ext}`,
     format: file.format,

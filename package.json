@@ -41,7 +41,6 @@
     "babel-eslint": "^6.0.4",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.8.0",
     "babel-preset-es2015-rollup": "^1.1.1",
-    "babel-register": "^6.9.0",
     "chai": "^3.5.0",
     "del": "^2.2.0",
     "eslint": "^2.10.2",
@@ -49,8 +48,7 @@
     "eslint-plugin-import": "^1.8.0",
     "mocha": "^2.4.5",
     "rollup": "^0.26.3",
-    "rollup-plugin-babel": "^2.4.0",
-    "rollup-plugin-uglify": "^0.3.1"
+    "rollup-plugin-babel": "^2.4.0"
   },
   "scripts": {
     "lint": "eslint src test tools",
