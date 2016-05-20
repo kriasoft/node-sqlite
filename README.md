@@ -4,9 +4,9 @@
 [![NPM downloads](http://img.shields.io/npm/dm/sqlite.svg?style=flat-square)](https://www.npmjs.com/package/sqlite)
 [![Build Status](http://img.shields.io/travis/kriasoft/node-sqlite/master.svg?style=flat-square)](https://travis-ci.org/kriasoft/node-sqlite)
 [![Dependency Status](http://img.shields.io/david/kriasoft/node-sqlite.svg?style=flat-square)](https://david-dm.org/kriasoft/node-sqlite)
-[![IRC Chat](http://img.shields.io/badge/IRC_Chat-%23sqlite_%40%20Freenode-blue.svg?style=flat-square)](https://webchat.freenode.net/?channels=sql,sqlite)
+[![Online Chat](http://img.shields.io/badge/chat-%23node--sqlite_on_Gitter-blue.svg?style=flat-square)](https://gitter.im/kriasoft/node-sqlite)
 
-> This is a wrapper library that adds ES6 promises and SQL-based migrations API to
+> A wrapper library that adds ES6 promises and SQL-based migrations API to
 > [sqlite3](https://github.com/mapbox/node-sqlite3/) ([docs](https://github.com/mapbox/node-sqlite3/wiki)).
 
 
@@ -61,9 +61,10 @@ as the following example demonstrates:
 
 ##### `migrations/001-initial.sql`
 
-```js
+```sql
 -- Up
 CREATE TABLE User (id INTEGER PRIMARY KEY, email TEXT);
+INSERT INTO User (id, email) VALUES (1, 'user@example.com');
 
 -- Down
 DROP TABLE User;
@@ -113,6 +114,12 @@ latest migration over again each time when Node.js app launches.
 * [React Starter Kit](https://github.com/kriasoft/react-starter-kit) — Isomorphic web app boilerplate (Node.js/Express, React.js, GraphQL)
 * [Babel Starter Kit](https://github.com/kriasoft/babel-starter-kit) — JavaScript library boilerplate (ES2015, Babel, Rollup)
 * [Membership Database](https://github.com/membership/membership.db) — SQL database boilerplate for web app users, roles and auth tokens
+
+
+### Support
+
+* Join [#node-sqlite](https://gitter.im/kriasoft/node-sqlite) chat room on Gitter to stay up to date regarding the project
+* Join [#sqlite](https://webchat.freenode.net/?channels=sql,sqlite) IRC chat room on Freenode about general discussion about SQLite
 
 
 ### License

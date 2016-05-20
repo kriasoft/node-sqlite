@@ -111,12 +111,14 @@ class Database {
   /**
    * Migrates database schema to the latest version
    */
-  async migrate({ table = 'migrations', migrationsPath = './migrations' } = {}) {
+  async migrate({ force, table = 'migrations', migrationsPath = './migrations' } = {}) {
+    const location = path.resolve(migrationsPath);
+
     // Get the list of migration files, for example:
     //   { id: 1, name: 'initial', filename: '001-initial.sql' }
     //   { id: 2, name: 'feature', fielname: '002-feature.sql' }
     const migrations = await new this.Promise((resolve, reject) => {
-      fs.readdir(path.resolve(migrationsPath), (err, files) => {
+      fs.readdir(location, (err, files) => {
         if (err) {
           reject(err);
         } else {
@@ -129,11 +131,15 @@ class Database {
       });
     });
 
+    if (!migrations.length) {
+      throw new Error(`No migration files found in '${location}'.`);
+    }
+
     // Ge the list of migrations, for example:
     //   { id: 1, name: 'initial', filename: '001-initial.sql', up: ..., down: ... }
     //   { id: 2, name: 'feature', fielname: '002-feature.sql', up: ..., down: ... }
     await Promise.all(migrations.map(migration => new this.Promise((resolve, reject) => {
-      const filename = path.join(path.resolve(migrationsPath), migration.filename);
+      const filename = path.join(location, migration.filename);
       fs.readFile(filename, 'utf-8', (err, data) => {
         if (err) {
           reject(err);
@@ -166,10 +172,30 @@ class Database {
       `SELECT id, name, up, down FROM "${table}" ORDER BY id DESC`
     );
 
+    // Undo migrations that exist only in the database but not in files,
+    // also undo the last migration if the `force` option was set to `last`.
+    const lastMigration = migrations[migrations.length - 1];
+    for (const migration of dbMigrations.slice().sort((a, b) => a.id < b.id)) {
+      if (!migrations.some(x => x.id === migration.id) ||
+        (force === 'last' && migration.id === lastMigration.id)) {
+        await this.run('BEGIN');
+        try {
+          await this.exec(migration.down);
+          await this.run(`DELETE FROM "${table}" WHERE id = ?`, migration.id);
+          await this.run('COMMIT');
+        } catch (err) {
+          await this.run('ROLLBACK');
+          throw err;
+        }
+      } else {
+        break;
+      }
+    }
+
     // Apply pending migrations
-    const lastId = dbMigrations[dbMigrations.length - 1];
+    const lastMigrationId = dbMigrations.length ? dbMigrations[dbMigrations.length - 1].id : 0;
     for (const migration of migrations) {
-      if (migration.id > (lastId || 0)) {
+      if (migration.id > lastMigrationId) {
         await this.run('BEGIN');
         try {
           await this.exec(migration.up);
