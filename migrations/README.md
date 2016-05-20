@@ -1,4 +1,4 @@
-## SQL-based Migrations Sample
+## SQL-based Migrations Example
 
 #### `001-initial.sql`
 
@@ -30,11 +30,9 @@ INSERT INTO Category (id, name) VALUES (1, 'Test');
 -- Down
 --------------------------------------------------------------------------------
 
-DROP INDEX IF EXISTS Post_ix_categoryId;
-DROP CONSTRAINT IF EXISTS Post_ck_isPublished;
-DROP CONSTRAINT IF EXISTS Post_fk_categoryId;
-DROP TABLE IF EXISTS Post;
-DROP TABLE IF EXISTS Category;
+DROP INDEX Post_ix_categoryId;
+DROP TABLE Post;
+DROP TABLE Category;
 ```
 
 #### `002-some-feature.sql`
@@ -53,5 +51,5 @@ CREATE TABLE Test (
 -- Down
 --------------------------------------------------------------------------------
 
-DROP TABLE IF EXISTS Test;
+DROP TABLE Test;
 ```

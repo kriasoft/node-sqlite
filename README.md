@@ -1,4 +1,4 @@
-## SQLite client library for Node.js applications
+## SQLite Client for Node.js Apps
 
 [![NPM version](http://img.shields.io/npm/v/sqlite.svg?style=flat-square)](https://www.npmjs.com/package/sqlite)
 [![NPM downloads](http://img.shields.io/npm/dm/sqlite.svg?style=flat-square)](https://www.npmjs.com/package/sqlite)
@@ -6,7 +6,8 @@
 [![Dependency Status](http://img.shields.io/david/kriasoft/node-sqlite.svg?style=flat-square)](https://david-dm.org/kriasoft/node-sqlite)
 [![IRC Chat](http://img.shields.io/badge/IRC_Chat-%23sqlite_%40%20Freenode-blue.svg?style=flat-square)](https://webchat.freenode.net/?channels=sql,sqlite)
 
-> This is just a wrapper library that adds ES6 promises to [sqlite3](https://github.com/mapbox/node-sqlite3/) ([docs](https://github.com/mapbox/node-sqlite3/wiki)).
+> This is a wrapper library that adds ES6 promises and SQL-based migrations API to
+> [sqlite3](https://github.com/mapbox/node-sqlite3/) ([docs](https://github.com/mapbox/node-sqlite3/wiki)).
 
 
 ### How to Install
@@ -18,8 +19,8 @@ $ npm install sqlite --save
 
 ### How to Use
 
-This module has the same API as the original [SQLite3](https://github.com/mapbox/node-sqlite3/wiki/API)
-library except that all its API methods return promises and do not accept callback arguments.
+This module has the same API as the original `sqlite3` library ([docs](https://github.com/mapbox/node-sqlite3/wiki/API))
+except that all its API methods return promises and do not accept callback arguments.
 
 Below is an example of how to use it with Node.js/Express and [Babel](http://babeljs.io/):
 
@@ -41,22 +42,22 @@ app.get('/', async (req, res, next) => {
 });
 
 // Connect to the database before launching Node.js app
-db.open('./database.sqlite', { verbose: true, Promise })
-  .catch(err => console.error(err))
-  .finally(() => {
-    app.listen(port, () => {
-      console.log(`Node.js app is running at http://localhost:${port}/`);
-    });
-  });
+(async () => {
+  try {
+    await db.open('./database.sqlite', { Promise });
+  } finally {
+    app.listen(port);
+  }
+})();
 ```
 
-**NOTE**: For Node.js v5 and below use `var db = require('sqlite/legacy');` instead.
+**NOTE**: For Node.js v5 and below use `var db = require('sqlite/legacy');`.
 
 
-### Migrations (early preview)
+### Migrations
 
-This module comes with a lightweight migrations API that works with SQL-based migration files as
-the following example demonstrates:
+This module comes with a lightweight migrations API that works with [SQL-based migration files](https://github.com/kriasoft/node-sqlite/tree/master/migrations)
+as the following example demonstrates:
 
 ##### `migrations/001-initial.sql`
 
@@ -103,8 +104,8 @@ app.use(/* app routes */);
 ```
 
 **NOTE**: For the development environment, while working on the database schema, you may want to set
-`force: 'last'` (default `false`) that will force the migration API to rollback and apply the latest
-migration over again each time when Node.js app launches. 
+`force: 'last'` (default `false`) that will force the migration API to rollback and re-apply the
+latest migration over again each time when Node.js app launches. 
 
 
 ### Related Projects

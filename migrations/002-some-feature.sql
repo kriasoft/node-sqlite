@@ -11,4 +11,4 @@ CREATE TABLE Test (
 -- Down
 --------------------------------------------------------------------------------
 
-DROP TABLE IF EXISTS Test;
+DROP TABLE Test;

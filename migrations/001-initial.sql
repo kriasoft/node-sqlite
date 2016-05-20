@@ -25,8 +25,6 @@ INSERT INTO Category (id, name) VALUES (1, 'Test');
 -- Down
 --------------------------------------------------------------------------------
 
-DROP INDEX IF EXISTS Post_ix_categoryId;
-DROP CONSTRAINT IF EXISTS Post_ck_isPublished;
-DROP CONSTRAINT IF EXISTS Post_fk_categoryId;
-DROP TABLE IF EXISTS Post;
-DROP TABLE IF EXISTS Category;
+DROP INDEX Post_ix_categoryId;
+DROP TABLE Post;
+DROP TABLE Category;
