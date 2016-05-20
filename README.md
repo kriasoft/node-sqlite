@@ -8,11 +8,13 @@
 
 > This is just a wrapper library that adds ES6 promises to [sqlite3](https://github.com/mapbox/node-sqlite3/) ([docs](https://github.com/mapbox/node-sqlite3/wiki)).
 
+
 ### How to Install
 
 ```sh
 $ npm install sqlite --save
 ```
+
 
 ### How to Use
 
@@ -50,11 +52,67 @@ db.open('./database.sqlite', { verbose: true, Promise })
 
 **NOTE**: For Node.js v5 and below use `var db = require('sqlite/legacy');` instead.
 
+
+### Migrations (early preview)
+
+This module comes with a lightweight migrations API that works with SQL-based migration files as
+the following example demonstrates:
+
+##### `migrations/001-initial.sql`
+
+```js
+-- Up
+CREATE TABLE User (id INTEGER PRIMARY KEY, email TEXT);
+
+-- Down
+DROP TABLE User;
+```
+
+##### `migrations/002-post.sql`
+
+```sql
+-- Up
+CREATE TABLE Post (id INTEGER PRIMARY KEY, userId INTEGER, title TEXT, body TEXT);
+
+-- Down
+DROP TABLE Post;
+```
+
+##### `app.js` (Node.js/Express)
+
+```js
+import express from 'express';
+import Promise from 'bluebird';
+import db from 'sqlite';
+
+const app = express();
+const port = process.env.PORT || 3000;
+
+app.use(/* app routes */);
+
+(async () => {
+  try {
+    // Try connect to the database and update its schema to the latest version
+    await db.open('./db.sqlite', { Promise });
+    await db.migrate();
+  } finally {
+    // Launch Node.js/Express app
+    app.listen(port);
+  }
+})();
+```
+
+**NOTE**: For the development environment, while working on the database schema, you may want to set
+`force: 'last'` (default `false`) that will force the migration API to rollback and apply the latest
+migration over again each time when Node.js app launches. 
+
+
 ### Related Projects
 
 * [React Starter Kit](https://github.com/kriasoft/react-starter-kit) — Isomorphic web app boilerplate (Node.js/Express, React.js, GraphQL)
 * [Babel Starter Kit](https://github.com/kriasoft/babel-starter-kit) — JavaScript library boilerplate (ES2015, Babel, Rollup)
 * [Membership Database](https://github.com/membership/membership.db) — SQL database boilerplate for web app users, roles and auth tokens
+
 
 ### License
 

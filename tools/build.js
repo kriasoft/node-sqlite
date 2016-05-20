@@ -36,7 +36,7 @@ for (const file of files) {
         exclude: 'node_modules/**',
         runtimeHelpers: true,
         presets: file.presets,
-        plugins: file.plugins,
+        plugins: ['transform-async-to-generator'],
       })),
     ],
   }).then(bundle => bundle.write({

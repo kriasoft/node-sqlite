@@ -8,109 +8,45 @@
  */
 
 import sqlite3 from 'sqlite3';
+import Database from './Database';
 
-let db;
-let Promise = global.Promise;
+const db = new Database(null, { Promise: global.Promise });
 
-function open(filename, options = {}) {
-  if (options.Promise) {
-    Promise = options.Promise;
-  }
+/**
+ * Opens SQLite database.
+ *
+ * @returns Promise<Database> A promise that resolves to an instance of SQLite database client.
+ */
+db.open = (filename, { mode = null, verbose = false, Promise = global.Promise } = {}) => {
+  let driver;
 
-  if (options.verbose) {
+  if (verbose) {
     sqlite3.verbose();
   }
 
   return new Promise((resolve, reject) => {
-    db = new sqlite3.Database(filename, (err) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve();
-      }
-    });
+    if (mode !== null) {
+      driver = new sqlite3.Database(filename, mode, err => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve();
+        }
+      });
+    } else {
+      driver = new sqlite3.Database(filename, err => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve();
+        }
+      });
+    }
+  }).then(() => {
+    db.driver = driver;
+    db.Promise = Promise;
+    return new Database(driver, { Promise });
   });
-}
+};
 
-function close() {
-  return new Promise((resolve, reject) => {
-    db.close((err) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve();
-      }
-    });
-  });
-}
-
-function run(sql, ...params) {
-  return new Promise((resolve, reject) => {
-    db.run(sql, params || [], function cb(err) {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(this);
-      }
-    });
-  });
-}
-
-function get(sql, ...params) {
-  return new Promise((resolve, reject) => {
-    db.get(sql, params || [], (err, row) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(row);
-      }
-    });
-  });
-}
-
-function all(sql, ...params) {
-  return new Promise((resolve, reject) => {
-    db.all(sql, params || [], (err, rows) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(rows);
-      }
-    });
-  });
-}
-
-function each(sql, ...params) {
-  const cb = params.pop();
-  return new Promise((resolve) => {
-    db.each(sql, params, cb, resolve);
-  });
-}
-
-function exec(sql) {
-  return new Promise((resolve, reject) => {
-    db.exec(sql, (err) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve();
-      }
-    });
-  });
-}
-
-function prepare(sql, ...params) {
-  return new Promise((resolve, reject) => {
-    const statement = db.prepare(sql, ...params, (err) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(statement);
-      }
-    });
-  });
-}
-
-/* eslint-disable object-shorthand */
-export default { get: get, open, close, run, all, each, exec, prepare };
-/* eslint-enable object-shorthand */
+export default db;
