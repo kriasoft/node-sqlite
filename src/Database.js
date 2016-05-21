@@ -168,7 +168,7 @@ class Database {
 )`);
 
     // Get the list of already applied migrations
-    const dbMigrations = await this.all(
+    let dbMigrations = await this.all(
       `SELECT id, name, up, down FROM "${table}" ORDER BY id DESC`
     );
 
@@ -183,6 +183,7 @@ class Database {
           await this.exec(migration.down);
           await this.run(`DELETE FROM "${table}" WHERE id = ?`, migration.id);
           await this.run('COMMIT');
+          dbMigrations = dbMigrations.filter(x => x.id !== migration.id);
         } catch (err) {
           await this.run('ROLLBACK');
           throw err;
