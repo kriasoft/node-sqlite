@@ -22,7 +22,7 @@ $ npm install sqlite --save
 This module has the same API as the original `sqlite3` library ([docs](https://github.com/mapbox/node-sqlite3/wiki/API))
 except that all its API methods return promises and do not accept callback arguments.
 
-Below is an example of how to use it with Node.js/Express and [Babel](http://babeljs.io/):
+Below is an example of how to use it with Node.js, [Express](http://expressjs.com/starter/hello-world.html) and [Babel](http://babeljs.io/):
 
 ```js
 import express from 'express';
@@ -32,23 +32,24 @@ import db from 'sqlite';
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.get('/', async (req, res, next) => {
+app.get('/post/:id', async (req, res, next) => {
   try {
-    const row = await db.get(`SELECT * FROM tableName WHERE id = ?`, 123);
-    res.send(`Hello, ${row.columnName}!`);
+    const [post, categories] = await Promise.all([
+      db.get('SELECT * FROM Post WHERE id = ?', req.params.id),
+      db.all('SELECT * FROM Category');
+    ]);
+    res.render('post', { post, categories });
   } catch (err) {
     next(err);
   }
 });
 
-// Connect to the database before launching Node.js app
-(async () => {
-  try {
-    await db.open('./database.sqlite', { Promise });
-  } finally {
-    app.listen(port);
-  }
-})();
+Promise.resolve()
+  // First, try connect to the database
+  .then(() => db.open('./database.sqlite', { Promise }))
+  .catch(err => console.error(err.stack))
+  // Finally, launch Node.js app
+  .finally(() => app.listen(port));
 ```
 
 **NOTE**: For Node.js v5 and below use `var db = require('sqlite/legacy');`.
@@ -59,25 +60,30 @@ app.get('/', async (req, res, next) => {
 This module comes with a lightweight migrations API that works with [SQL-based migration files](https://github.com/kriasoft/node-sqlite/tree/master/migrations)
 as the following example demonstrates:
 
-##### `migrations/001-initial.sql`
+##### `migrations/001-initial-schema.sql`
 
 ```sql
 -- Up
-CREATE TABLE User (id INTEGER PRIMARY KEY, email TEXT);
-INSERT INTO User (id, email) VALUES (1, 'user@example.com');
+CREATE TABLE Category (id INTEGER PRIMARY KEY, name TEXT);
+CREATE TABLE Post (id INTEGER PRIMARY KEY, categoryId INTEGER, title TEXT,
+  CONSTRAINT Post_fk_categoryId FOREIGN KEY (categoryId)
+    REFERENCES Category (id) ON UPDATE CASCADE ON DELETE CASCADE);
+INSERT INTO Category (id, name) VALUES (1, 'Business');
+INSERT INTO Category (id, name) VALUES (2, 'Technology');
 
 -- Down
-DROP TABLE User;
+DROP TABLE Category
+DROP TABLE Post;
 ```
 
-##### `migrations/002-post.sql`
+##### `migrations/002-missing-index.sql`
 
 ```sql
 -- Up
-CREATE TABLE Post (id INTEGER PRIMARY KEY, userId INTEGER, title TEXT, body TEXT);
+CREATE INDEX Post_ix_categoryId ON Post (categoryId);
 
 -- Down
-DROP TABLE Post;
+DROP INDEX Post_ix_categoryId;
 ```
 
 ##### `app.js` (Node.js/Express)
@@ -92,16 +98,13 @@ const port = process.env.PORT || 3000;
 
 app.use(/* app routes */);
 
-(async () => {
-  try {
-    // Try connect to the database and update its schema to the latest version
-    await db.open('./db.sqlite', { Promise });
-    await db.migrate();
-  } finally {
-    // Launch Node.js/Express app
-    app.listen(port);
-  }
-})();
+Promise.resolve()
+  // First, try connect to the database and update its schema to the latest version
+  .then(() => db.open('./database.sqlite', { Promise }))
+  .then(() => db.migrate({ force: 'last' }))
+  .catch(err => console.error(err.stack))
+  // Finally, launch Node.js app
+  .finally(() => app.listen(port));
 ```
 
 **NOTE**: For the development environment, while working on the database schema, you may want to set
