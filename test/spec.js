@@ -23,7 +23,12 @@ it('Should open a database connection', (done) => {
   p = p.then(() => db.all('SELECT * FROM tbl WHERE col = ?', 'test').then(result => {
     expect(result).to.have.length(1);
   }));
-  p = p.then(() => db.run('UPDATE tbl SET col = ? WHERE col = ?', 'foo', 'test'));
+  p = p.then(() => db.run('UPDATE tbl SET col = ? WHERE col = ?', 'foo', 'test')).then(stmt => {
+    // Cannot use deep equals because stmt is a Statement instance
+    expect(stmt.lastID).to.equal(1)
+    expect(stmt.changes).to.equal(1)
+    expect(stmt.sql).to.equal('UPDATE tbl SET col = ? WHERE col = ?')
+  });
   p = p.then(() => db.get('SELECT col FROM tbl').then(result => {
     expect(result).to.be.deep.equal({ col: 'foo' });
   }));

@@ -48,7 +48,7 @@ class Statement {
 
   run(...params) {
     return new this.Promise((resolve, reject) => {
-      this.stmt.run(...params, err => {
+      this.stmt.run(...params, function(err) {
         if (err) {
           reject(err);
         } else {

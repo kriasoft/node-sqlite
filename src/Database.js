@@ -40,7 +40,7 @@ class Database {
 
   run(sql, ...params) {
     return new this.Promise((resolve, reject) => {
-      this.driver.run(sql, params || [], err => {
+      this.driver.run(sql, params || [], function (err) {
         if (err) {
           reject(err);
         } else {
