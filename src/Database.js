@@ -169,7 +169,7 @@ class Database {
 
     // Get the list of already applied migrations
     let dbMigrations = await this.all(
-      `SELECT id, name, up, down FROM "${table}" ORDER BY id DESC`
+      `SELECT id, name, up, down FROM "${table}" ORDER BY id ASC`
     );
 
     // Undo migrations that exist only in the database but not in files,
