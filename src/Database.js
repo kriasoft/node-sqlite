@@ -107,7 +107,7 @@ class Database {
                     ? arguments[1]
                     : Array.prototype.slice.call(arguments, 1, arguments.length - 1));
     const callback = arguments[arguments.length - 1];
-    return new this.Promise((resolve) => {
+    return new this.Promise((resolve, reject) => {
       this.driver.each(sql, params, callback, (err, rowsCount = 0) => {
         if (err) {
           reject(err);
