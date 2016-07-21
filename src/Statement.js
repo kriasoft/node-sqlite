@@ -40,7 +40,7 @@ class Statement {
         if (err) {
           reject(err);
         } else {
-          resolve(this);
+          resolve();
         }
       });
     });
