@@ -39,21 +39,26 @@ it('Should open a database connection', (done) => {
 it('Should allow named parameters to be used', (done) => {
   let p = db.open(':memory:');
   p = p.then(() => db.exec('CREATE TABLE tbl (col TEXT)'));
-  p = p.then(() => db.run('INSERT INTO tbl(col) VALUES (:col)', { ':col': 'something' }).then(stmt => {
-    expect(stmt.lastID).to.equal(1);
-  }));
-  p = p.then(() => db.get('SELECT col FROM tbl WHERE 1 = ? AND 5 = ?5', { 1: 1, 5: 5 }).then(result => {
-    expect(result).to.be.deep.equal({ col: 'something' });
-  }));
-  p = p.then(() => db.run('INSERT INTO tbl(col) VALUES ($col)', { $col: 'other thing' }).then(stmt => {
-    expect(stmt.lastID).to.equal(2);
-  }));
+  p = p.then(() => db.run('INSERT INTO tbl(col) VALUES (:col)', { ':col': 'something' })
+    .then(stmt => {
+      expect(stmt.lastID).to.equal(1);
+    }));
+  p = p.then(() => db.get('SELECT col FROM tbl WHERE 1 = ? AND 5 = ?5', { 1: 1, 5: 5 })
+    .then(result => {
+      expect(result).to.be.deep.equal({ col: 'something' });
+    }));
+  p = p.then(() => db.run('INSERT INTO tbl(col) VALUES ($col)', { $col: 'other thing' })
+    .then(stmt => {
+      expect(stmt.lastID).to.equal(2);
+    }));
   p = p.then(() => db.each('SELECT col FROM tbl WHERE ROWID = ?', [2], (err, result) => {
     expect(result).to.be.deep.equal({ col: 'other thing' });
   }).then(rowsCount => {
     expect(rowsCount).to.equal(1);
   }));
-  p = p.then(() => db.all('SELECT col FROM tbl WHERE 13 = @thirteen ORDER BY col DESC', { '@thirteen': 13 }).then(results => {
+  p = p.then(() => db.all('SELECT col FROM tbl WHERE 13 = @thirteen ORDER BY col DESC', {
+    '@thirteen': 13,
+  }).then(results => {
     expect(results).to.be.deep.equal([{ col: 'something' }, { col: 'other thing' }]);
   }));
   p = p.then(() => db.close());
@@ -63,28 +68,38 @@ it('Should allow named parameters to be used', (done) => {
 it('Should allow named parameters to be used with prepared statements', (done) => {
   let p = db.open(':memory:');
   p = p.then(() => db.exec('CREATE TABLE tbl (col TEXT)'));
-  p = p.then(() => db.prepare('INSERT INTO tbl(col) VALUES (:col)', { ':col': 'some text' }).then(stmt => stmt.run().then(stmt => {
-    expect(stmt.lastID).to.equal(1);
-    return stmt.finalize();
-  })));
-  p = p.then(() => db.prepare('SELECT col FROM tbl WHERE 1 = ? AND 5 = ?5').then(stmt => stmt.bind({ 1: 1, 5: 5 })).then(stmt => stmt.get().then(result => {
-    expect(result).to.be.deep.equal({ col: 'some text' });
-    return stmt.finalize();
-  })));
-  p = p.then(() => db.prepare('INSERT INTO tbl(col) VALUES ($col)').then(stmt => stmt.run({ $col: 'other text' }).then(stmt => {
-    expect(stmt.lastID).to.equal(2);
-    return stmt.finalize();
-  })));
-  p = p.then(() => db.prepare('SELECT col FROM tbl WHERE ROWID = ?').then(stmt => stmt.each([2], (err, result) => {
-    expect(result).to.be.deep.equal({ col: 'other text' });
-  }).then(rowsCount => {
-    expect(rowsCount).to.equal(1);
-    return stmt.finalize();
-  })));
-  p = p.then(() => db.prepare('SELECT col FROM tbl WHERE 13 = @thirteen ORDER BY col DESC').then(stmt => stmt.all({ '@thirteen': 13 }).then(results => {
-    expect(results).to.be.deep.equal([{ col: 'some text' }, { col: 'other text' }]);
-    return stmt.finalize();
-  })));
+  p = p.then(() => db.prepare('INSERT INTO tbl(col) VALUES (:col)', { ':col': 'some text' })
+    .then(stmt => stmt.run())
+    .then(stmt => {
+      expect(stmt.lastID).to.equal(1);
+      return stmt.finalize();
+    }));
+  p = p.then(() => db.prepare('SELECT col FROM tbl WHERE 1 = ? AND 5 = ?5')
+    .then(stmt => stmt.bind({ 1: 1, 5: 5 }))
+    .then(stmt => stmt.get()
+      .then(result => {
+        expect(result).to.be.deep.equal({ col: 'some text' });
+        return stmt.finalize();
+      })));
+  p = p.then(() => db.prepare('INSERT INTO tbl(col) VALUES ($col)')
+    .then(stmt => stmt.run({ $col: 'other text' }))
+    .then(stmt => {
+      expect(stmt.lastID).to.equal(2);
+      return stmt.finalize();
+    }));
+  p = p.then(() => db.prepare('SELECT col FROM tbl WHERE ROWID = ?')
+    .then(stmt => stmt.each([2], (err, result) => {
+      expect(result).to.be.deep.equal({ col: 'other text' });
+    }).then(rowsCount => {
+      expect(rowsCount).to.equal(1);
+      return stmt.finalize();
+    })));
+  p = p.then(() => db.prepare('SELECT col FROM tbl WHERE 13 = @thirteen ORDER BY col DESC')
+    .then(stmt => stmt.all({ '@thirteen': 13 })
+      .then(results => {
+        expect(results).to.be.deep.equal([{ col: 'some text' }, { col: 'other text' }]);
+        return stmt.finalize();
+      })));
   p = p.then(() => db.close());
   p.then(done, done);
 });
@@ -92,13 +107,15 @@ it('Should allow named parameters to be used with prepared statements', (done) =
 it('Should allow chaining Statement.run() calls', (done) => {
   let p = db.open(':memory:');
   p = p.then(() => db.exec('CREATE TABLE tbl (col1 TEXT, col2 TEXT, col3 TEXT)'));
-  p = p.then(() => db.prepare('INSERT INTO tbl(col1, col2, col3) VALUES (?, ?, ?)').then(stmt => stmt.run('a1', 'a2', 'a3')).then(stmt => {
-    expect(stmt.lastID).to.equal(1);
-    return stmt.run('b1', 'b2', 'b3');
-  }).then(stmt => {
-    expect(stmt.lastID).to.equal(2);
-    return stmt.finalize();
-  }));
+  p = p.then(() => db.prepare('INSERT INTO tbl(col1, col2, col3) VALUES (?, ?, ?)')
+    .then(stmt => stmt.run('a1', 'a2', 'a3')).then(stmt => {
+      expect(stmt.lastID).to.equal(1);
+      return stmt.run('b1', 'b2', 'b3');
+    })
+    .then(stmt => {
+      expect(stmt.lastID).to.equal(2);
+      return stmt.finalize();
+    }));
   p = p.then(() => db.all('SELECT col1, col2, col3 FROM tbl').then(results => {
     expect(results).to.be.deep.equal([{
       col1: 'a1',
