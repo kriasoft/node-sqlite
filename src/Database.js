@@ -92,7 +92,13 @@ class Database {
   each(sql, ...params) {
     const callback = params.pop();
     return new this.Promise((resolve) => {
-      this.driver.each(sql, params, callback, resolve);
+      this.driver.each(sql, params, callback, (err, rowsCount = 0) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(rowsCount);
+        }
+      });
     });
   }
 
