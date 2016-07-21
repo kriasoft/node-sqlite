@@ -14,6 +14,18 @@ class Statement {
     this.Promise = Promise;
   }
 
+  get sql() {
+    return this.stmt.sql;
+  }
+
+  get lastID() {
+    return this.stmt.lastID;
+  }
+
+  get changes() {
+    return this.stmt.changes;
+  }
+
   bind() {
     const params = (arguments.length === 1 && typeof arguments[0] === 'object'
                     ? arguments[0]
@@ -54,7 +66,7 @@ class Statement {
                     ? arguments[0]
                     : Array.prototype.slice.call(arguments));
     return new this.Promise((resolve, reject) => {
-      this.stmt.run(params, function runExecResult(err) {
+      this.stmt.run(params, err => {
         if (err) {
           reject(err);
         } else {

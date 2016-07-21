@@ -42,12 +42,16 @@ class Database {
     const params = (arguments.length === 2 && typeof arguments[1] === 'object'
                     ? arguments[1]
                     : Array.prototype.slice.call(arguments, 1));
-    return new this.Promise((resolve, reject) => {
+    const Promise = this.Promise;
+    return new Promise((resolve, reject) => {
       this.driver.run(sql, params, function runExecResult(err) {
         if (err) {
           reject(err);
         } else {
-          resolve(this);
+          // Per https://github.com/mapbox/node-sqlite3/wiki/API#databaserunsql-param--callback
+          // when run() succeeds, the `this' object is a driver statement object. Wrap it as a
+          // Statement.
+          resolve(new Statement(this, Promise));
         }
       });
     });

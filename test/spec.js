@@ -65,14 +65,16 @@ it('Should allow named parameters to be used with prepared statements', (done) =
   p = p.then(() => db.exec('CREATE TABLE tbl (col TEXT)'));
   p = p.then(() => db.prepare('INSERT INTO tbl(col) VALUES (:col)', { ':col': 'some text' }).then(stmt => stmt.run().then(stmt => {
     expect(stmt.lastID).to.equal(1);
-  }).then(() => stmt.finalize())));
+    return stmt.finalize();
+  })));
   p = p.then(() => db.prepare('SELECT col FROM tbl WHERE 1 = ? AND 5 = ?5').then(stmt => stmt.bind({ 1: 1, 5: 5 })).then(stmt => stmt.get().then(result => {
     expect(result).to.be.deep.equal({ col: 'some text' });
     return stmt.finalize();
   })));
   p = p.then(() => db.prepare('INSERT INTO tbl(col) VALUES ($col)').then(stmt => stmt.run({ $col: 'other text' }).then(stmt => {
     expect(stmt.lastID).to.equal(2);
-  }).then(() => stmt.finalize())));
+    return stmt.finalize();
+  })));
   p = p.then(() => db.prepare('SELECT col FROM tbl WHERE ROWID = ?').then(stmt => stmt.each([2], (err, result) => {
     expect(result).to.be.deep.equal({ col: 'other text' });
   }).then(rowsCount => {
@@ -83,6 +85,31 @@ it('Should allow named parameters to be used with prepared statements', (done) =
     expect(results).to.be.deep.equal([{ col: 'some text' }, { col: 'other text' }]);
     return stmt.finalize();
   })));
+  p = p.then(() => db.close());
+  p.then(done, done);
+});
+
+it('Should allow chaining Statement.run() calls', (done) => {
+  let p = db.open(':memory:');
+  p = p.then(() => db.exec('CREATE TABLE tbl (col1 TEXT, col2 TEXT, col3 TEXT)'));
+  p = p.then(() => db.prepare('INSERT INTO tbl(col1, col2, col3) VALUES (?, ?, ?)').then(stmt => stmt.run('a1', 'a2', 'a3')).then(stmt => {
+    expect(stmt.lastID).to.equal(1);
+    return stmt.run('b1', 'b2', 'b3');
+  }).then(stmt => {
+    expect(stmt.lastID).to.equal(2);
+    return stmt.finalize();
+  }));
+  p = p.then(() => db.all('SELECT col1, col2, col3 FROM tbl').then(results => {
+    expect(results).to.be.deep.equal([{
+      col1: 'a1',
+      col2: 'a2',
+      col3: 'a3',
+    }, {
+      col1: 'b1',
+      col2: 'b2',
+      col3: 'b3',
+    }]);
+  }));
   p = p.then(() => db.close());
   p.then(done, done);
 });
