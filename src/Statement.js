@@ -72,11 +72,11 @@ class Statement {
 
   all(...params) {
     return new this.Promise((resolve, reject) => {
-      this.stmt.all(...params, err => {
+      this.stmt.all(...params, (err, rows) => {
         if (err) {
           reject(err);
         } else {
-          resolve(this);
+          resolve(rows);
         }
       });
     });
