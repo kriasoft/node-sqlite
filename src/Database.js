@@ -38,9 +38,12 @@ class Database {
     });
   }
 
-  run(sql, ...params) {
+  run(sql) {
+    const params = (arguments.length === 2 && typeof arguments[1] === 'object'
+                    ? arguments[1]
+                    : Array.prototype.slice.call(arguments, 1));
     return new this.Promise((resolve, reject) => {
-      this.driver.run(sql, params || [], function runExecResult(err) {
+      this.driver.run(sql, params, function runExecResult(err) {
         if (err) {
           reject(err);
         } else {
@@ -50,9 +53,12 @@ class Database {
     });
   }
 
-  get(sql, ...params) {
+  get(sql) {
+    const params = (arguments.length === 2 && typeof arguments[1] === 'object'
+                    ? arguments[1]
+                    : Array.prototype.slice.call(arguments, 1));
     return new this.Promise((resolve, reject) => {
-      this.driver.get(sql, params || [], (err, row) => {
+      this.driver.get(sql, params, (err, row) => {
         if (err) {
           reject(err);
         } else {
@@ -62,9 +68,12 @@ class Database {
     });
   }
 
-  all(sql, ...params) {
+  all(sql) {
+    const params = (arguments.length === 2 && typeof arguments[1] === 'object'
+                    ? arguments[1]
+                    : Array.prototype.slice.call(arguments, 1));
     return new this.Promise((resolve, reject) => {
-      this.driver.all(sql, params || [], (err, rows) => {
+      this.driver.all(sql, params, (err, rows) => {
         if (err) {
           reject(err);
         } else {
@@ -89,8 +98,11 @@ class Database {
     });
   }
 
-  each(sql, ...params) {
-    const callback = params.pop();
+  each(sql) {
+    const params = (arguments.length === 3 && typeof arguments[1] === 'object'
+                    ? arguments[1]
+                    : Array.prototype.slice.call(arguments, 1, arguments.length - 1));
+    const callback = arguments[arguments.length - 1];
     return new this.Promise((resolve) => {
       this.driver.each(sql, params, callback, (err, rowsCount = 0) => {
         if (err) {
@@ -102,9 +114,12 @@ class Database {
     });
   }
 
-  prepare(sql, ...params) {
+  prepare(sql) {
+    const params = (arguments.length === 2 && typeof arguments[1] === 'object'
+                    ? arguments[1]
+                    : Array.prototype.slice.call(arguments, 1));
     return new this.Promise((resolve, reject) => {
-      const stmt = this.driver.prepare(sql, ...params, (err) => {
+      const stmt = this.driver.prepare(sql, params, (err) => {
         if (err) {
           reject(err);
         } else {

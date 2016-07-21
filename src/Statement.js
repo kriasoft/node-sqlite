@@ -14,9 +14,12 @@ class Statement {
     this.Promise = Promise;
   }
 
-  bind(...params) {
+  bind() {
+    const params = (arguments.length === 1 && typeof arguments[0] === 'object'
+                    ? arguments[0]
+                    : Array.prototype.slice.call(arguments));
     return new this.Promise((resolve, reject) => {
-      this.stmt.bind(...params, err => {
+      this.stmt.bind(params, err => {
         if (err) {
           reject(err);
         } else {
@@ -46,9 +49,12 @@ class Statement {
     });
   }
 
-  run(...params) {
+  run() {
+    const params = (arguments.length === 1 && typeof arguments[0] === 'object'
+                    ? arguments[0]
+                    : Array.prototype.slice.call(arguments));
     return new this.Promise((resolve, reject) => {
-      this.stmt.run(...params, function runExecResult(err) {
+      this.stmt.run(params, function runExecResult(err) {
         if (err) {
           reject(err);
         } else {
@@ -58,9 +64,12 @@ class Statement {
     });
   }
 
-  get(...params) {
+  get() {
+    const params = (arguments.length === 1 && typeof arguments[0] === 'object'
+                    ? arguments[0]
+                    : Array.prototype.slice.call(arguments));
     return new this.Promise((resolve, reject) => {
-      this.stmt.get(...params, (err, row) => {
+      this.stmt.get(params, (err, row) => {
         if (err) {
           reject(err);
         } else {
@@ -70,9 +79,12 @@ class Statement {
     });
   }
 
-  all(...params) {
+  all() {
+    const params = (arguments.length === 1 && typeof arguments[0] === 'object'
+                    ? arguments[0]
+                    : Array.prototype.slice.call(arguments));
     return new this.Promise((resolve, reject) => {
-      this.stmt.all(...params, (err, rows) => {
+      this.stmt.all(params, (err, rows) => {
         if (err) {
           reject(err);
         } else {
@@ -82,10 +94,13 @@ class Statement {
     });
   }
 
-  each(...params) {
+  each() {
+    const params = (arguments.length === 2 && typeof arguments[0] === 'object'
+                    ? arguments[0]
+                    : Array.prototype.slice.call(arguments, 0, arguments.length - 1));
+    const callback = arguments[arguments.length - 1];
     return new this.Promise((resolve, reject) => {
-      const callback = params.pop();
-      this.stmt.each(...params, callback, (err, rowsCount = 0) => {
+      this.stmt.each(params, callback, (err, rowsCount = 0) => {
         if (err) {
           reject(err);
         } else {
