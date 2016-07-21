@@ -60,11 +60,11 @@ class Statement {
 
   get(...params) {
     return new this.Promise((resolve, reject) => {
-      this.stmt.get(...params, err => {
+      this.stmt.get(...params, (err, row) => {
         if (err) {
           reject(err);
         } else {
-          resolve(this);
+          resolve(row);
         }
       });
     });
