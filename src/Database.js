@@ -10,6 +10,7 @@
 import fs from 'fs';
 import path from 'path';
 import Statement from './Statement';
+import prepareParams from './utils';
 
 class Database {
 
@@ -39,9 +40,7 @@ class Database {
   }
 
   run(sql) {
-    const params = (arguments.length === 2 && typeof arguments[1] === 'object'
-                    ? arguments[1]
-                    : Array.prototype.slice.call(arguments, 1));
+    const params = prepareParams(arguments, { offset: 1 });
     const Promise = this.Promise;
     return new Promise((resolve, reject) => {
       this.driver.run(sql, params, function runExecResult(err) {
@@ -58,9 +57,7 @@ class Database {
   }
 
   get(sql) {
-    const params = (arguments.length === 2 && typeof arguments[1] === 'object'
-                    ? arguments[1]
-                    : Array.prototype.slice.call(arguments, 1));
+    const params = prepareParams(arguments, { offset: 1 });
     return new this.Promise((resolve, reject) => {
       this.driver.get(sql, params, (err, row) => {
         if (err) {
@@ -73,9 +70,7 @@ class Database {
   }
 
   all(sql) {
-    const params = (arguments.length === 2 && typeof arguments[1] === 'object'
-                    ? arguments[1]
-                    : Array.prototype.slice.call(arguments, 1));
+    const params = prepareParams(arguments, { offset: 1 });
     return new this.Promise((resolve, reject) => {
       this.driver.all(sql, params, (err, rows) => {
         if (err) {
@@ -103,9 +98,7 @@ class Database {
   }
 
   each(sql) {
-    const params = (arguments.length === 3 && typeof arguments[1] === 'object'
-                    ? arguments[1]
-                    : Array.prototype.slice.call(arguments, 1, arguments.length - 1));
+    const params = prepareParams(arguments, { offset: 1, excludeLastArg: true });
     const callback = arguments[arguments.length - 1];
     return new this.Promise((resolve, reject) => {
       this.driver.each(sql, params, callback, (err, rowsCount = 0) => {
@@ -119,9 +112,7 @@ class Database {
   }
 
   prepare(sql) {
-    const params = (arguments.length === 2 && typeof arguments[1] === 'object'
-                    ? arguments[1]
-                    : Array.prototype.slice.call(arguments, 1));
+    const params = prepareParams(arguments, { offset: 1 });
     return new this.Promise((resolve, reject) => {
       const stmt = this.driver.prepare(sql, params, (err) => {
         if (err) {

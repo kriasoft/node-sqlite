@@ -7,6 +7,8 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
+import prepareParams from './utils';
+
 class Statement {
 
   constructor(stmt, Promise) {
@@ -27,9 +29,7 @@ class Statement {
   }
 
   bind() {
-    const params = (arguments.length === 1 && typeof arguments[0] === 'object'
-                    ? arguments[0]
-                    : Array.prototype.slice.call(arguments));
+    const params = prepareParams(arguments);
     return new this.Promise((resolve, reject) => {
       this.stmt.bind(params, err => {
         if (err) {
@@ -62,9 +62,7 @@ class Statement {
   }
 
   run() {
-    const params = (arguments.length === 1 && typeof arguments[0] === 'object'
-                    ? arguments[0]
-                    : Array.prototype.slice.call(arguments));
+    const params = prepareParams(arguments);
     return new this.Promise((resolve, reject) => {
       this.stmt.run(params, err => {
         if (err) {
@@ -77,9 +75,7 @@ class Statement {
   }
 
   get() {
-    const params = (arguments.length === 1 && typeof arguments[0] === 'object'
-                    ? arguments[0]
-                    : Array.prototype.slice.call(arguments));
+    const params = prepareParams(arguments);
     return new this.Promise((resolve, reject) => {
       this.stmt.get(params, (err, row) => {
         if (err) {
@@ -92,9 +88,7 @@ class Statement {
   }
 
   all() {
-    const params = (arguments.length === 1 && typeof arguments[0] === 'object'
-                    ? arguments[0]
-                    : Array.prototype.slice.call(arguments));
+    const params = prepareParams(arguments);
     return new this.Promise((resolve, reject) => {
       this.stmt.all(params, (err, rows) => {
         if (err) {
@@ -107,9 +101,7 @@ class Statement {
   }
 
   each() {
-    const params = (arguments.length === 2 && typeof arguments[0] === 'object'
-                    ? arguments[0]
-                    : Array.prototype.slice.call(arguments, 0, arguments.length - 1));
+    const params = prepareParams(arguments, { excludeLastArg: true });
     const callback = arguments[arguments.length - 1];
     return new this.Promise((resolve, reject) => {
       this.stmt.each(params, callback, (err, rowsCount = 0) => {
