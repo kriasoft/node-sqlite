@@ -131,6 +131,20 @@ it('Should allow chaining Statement.run() calls', (done) => {
   p.then(done, done);
 });
 
+it('Should handle BLOBs', (done) => {
+  const buf = Buffer.from('SGVsbG8gd29ybGQh', 'base64');
+  let p = db.open(':memory:');
+  p = p.then(() => db.exec('CREATE TABLE dat (b BLOB)'));
+  p = p.then(() => db.run('INSERT INTO dat(b) VALUES(?)', buf).then(stmt => {
+    expect(stmt.lastID).to.equal(1);
+  }));
+  p = p.then(() => db.get('SELECT b FROM dat').then(result => {
+    expect(result.b).to.be.instanceof(Buffer);
+    expect(result.b.toString('utf8')).to.equal('Hello world!');
+  }));
+  p.then(done, done);
+});
+
 it('Should migrate the database', (done) => {
   let p = db.open(':memory:');
   p = p.then(() => db.migrate());
