@@ -7,7 +7,7 @@
 
 function prepareParams(args, { offset = 0, excludeLastArg = false } = {}) {
   const hasOneParam = (args.length === (offset + 1 + (excludeLastArg ? 1 : 0)));
-  if (hasOneParam && typeof args[offset] === 'object') {
+  if (hasOneParam) {
     return args[offset];
   }
   return Array.prototype.slice.call(args, offset, args.length - (excludeLastArg ? 1 : 0));
