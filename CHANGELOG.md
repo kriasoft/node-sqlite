@@ -2,9 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-### [Unreleased][unreleased]
+### [v2.2.0]
+> 2016-07-22
 
-- ...
+- Add named parameters support (https://github.com/kriasoft/node-sqlite/pull/10)
+- `Statement` now has `sql()`, `lastId()`, `changes()`
 
 ### [v2.0.2]
 > 2016-05-21
