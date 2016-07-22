@@ -40,7 +40,10 @@
   },
   "eslintConfig": {
     "parser": "babel-eslint",
-    "extends": "airbnb/base"
+    "extends": "airbnb/base",
+    "rules": {
+      "prefer-rest-params": "off"
+    }
   },
   "dependencies": {
     "sqlite3": "^3.1.4"

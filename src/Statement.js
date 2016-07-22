@@ -7,6 +7,8 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
+import prepareParams from './utils';
+
 class Statement {
 
   constructor(stmt, Promise) {
@@ -14,9 +16,22 @@ class Statement {
     this.Promise = Promise;
   }
 
-  bind(...params) {
+  get sql() {
+    return this.stmt.sql;
+  }
+
+  get lastID() {
+    return this.stmt.lastID;
+  }
+
+  get changes() {
+    return this.stmt.changes;
+  }
+
+  bind() {
+    const params = prepareParams(arguments);
     return new this.Promise((resolve, reject) => {
-      this.stmt.bind(...params, err => {
+      this.stmt.bind(params, err => {
         if (err) {
           reject(err);
         } else {
@@ -40,15 +55,16 @@ class Statement {
         if (err) {
           reject(err);
         } else {
-          resolve(this);
+          resolve();
         }
       });
     });
   }
 
-  run(...params) {
+  run() {
+    const params = prepareParams(arguments);
     return new this.Promise((resolve, reject) => {
-      this.stmt.run(...params, function runExecResult(err) {
+      this.stmt.run(params, err => {
         if (err) {
           reject(err);
         } else {
@@ -58,34 +74,37 @@ class Statement {
     });
   }
 
-  get(...params) {
+  get() {
+    const params = prepareParams(arguments);
     return new this.Promise((resolve, reject) => {
-      this.stmt.get(...params, err => {
+      this.stmt.get(params, (err, row) => {
         if (err) {
           reject(err);
         } else {
-          resolve(this);
+          resolve(row);
         }
       });
     });
   }
 
-  all(...params) {
+  all() {
+    const params = prepareParams(arguments);
     return new this.Promise((resolve, reject) => {
-      this.stmt.all(...params, err => {
+      this.stmt.all(params, (err, rows) => {
         if (err) {
           reject(err);
         } else {
-          resolve(this);
+          resolve(rows);
         }
       });
     });
   }
 
-  each(...params) {
+  each() {
+    const params = prepareParams(arguments, { excludeLastArg: true });
+    const callback = arguments[arguments.length - 1];
     return new this.Promise((resolve, reject) => {
-      const callback = params.pop();
-      this.stmt.each(...params, callback, (err, rowsCount = 0) => {
+      this.stmt.each(params, callback, (err, rowsCount = 0) => {
         if (err) {
           reject(err);
         } else {
