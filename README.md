@@ -9,6 +9,12 @@
 > A wrapper library that adds ES6 promises and SQL-based migrations API to
 > [sqlite3](https://github.com/mapbox/node-sqlite3/) ([docs](https://github.com/mapbox/node-sqlite3/wiki)).
 
+---
+
+<p align="center"><b>🔥 Want to strengthen your core JavaScript skills and master ES6?</b><br>I would personally recommend this awesome <a href="https://es6.io/friend/konstantin">ES6 course</a> by Wes Bos.</p>
+
+---
+
 
 ### How to Install
 
@@ -121,6 +127,7 @@ latest migration over again each time when Node.js app launches.
 ### Related Projects
 
 * [React Starter Kit](https://github.com/kriasoft/react-starter-kit) — Isomorphic web app boilerplate (Node.js/Express, React.js, GraphQL)
+* [ASP.NET Core Starter Kit](https://github.com/kriasoft/react-starter-kit) — Single-page app boilerplate (ASP.NET Core, React.js, Web API)
 * [Babel Starter Kit](https://github.com/kriasoft/babel-starter-kit) — JavaScript library boilerplate (ES2015, Babel, Rollup)
 * [Membership Database](https://github.com/membership/membership.db) — SQL database boilerplate for web app users, roles and auth tokens
 
