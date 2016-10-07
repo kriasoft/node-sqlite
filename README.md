@@ -118,6 +118,37 @@ Promise.resolve()
 latest migration over again each time when Node.js app launches. 
 
 
+### Multiple Connections
+
+The `open` method resolves to the db instance which can be used in order to reference multiple open databases.
+
+ES6
+```
+import sqlite from 'sqlite';
+
+Promise.all([
+  sqlite.open('./main.sqlite', { Promise }),
+  sqlite.open('./users.sqlite', { Promise })
+]).then(function([mainDb, usersDb]){
+  ...
+});
+```
+
+ES7+ Async/Await
+
+```
+import sqlite from 'sqlite';
+
+async function main() {
+  const [mainDb, usersDb] = await Promise.all([
+    sqlite.open('./main.sqlite', { Promise }),
+    sqlite.open('./users.sqlite', { Promise })
+  ]);
+  ...
+}
+main();
+```
+
 ### References
 
 * [Using SQLite with Node.js for Rapid Prototyping](https://medium.com/@tarkus/node-js-and-sqlite-for-rapid-prototyping-bc9cf1f26f10) on Medium.com
