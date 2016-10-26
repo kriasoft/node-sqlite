@@ -10,14 +10,15 @@
 import sqlite3 from 'sqlite3';
 import Database from './Database';
 
-const db = new Database(null, { Promise: global.Promise });
+const promise = global.Promise;
+const db = new Database(null, { Promise: promise });
 
 /**
  * Opens SQLite database.
  *
  * @returns Promise<Database> A promise that resolves to an instance of SQLite database client.
  */
-db.open = (filename, { mode = null, verbose = false, Promise = global.Promise } = {}) => {
+db.open = (filename, { mode = null, verbose = false, Promise = promise } = {}) => {
   let driver;
 
   if (verbose) {

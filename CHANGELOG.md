@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+### [v2.2.1]
+> 2016-10-26
+
+- Update `sqlite3` package to 3.1.7 ([#17](https://github.com/kriasoft/node-sqlite/pull/17), [changelog](https://github.com/mapbox/node-sqlite3/blob/master/CHANGELOG.md))
+
 ### [v2.2.0]
 > 2016-07-22
 
@@ -23,6 +28,8 @@ All notable changes to this project will be documented in this file.
 - Built the project with Babel and Rollup for Node.js v3-5, Node.js v6, Node.js vNext
   (Harmony Modules)
 
-[unreleased]: https://github.com/kriasoft/node-sqlite/compare/v2.0.2...HEAD
+[unreleased]: https://github.com/kriasoft/node-sqlite/compare/v2.2.1...HEAD
+[v2.2.1]: https://github.com/kriasoft/node-sqlite/compare/v2.2.0...v2.2.1
+[v2.2.0]: https://github.com/kriasoft/node-sqlite/compare/v2.0.2...v2.2.0
 [v2.0.2]: https://github.com/kriasoft/node-sqlite/compare/v1.0.0...v2.0.2
 [v1.0.0]: https://github.com/kriasoft/node-sqlite/compare/45c1f7904abca55510b45415fe75dccbfc3109a1...v1.0.0
