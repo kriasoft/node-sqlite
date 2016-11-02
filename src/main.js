@@ -27,7 +27,7 @@ db.open = (filename, { mode = null, verbose = false, Promise = promise } = {}) =
 
   return new Promise((resolve, reject) => {
     if (mode !== null) {
-      driver = new sqlite3.Database(filename, mode, err => {
+      driver = new sqlite3.Database(filename, mode, (err) => {
         if (err) {
           reject(err);
         } else {
@@ -35,7 +35,7 @@ db.open = (filename, { mode = null, verbose = false, Promise = promise } = {}) =
         }
       });
     } else {
-      driver = new sqlite3.Database(filename, err => {
+      driver = new sqlite3.Database(filename, (err) => {
         if (err) {
           reject(err);
         } else {

@@ -31,7 +31,7 @@ class Statement {
   bind() {
     const params = prepareParams(arguments);
     return new this.Promise((resolve, reject) => {
-      this.stmt.bind(params, err => {
+      this.stmt.bind(params, (err) => {
         if (err) {
           reject(err);
         } else {
@@ -42,7 +42,7 @@ class Statement {
   }
 
   reset() {
-    return new this.Promise(resolve => {
+    return new this.Promise((resolve) => {
       this.stmt.reset(() => {
         resolve(this);
       });
@@ -51,7 +51,7 @@ class Statement {
 
   finalize() {
     return new this.Promise((resolve, reject) => {
-      this.stmt.finalize(err => {
+      this.stmt.finalize((err) => {
         if (err) {
           reject(err);
         } else {
@@ -64,7 +64,7 @@ class Statement {
   run() {
     const params = prepareParams(arguments);
     return new this.Promise((resolve, reject) => {
-      this.stmt.run(params, err => {
+      this.stmt.run(params, (err) => {
         if (err) {
           reject(err);
         } else {

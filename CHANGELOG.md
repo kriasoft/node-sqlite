@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+### [v2.2.2]
+> 2016-11-02
+
+- Fix duplicate migration application when db.migrate() is run multiple times ([#19](https://github.com/kriasoft/node-sqlite/pull/9))
+
 ### [v2.2.1]
 > 2016-10-26
 

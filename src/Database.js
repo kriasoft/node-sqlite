@@ -29,7 +29,7 @@ class Database {
    */
   close() {
     return new this.Promise((resolve, reject) => {
-      this.driver.close(err => {
+      this.driver.close((err) => {
         if (err) {
           reject(err);
         } else {
@@ -87,7 +87,7 @@ class Database {
    */
   exec(sql) {
     return new this.Promise((resolve, reject) => {
-      this.driver.exec(sql, err => {
+      this.driver.exec(sql, (err) => {
         if (err) {
           reject(err);
         } else {
@@ -160,14 +160,14 @@ class Database {
         if (err) {
           reject(err);
         } else {
-          const [up, down] = data.split(/^\-\-\s+?down/mi);
+          const [up, down] = data.split(/^--\s+?down/mi);
           if (!down) {
             const message = `The ${migration.filename} file does not contain '-- Down' separator.`;
             reject(new Error(message));
           } else {
             /* eslint-disable no-param-reassign */
-            migration.up = up.replace(/^\-\-.*?$/gm, '').trim();     // Remove comments
-            migration.down = down.replace(/^\-\-.*?$/gm, '').trim(); // and trim whitespaces
+            migration.up = up.replace(/^--.*?$/gm, '').trim();     // Remove comments
+            migration.down = down.replace(/^--.*?$/gm, '').trim(); // and trim whitespaces
             /* eslint-enable no-param-reassign */
             resolve();
           }
