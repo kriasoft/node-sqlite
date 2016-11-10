@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+### [v2.2.3]
+> 2016-11-10
+
+- Update `sqlite3` package to 3.1.8
+- Use `external-helpers` plugin in Babel config (ref [#12](https://github.com/kriasoft/node-sqlite/issues/12))
+
 ### [v2.2.2]
 > 2016-11-02
 
@@ -33,7 +39,8 @@ All notable changes to this project will be documented in this file.
 - Built the project with Babel and Rollup for Node.js v3-5, Node.js v6, Node.js vNext
   (Harmony Modules)
 
-[unreleased]: https://github.com/kriasoft/node-sqlite/compare/v2.2.2...HEAD
+[unreleased]: https://github.com/kriasoft/node-sqlite/compare/v2.2.3...HEAD
+[v2.2.3]: https://github.com/kriasoft/node-sqlite/compare/v2.2.2...v2.2.3
 [v2.2.2]: https://github.com/kriasoft/node-sqlite/compare/v2.2.1...v2.2.2
 [v2.2.1]: https://github.com/kriasoft/node-sqlite/compare/v2.2.0...v2.2.1
 [v2.2.0]: https://github.com/kriasoft/node-sqlite/compare/v2.0.2...v2.2.0
