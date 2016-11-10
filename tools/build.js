@@ -16,8 +16,8 @@ const pkg = require('../package.json');
 // The source files to be compiled by Rollup
 const files = [
   { format: 'cjs', ext: '.js' },
-  { format: 'es6', ext: '.mjs' },
-  { format: 'cjs', ext: '.js', presets: ['es2015-rollup'], output: 'legacy' },
+  { format: 'es', ext: '.mjs' },
+  { format: 'cjs', ext: '.js', presets: [['es2015', { modules: false }]], output: 'legacy' },
 ];
 
 let promise = Promise.resolve();
@@ -34,9 +34,11 @@ for (const file of files) {
       babel(Object.assign(pkg.babel, {
         babelrc: false,
         exclude: 'node_modules/**',
-        runtimeHelpers: true,
         presets: file.presets,
-        plugins: ['transform-async-to-generator'],
+        plugins: [
+          'transform-async-to-generator',
+          'external-helpers',
+        ],
       })),
     ],
   }).then(bundle => bundle.write({

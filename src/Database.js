@@ -185,7 +185,7 @@ class Database {
 
     // Get the list of already applied migrations
     let dbMigrations = await this.all(
-      `SELECT id, name, up, down FROM "${table}" ORDER BY id ASC`
+      `SELECT id, name, up, down FROM "${table}" ORDER BY id ASC`,
     );
 
     // Undo migrations that exist only in the database but not in files,
@@ -218,7 +218,7 @@ class Database {
           await this.exec(migration.up);
           await this.run(
             `INSERT INTO "${table}" (id, name, up, down) VALUES (?, ?, ?, ?)`,
-            migration.id, migration.name, migration.up, migration.down
+            migration.id, migration.name, migration.up, migration.down,
           );
           await this.run('COMMIT');
         } catch (err) {

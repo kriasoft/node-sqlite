@@ -40,26 +40,28 @@
   },
   "eslintConfig": {
     "parser": "babel-eslint",
-    "extends": "airbnb/base",
+    "extends": "airbnb-base",
     "rules": {
+      "no-restricted-syntax": "off",
       "prefer-rest-params": "off",
       "import/no-extraneous-dependencies": "off"
     }
   },
   "dependencies": {
-    "sqlite3": "^3.1.7"
+    "sqlite3": "^3.1.8"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
-    "babel-eslint": "^7.0.0",
+    "babel-eslint": "^7.1.0",
+    "babel-plugin-external-helpers": "^6.18.0",
     "babel-plugin-transform-async-to-generator": "^6.16.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.18.0",
-    "babel-preset-es2015-rollup": "^1.2.0",
+    "babel-preset-es2015": "^6.18.0",
     "chai": "^3.5.0",
     "del": "^2.2.2",
-    "eslint": "^3.8.1",
-    "eslint-config-airbnb": "^12.0.0",
-    "eslint-plugin-import": "^2.0.1",
+    "eslint": "^3.9.1",
+    "eslint-config-airbnb-base": "^10.0.1",
+    "eslint-plugin-import": "^2.2.0",
     "mocha": "^3.1.2",
     "rollup": "^0.36.3",
     "rollup-plugin-babel": "^2.6.1"
