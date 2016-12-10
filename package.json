@@ -32,6 +32,7 @@
   "license": "MIT",
   "main": "main.js",
   "jsnext:main": "main.mjs",
+  "types": "main.d.ts",
   "babel": {
     "plugins": [
       "transform-async-to-generator",
