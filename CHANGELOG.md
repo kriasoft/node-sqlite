@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+### [v2.2.4]
+> 2016-12-10
+
+- Add TypeScript definition ([#21](https://github.com/kriasoft/node-sqlite/pull/21))
+
 ### [v2.2.3]
 > 2016-11-10
 
@@ -39,7 +44,8 @@ All notable changes to this project will be documented in this file.
 - Built the project with Babel and Rollup for Node.js v3-5, Node.js v6, Node.js vNext
   (Harmony Modules)
 
-[unreleased]: https://github.com/kriasoft/node-sqlite/compare/v2.2.3...HEAD
+[unreleased]: https://github.com/kriasoft/node-sqlite/compare/v2.2.4...HEAD
+[v2.2.4]: https://github.com/kriasoft/node-sqlite/compare/v2.2.3...v2.2.4
 [v2.2.3]: https://github.com/kriasoft/node-sqlite/compare/v2.2.2...v2.2.3
 [v2.2.2]: https://github.com/kriasoft/node-sqlite/compare/v2.2.1...v2.2.2
 [v2.2.1]: https://github.com/kriasoft/node-sqlite/compare/v2.2.0...v2.2.1
