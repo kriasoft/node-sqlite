@@ -198,7 +198,7 @@ class Database {
         await this.run('BEGIN');
         try {
           await this.exec(migration.down);
-          await this.run(`DELETE FROM "${table}" WHERE id = ?`, migration.id); // eslint-disable-line no-await-in-loop
+          await this.run(`DELETE FROM "${table}" WHERE id = ?`, migration.id);
           await this.run('COMMIT');
           dbMigrations = dbMigrations.filter(x => x.id !== migration.id);
         } catch (err) {
@@ -216,9 +216,9 @@ class Database {
     // eslint-disable no-await-in-loop
     for (const migration of migrations) {
       if (migration.id > lastMigrationId) {
-        await this.run('BEGIN'); // eslint-disable-line no-await-in-loop
+        await this.run('BEGIN');
         try {
-          await this.exec(migration.up); // eslint-disable-line no-await-in-loop
+          await this.exec(migration.up);
           await this.run(
             `INSERT INTO "${table}" (id, name, up, down) VALUES (?, ?, ?, ?)`,
             migration.id, migration.name, migration.up, migration.down,
