@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "sqlite",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "description": "SQLite client for Node.js applications with SQL-based migrations API",
   "repository": "kriasoft/node-sqlite",
   "author": "Kriasoft <hello@kriasoft.com> (http://www.kriasoft.com)",
@@ -32,6 +32,7 @@
   "license": "MIT",
   "main": "main.js",
   "jsnext:main": "main.mjs",
+  "types": "main.d.ts",
   "babel": {
     "plugins": [
       "transform-async-to-generator",
@@ -52,7 +53,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
-    "babel-eslint": "^7.1.0",
+    "babel-eslint": "^7.1.1",
     "babel-plugin-external-helpers": "^6.18.0",
     "babel-plugin-transform-async-to-generator": "^6.16.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.18.0",
@@ -62,8 +63,8 @@
     "eslint": "^3.12.2",
     "eslint-config-airbnb-base": "^10.0.1",
     "eslint-plugin-import": "^2.2.0",
-    "mocha": "^3.1.2",
-    "rollup": "^0.36.3",
+    "mocha": "^3.2.0",
+    "rollup": "^0.36.4",
     "rollup-plugin-babel": "^2.6.1"
   },
   "scripts": {
