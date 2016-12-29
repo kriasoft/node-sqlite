@@ -191,7 +191,7 @@ class Database {
     // Undo migrations that exist only in the database but not in files,
     // also undo the last migration if the `force` option was set to `last`.
     const lastMigration = migrations[migrations.length - 1];
-    // eslint-disable no-await-in-loop
+    /* eslint-disable no-await-in-loop */
     for (const migration of dbMigrations.slice().sort((a, b) => a.id < b.id)) {
       if (!migrations.some(x => x.id === migration.id) ||
         (force === 'last' && migration.id === lastMigration.id)) {
@@ -209,11 +209,11 @@ class Database {
         break;
       }
     }
-    // eslint-enable no-await-in-loop
+    /* eslint-enable no-await-in-loop */ 
     
     // Apply pending migrations
     const lastMigrationId = dbMigrations.length ? dbMigrations[dbMigrations.length - 1].id : 0;
-    // eslint-disable no-await-in-loop
+    /* eslint-disable no-await-in-loop */
     for (const migration of migrations) {
       if (migration.id > lastMigrationId) {
         await this.run('BEGIN');
@@ -230,7 +230,7 @@ class Database {
         }
       }
     }
-    // eslint-enable no-await-in-loop
+    /* eslint-enable no-await-in-loop */
 
     return this;
   }
