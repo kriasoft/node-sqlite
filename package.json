@@ -60,10 +60,10 @@
     "chai": "^3.5.0",
     "del": "^2.2.2",
     "eslint": "^3.9.1",
-    "eslint-config-airbnb-base": "^10.0.1",
+    "eslint-config-airbnb-base": "^11.0.0",
     "eslint-plugin-import": "^2.2.0",
     "mocha": "^3.1.2",
-    "rollup": "^0.36.3",
+    "rollup": "^0.38.3",
     "rollup-plugin-babel": "^2.6.1"
   },
   "scripts": {
