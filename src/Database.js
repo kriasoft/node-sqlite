@@ -191,13 +191,14 @@ class Database {
     // Undo migrations that exist only in the database but not in files,
     // also undo the last migration if the `force` option was set to `last`.
     const lastMigration = migrations[migrations.length - 1];
+    // eslint-disable no-await-in-loop
     for (const migration of dbMigrations.slice().sort((a, b) => a.id < b.id)) {
       if (!migrations.some(x => x.id === migration.id) ||
         (force === 'last' && migration.id === lastMigration.id)) {
         await this.run('BEGIN');
         try {
           await this.exec(migration.down);
-          await this.run(`DELETE FROM "${table}" WHERE id = ?`, migration.id);
+          await this.run(`DELETE FROM "${table}" WHERE id = ?`, migration.id); // eslint-disable-line no-await-in-loop
           await this.run('COMMIT');
           dbMigrations = dbMigrations.filter(x => x.id !== migration.id);
         } catch (err) {
@@ -208,14 +209,16 @@ class Database {
         break;
       }
     }
-
+    // eslint-enable no-await-in-loop
+    
     // Apply pending migrations
     const lastMigrationId = dbMigrations.length ? dbMigrations[dbMigrations.length - 1].id : 0;
+    // eslint-disable no-await-in-loop
     for (const migration of migrations) {
       if (migration.id > lastMigrationId) {
-        await this.run('BEGIN');
+        await this.run('BEGIN'); // eslint-disable-line no-await-in-loop
         try {
-          await this.exec(migration.up);
+          await this.exec(migration.up); // eslint-disable-line no-await-in-loop
           await this.run(
             `INSERT INTO "${table}" (id, name, up, down) VALUES (?, ?, ?, ?)`,
             migration.id, migration.name, migration.up, migration.down,
@@ -227,6 +230,7 @@ class Database {
         }
       }
     }
+    // eslint-enable no-await-in-loop
 
     return this;
   }
