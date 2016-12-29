@@ -62,9 +62,9 @@
     "eslint-config-airbnb-base": "^11.0.0",
     "eslint": "^3.12.1",
     "eslint-plugin-import": "^2.2.0",
-    "mocha": "^3.1.2",
     "rollup": "^0.38.3",
     "rollup-plugin-babel": "^2.7.1"
+    "mocha": "^3.2.0",
   },
   "scripts": {
     "lint": "eslint src test tools",
