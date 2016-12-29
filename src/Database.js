@@ -209,8 +209,8 @@ class Database {
         break;
       }
     }
-    /* eslint-enable no-await-in-loop */ 
-    
+    /* eslint-enable no-await-in-loop */
+
     // Apply pending migrations
     const lastMigrationId = dbMigrations.length ? dbMigrations[dbMigrations.length - 1].id : 0;
     /* eslint-disable no-await-in-loop */
