@@ -142,7 +142,7 @@ class Database {
             .map(x => x.match(/^(\d+).(.*?)\.sql$/))
             .filter(x => x !== null)
             .map(x => ({ id: Number(x[1]), name: x[2], filename: x[0] }))
-            .sort((a, b) => a.id > b.id));
+            .sort((a, b) => Math.sign(a.id - b.id)));
         }
       });
     });
