@@ -191,7 +191,7 @@ class Database {
     // Undo migrations that exist only in the database but not in files,
     // also undo the last migration if the `force` option was set to `last`.
     const lastMigration = migrations[migrations.length - 1];
-    for (const migration of dbMigrations.slice().sort((a, b) => a.id < b.id)) {
+    for (const migration of dbMigrations.slice().sort((a, b) => Math.sign(b.id - a.id))) {
       if (!migrations.some(x => x.id === migration.id) ||
         (force === 'last' && migration.id === lastMigration.id)) {
         await this.run('BEGIN');
