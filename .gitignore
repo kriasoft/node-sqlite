@@ -3,4 +3,8 @@
 
 build
 node_modules
-npm-debug.log
+*.log
+npm-debug.log*
+.npm
+.eslint-cache
+.yarn-integrity
