@@ -128,6 +128,7 @@ class Database {
    * Migrates database schema to the latest version
    */
   async migrate({ force, table = 'migrations', migrationsPath = './migrations' } = {}) {
+    /* eslint-disable no-await-in-loop */
     const location = path.resolve(migrationsPath);
 
     // Get the list of migration files, for example:
@@ -228,6 +229,7 @@ class Database {
       }
     }
 
+    /* eslint-enable no-await-in-loop */
     return this;
   }
 }
