@@ -56,7 +56,7 @@ declare module 'sqlite' {
     prepare(sql: string): Promise<Statement>;
     prepare(sql: string, ...params: any[]): Promise<Statement>;
 
-    migrate(options: { force?: boolean, table?: string, migrationsPath?: string }): Promise<Database>;
+    migrate(options: { force?: string, table?: string, migrationsPath?: string }): Promise<Database>;
   }
 
   export function open(filename: string, options?: { mode?: number, verbose?: boolean, promise?: typeof Promise }): Promise<Database>;
