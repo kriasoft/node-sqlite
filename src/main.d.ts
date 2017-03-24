@@ -1,50 +1,62 @@
 declare module 'sqlite' {
-  class Statement {
-    public readonly sql: string;
-    public readonly lastID: number;
-    public readonly changes: number;
+  export interface Statement {
+    readonly sql: string;
+    readonly lastID: number;
+    readonly changes: number;
 
-    public bind(): Promise<Statement>;
-    public bind(...params: any[]): Promise<Statement>;
+    bind(): Promise<Statement>;
+    bind(...params: any[]): Promise<Statement>;
 
-    public reset(): Promise<Statement>;
+    reset(): Promise<Statement>;
 
-    public finalize(): Promise<void>;
+    finalize(): Promise<void>;
 
-    public run(): Promise<Statement>;
-    public run(...params: any[]): Promise<Statement>;
+    run(): Promise<Statement>;
+    run(...params: any[]): Promise<Statement>;
 
-    public get(): Promise<any>;
-    public get(...params: any[]): Promise<any>;
+    get(): Promise<any>;
+    get(...params: any[]): Promise<any>;
 
-    public all(): Promise<any[]>;
-    public all(...params: any[]): Promise<any[]>;
+    get<T>(): Promise<T>;
+    get<T>(...params: any[]): Promise<T>;
 
-    public each(callback?: (err: Error, row: any) => void): Promise<number>;
-    public each(...params: any[]): Promise<number>;
+    all(): Promise<any[]>;
+    all(...params: any[]): Promise<any[]>;
+
+    all<T>(): Promise<T[]>;
+    all<T>(...params: any[]): Promise<T[]>;
+
+    each(callback?: (err: Error, row: any) => void): Promise<number>;
+    each(...params: any[]): Promise<number>;
   }
 
-  class Database {
-    public close(): Promise<void>;
+  export interface Database {
+    close(): Promise<void>;
 
-    public run(sql: string): Promise<Statement>;
-    public run(sql: string, ...params: any[]): Promise<Statement>;
+    run(sql: string): Promise<Statement>;
+    run(sql: string, ...params: any[]): Promise<Statement>;
 
-    public get(sql: string): Promise<any>;
-    public get(sql: string, ...params: any[]): Promise<any>;
+    get(sql: string): Promise<any>;
+    get(sql: string, ...params: any[]): Promise<any>;
 
-    public all(sql: string): Promise<any[]>;
-    public all(sql: string, ...params: any[]): Promise<any[]>;
+    get<T>(sql: string): Promise<T>;
+    get<T>(sql: string, ...params: any[]): Promise<T>;
 
-    public exec(sql: string): Promise<Database>;
+    all(sql: string): Promise<any[]>;
+    all(sql: string, ...params: any[]): Promise<any[]>;
 
-    public each(sql: string, callback?: (err: Error, row: any) => void): Promise<number>;
-    public each(sql: string, ...params: any[]): Promise<number>;
+    all<T>(sql: string): Promise<T[]>;
+    all<T>(sql: string, ...params: any[]): Promise<T[]>;
 
-    public prepare(sql: string): Promise<Statement>;
-    public prepare(sql: string, ...params: any[]): Promise<Statement>;
+    exec(sql: string): Promise<Database>;
 
-    public migrate(options: { force?: boolean, table?: string, migrationsPath?: string }): Promise<Database>;
+    each(sql: string, callback?: (err: Error, row: any) => void): Promise<number>;
+    each(sql: string, ...params: any[]): Promise<number>;
+
+    prepare(sql: string): Promise<Statement>;
+    prepare(sql: string, ...params: any[]): Promise<Statement>;
+
+    migrate(options: { force?: string, table?: string, migrationsPath?: string }): Promise<Database>;
   }
 
   export function open(filename: string, options?: { mode?: number, verbose?: boolean, promise?: typeof Promise }): Promise<Database>;
