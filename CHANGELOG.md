@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+### [v2.5.0]
+> 2017-03-23
+
+- npm publish'd from the wrong area. 2.4.0 is unpublished, 2.5.0 is the latest.
+
 ### [v2.4.0]
 > 2017-03-23
 
@@ -54,7 +59,8 @@ All notable changes to this project will be documented in this file.
 - Built the project with Babel and Rollup for Node.js v3-5, Node.js v6, Node.js vNext
   (Harmony Modules)
 
-[unreleased]: https://github.com/kriasoft/node-sqlite/compare/v2.4.0...HEAD
+[unreleased]: https://github.com/kriasoft/node-sqlite/compare/v2.5.0...HEAD
+[v2.5.0]: https://github.com/kriasoft/node-sqlite/compare/v2.4.0...v2.5.0
 [v2.4.0]: https://github.com/kriasoft/node-sqlite/compare/v2.3.0...v2.4.0
 [v2.3.0]: https://github.com/kriasoft/node-sqlite/compare/v2.2.4...v2.3.0
 [v2.2.4]: https://github.com/kriasoft/node-sqlite/compare/v2.2.3...v2.2.4
