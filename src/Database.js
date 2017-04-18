@@ -169,8 +169,7 @@ class Database {
             /* eslint-disable no-param-reassign */
             migration.up = up.replace(/^-- Up.*?$/gm, '').trim();     // Remove comments
             migration.up = migration.up.replace(/^-+$/gm, '').trim();
-            migration.down = down.replace(/^-- Down.*?$/gm, '').trim(); // and trim whitespaces
-            migration.down = migration.down.replace(/^-+$/gm, '').trim(); // and trim whitespaces
+            migration.down = down.trim(); // and trim whitespaces
             /* eslint-enable no-param-reassign */
             resolve();
           }
