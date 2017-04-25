@@ -167,8 +167,7 @@ class Database {
             reject(new Error(message));
           } else {
             /* eslint-disable no-param-reassign */
-            migration.up = up.replace(/^-- Up.*?$/gm, '').trim();     // Remove comments
-            migration.up = migration.up.replace(/^-+$/gm, '').trim();
+            migration.up = up.replace(/^-- .*?$/gm, '').trim();// Remove comments
             migration.down = down.trim(); // and trim whitespaces
             /* eslint-enable no-param-reassign */
             resolve();
