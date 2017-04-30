@@ -149,11 +149,16 @@ it('Should migrate the database', (done) => {
   let p = db.open(':memory:');
   p = p.then(() => db.migrate());
   p = p.then(() => db.all('SELECT id, name FROM migrations').then((result) => {
-    expect(result).to.be.deep.equal([{ id: 1, name: 'initial' }, { id: 2, name: 'some-feature' }]);
+    expect(result).to.be.deep.equal([{ id: 1, name: 'initial' }, { id: 2, name: 'some-feature' }, { id: 3, name: 'test-cert' }]);
   }));
   p = p.then(() => db.all('SELECT * FROM Category').then((result) => {
     expect(result).to.be.deep.equal([{ id: 1, name: 'Test' }]);
   }));
+
+  p = p.then(() => db.all('SELECT certificate from whatever').then((result) => {
+    expect(result[0].certificate).to.be.equal('-----BEGIN CERTIFICATE-----\nsome contents\n-----END CERTIFICATE-----');
+  }));
+
   p = p.then(() => db.close());
   p.then(done, done);
 });
