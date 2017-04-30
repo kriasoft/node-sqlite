@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+### [v2.6.0]
+> 2017-04-30
+
+- Migration bug fixed where valid multiple dashes (eg a PEM string) was being removed ([#28](https://github.com/kriasoft/node-sqlite/pull/28))
+
 ### [v2.5.0]
 > 2017-03-23
 
@@ -59,7 +64,8 @@ All notable changes to this project will be documented in this file.
 - Built the project with Babel and Rollup for Node.js v3-5, Node.js v6, Node.js vNext
   (Harmony Modules)
 
-[unreleased]: https://github.com/kriasoft/node-sqlite/compare/v2.5.0...HEAD
+[unreleased]: https://github.com/kriasoft/node-sqlite/compare/v2.6.0...HEAD
+[v2.6.0]: https://github.com/kriasoft/node-sqlite/compare/v2.5.0...v2.6.0
 [v2.5.0]: https://github.com/kriasoft/node-sqlite/compare/v2.4.0...v2.5.0
 [v2.4.0]: https://github.com/kriasoft/node-sqlite/compare/v2.3.0...v2.4.0
 [v2.3.0]: https://github.com/kriasoft/node-sqlite/compare/v2.2.4...v2.3.0
