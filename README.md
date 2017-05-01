@@ -25,6 +25,8 @@ $ npm install sqlite --save
 
 ### How to Use
 
+**NOTE**: For Node.js v5 and below use `var db = require('sqlite/legacy');`.
+
 This module has the same API as the original `sqlite3` library ([docs](https://github.com/mapbox/node-sqlite3/wiki/API)),
 except that all its API methods return ES6 Promises and do not accept callback arguments.
 
@@ -58,8 +60,17 @@ Promise.resolve()
   .finally(() => app.listen(port));
 ```
 
-**NOTE**: For Node.js v5 and below use `var db = require('sqlite/legacy');`.
+### Custom DB Driver
 
+The default driver is `sqlite3.Database`.
+
+If you want to use an alternative driver like the `sqlite3` (database object cache)[https://github.com/mapbox/node-sqlite3/wiki/Caching]:
+
+```
+import sqlite from 'sqlite3';
+
+db.open('./database.sqlite', { DBDriver: sqlite.cached.Database }))
+```
 
 ### Migrations
 
