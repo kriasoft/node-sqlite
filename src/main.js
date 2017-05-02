@@ -18,8 +18,17 @@ const db = new Database(null, { Promise: promise });
  *
  * @returns Promise<Database> A promise that resolves to an instance of SQLite database client.
  */
-db.open = (filename, { mode = null, verbose = false, Promise = promise } = {}) => {
+db.open = (filename, {
+  mode = null,
+  verbose = false,
+  Promise = promise,
+  cached = false } = {}) => {
   let driver;
+  let DBDriver = sqlite3.Database;
+
+  if (cached) {
+    DBDriver = sqlite3.cached.Database;
+  }
 
   if (verbose) {
     sqlite3.verbose();
@@ -27,7 +36,7 @@ db.open = (filename, { mode = null, verbose = false, Promise = promise } = {}) =
 
   return new Promise((resolve, reject) => {
     if (mode !== null) {
-      driver = new sqlite3.Database(filename, mode, (err) => {
+      driver = new DBDriver(filename, mode, (err) => {
         if (err) {
           reject(err);
         } else {
@@ -35,7 +44,7 @@ db.open = (filename, { mode = null, verbose = false, Promise = promise } = {}) =
         }
       });
     } else {
-      driver = new sqlite3.Database(filename, (err) => {
+      driver = new DBDriver(filename, (err) => {
         if (err) {
           reject(err);
         } else {
