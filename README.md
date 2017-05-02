@@ -65,8 +65,6 @@ Promise.resolve()
 If you want to enable the (database object cache)[https://github.com/mapbox/node-sqlite3/wiki/Caching]
 
 ```
-import sqlite from 'sqlite3';
-
 db.open('./database.sqlite', { cached: true }))
 ```
 
