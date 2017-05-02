@@ -7,16 +7,15 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-const sqlite3 = require('sqlite3');
-
 const db = require('../build/main');
 const expect = require('chai').expect;
 
-const dbDrivers = [sqlite3.Database, sqlite3.cached.Database];
+// enable the sqlite cached database or not
+const cache = [false, true];
 
-dbDrivers.forEach((driver, idx) => {
-  it(`Should open a database connection ${idx}`, (done) => {
-    let p = db.open(':memory:', { DBDriver: driver });
+cache.forEach((c) => {
+  it(`Should open a database connection; cached = ${c}`, (done) => {
+    let p = db.open(':memory:', { cached: c });
     p = p.then(() => db.exec('CREATE TABLE tbl (col TEXT)'));
     p = p.then(() => db.exec('INSERT INTO tbl VALUES ("test")'));
     p = p.then(() => db.get('SELECT col FROM tbl').then((result) => {

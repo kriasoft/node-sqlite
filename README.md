@@ -60,16 +60,14 @@ Promise.resolve()
   .finally(() => app.listen(port));
 ```
 
-### Custom DB Driver
+### Cached DB Driver
 
-The default driver is `sqlite3.Database`.
-
-If you want to use an alternative driver like the `sqlite3` (database object cache)[https://github.com/mapbox/node-sqlite3/wiki/Caching]:
+If you want to enable the (database object cache)[https://github.com/mapbox/node-sqlite3/wiki/Caching]
 
 ```
 import sqlite from 'sqlite3';
 
-db.open('./database.sqlite', { DBDriver: sqlite.cached.Database }))
+db.open('./database.sqlite', { cached: true }))
 ```
 
 ### Migrations

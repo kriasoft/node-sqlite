@@ -22,8 +22,13 @@ db.open = (filename, {
   mode = null,
   verbose = false,
   Promise = promise,
-  DBDriver = sqlite3.Database } = {}) => {
+  cached = false } = {}) => {
   let driver;
+  let DBDriver = sqlite3.Database;
+
+  if (cached) {
+    DBDriver = sqlite3.cached.Database;
+  }
 
   if (verbose) {
     sqlite3.verbose();
