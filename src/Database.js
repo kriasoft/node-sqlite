@@ -161,7 +161,7 @@ class Database {
         if (err) {
           reject(err);
         } else {
-          const [up, down] = data.split(/^--\s+?down/mi);
+          const [up, down] = data.split(/^--\s+?down\b/mi);
           if (!down) {
             const message = `The ${migration.filename} file does not contain '-- Down' separator.`;
             reject(new Error(message));
