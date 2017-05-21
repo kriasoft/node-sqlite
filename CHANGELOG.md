@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+### [v2.8.0]
+> 2017-05-21
+
+- Match only “down” as separator in migration files ([#32](https://github.com/kriasoft/node-sqlite/pull/32))
+
 ### [v2.7.0]
 > 2017-05-01
 

@@ -129,8 +129,9 @@ latest migration over again each time when Node.js app launches.
 
 The `open` method resolves to the db instance which can be used in order to reference multiple open databases.
 
-ES6
-```
+#### ES6
+
+```js
 import sqlite from 'sqlite';
 
 Promise.all([
@@ -141,9 +142,9 @@ Promise.all([
 });
 ```
 
-ES7+ Async/Await
+#### ES7+ Async/Await
 
-```
+```js
 import sqlite from 'sqlite';
 
 async function main() {
@@ -164,6 +165,7 @@ main();
 
 ### Related Projects
 
+* [Node.js API Starter](https://github.com/kriasoft/nodejs-api-starter) — Data API server boilerplate (Node.js, PostgreSQL, Redis, Passport.js and GraphQL)
 * [React Starter Kit](https://github.com/kriasoft/react-starter-kit) — Isomorphic web app boilerplate (Node.js/Express, React.js, GraphQL)
 * [ASP.NET Core Starter Kit](https://github.com/kriasoft/react-starter-kit) — Single-page app boilerplate (ASP.NET Core, React.js, Web API)
 * [Babel Starter Kit](https://github.com/kriasoft/babel-starter-kit) — JavaScript library boilerplate (ES2015, Babel, Rollup)
@@ -178,7 +180,7 @@ main();
 
 ### License
 
-The MIT License © 2015-2016 Kriasoft, LLC. All rights reserved.
+The MIT License © 2015-present Kriasoft. All rights reserved.
 
 ---
-Made with ♥ by Konstantin Tarkus ([@koistya](https://twitter.com/koistya)) and [contributors](https://github.com/kriasoft/node-sqlite/graphs/contributors)
+Made with ♥ by [Konstantin Tarkus](https://github.com/koistya) ([@koistya](https://twitter.com/koistya)), [Theo Gravity](https://github.com/theogravity) and [contributors](https://github.com/kriasoft/node-sqlite/graphs/contributors)

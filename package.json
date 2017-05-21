@@ -1,12 +1,13 @@
 {
   "private": true,
   "name": "sqlite",
-  "version": "2.7.0",
+  "version": "2.8.0",
   "description": "SQLite client for Node.js applications with SQL-based migrations API",
   "repository": "kriasoft/node-sqlite",
-  "author": "Kriasoft <hello@kriasoft.com> (http://www.kriasoft.com)",
+  "author": "Kriasoft <hello@kriasoft.com> (https://www.kriasoft.com)",
   "contributors": [
-    "Konstantin Tarkus <hello@tarkus.me> (https://twitter.com/koistya)"
+    "Konstantin Tarkus <hello@tarkus.me> (https://twitter.com/koistya)",
+    "Theo Gravity <theo@suteki.nu> (https://www.npmjs.com/~theo.gravity)"
   ],
   "keywords": [
     "sqlite",
