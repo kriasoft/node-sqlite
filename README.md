@@ -1,5 +1,7 @@
 ## SQLite Client for Node.js Apps
 
+[![Join the chat at https://gitter.im/kriasoft/node-sqlite](https://badges.gitter.im/kriasoft/node-sqlite.svg)](https://gitter.im/kriasoft/node-sqlite?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![NPM version](http://img.shields.io/npm/v/sqlite.svg?style=flat-square)](https://www.npmjs.com/package/sqlite)
 [![NPM downloads](http://img.shields.io/npm/dm/sqlite.svg?style=flat-square)](https://www.npmjs.com/package/sqlite)
 [![Build Status](http://img.shields.io/travis/kriasoft/node-sqlite/master.svg?style=flat-square)](https://travis-ci.org/kriasoft/node-sqlite)
