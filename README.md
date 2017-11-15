@@ -35,13 +35,15 @@ Below is an example of how to use it with [Node.js](https://nodejs.org), [Expres
 ```js
 import express from 'express';
 import Promise from 'bluebird';
-import db from 'sqlite';
+import sqlite from 'sqlite';
 
 const app = express();
 const port = process.env.PORT || 3000;
+const dbPromise = sqlite.open('./database.sqlite', { Promise }));
 
 app.get('/post/:id', async (req, res, next) => {
   try {
+    const db = await dbPromise;
     const [post, categories] = await Promise.all([
       db.get('SELECT * FROM Post WHERE id = ?', req.params.id),
       db.all('SELECT * FROM Category');
@@ -52,12 +54,7 @@ app.get('/post/:id', async (req, res, next) => {
   }
 });
 
-Promise.resolve()
-  // First, try connect to the database
-  .then(() => db.open('./database.sqlite', { Promise }))
-  .catch(err => console.error(err.stack))
-  // Finally, launch Node.js app
-  .finally(() => app.listen(port));
+app.listen(port);
 ```
 
 ### Cached DB Driver
@@ -65,7 +62,7 @@ Promise.resolve()
 If you want to enable the [database object cache](https://github.com/mapbox/node-sqlite3/wiki/Caching)
 
 ```js
-db.open('./database.sqlite', { cached: true }))
+sqlite.open('./database.sqlite', { cached: true }))
 ```
 
 ### Migrations
@@ -104,20 +101,18 @@ DROP INDEX Post_ix_categoryId;
 ```js
 import express from 'express';
 import Promise from 'bluebird';
-import db from 'sqlite';
+import sqlite from 'sqlite';
 
 const app = express();
 const port = process.env.PORT || 3000;
 
+const dbPromise = Promise.resolve()
+  .then(() => sqlite.open('./database.sqlite', { Promise }))
+  .then(db => db.migrate({ force: 'last' }));
+
 app.use(/* app routes */);
 
-Promise.resolve()
-  // First, try connect to the database and update its schema to the latest version
-  .then(() => db.open('./database.sqlite', { Promise }))
-  .then(() => db.migrate({ force: 'last' }))
-  .catch(err => console.error(err.stack))
-  // Finally, launch Node.js app
-  .finally(() => app.listen(port));
+app.listen(port);
 ```
 
 **NOTE**: For the development environment, while working on the database schema, you may want to set
