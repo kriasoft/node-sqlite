@@ -122,7 +122,7 @@ Promise.resolve()
 
 **NOTE**: For the development environment, while working on the database schema, you may want to set
 `force: 'last'` (default `false`) that will force the migration API to rollback and re-apply the
-latest migration over again each time when Node.js app launches. 
+latest migration over again each time when Node.js app launches.
 
 
 ### Multiple Connections
