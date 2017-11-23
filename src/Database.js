@@ -9,19 +9,20 @@
 
 import fs from 'fs';
 import path from 'path';
+// eslint-disable-next-line no-unused-vars,import/no-unresolved,import/extensions
+import sqlite3 from 'sqlite3'; // import sqlite3 for jsdoc type information only
 import Statement from './Statement';
 import prepareParams from './utils';
 
 class Database {
-
   /**
    * Initializes a new instance of the database client.
-   * @param driver An instance of SQLite3 driver library.
-   * @param promiseLibrary ES6 Promise library to use.
+   * @param {sqlite3.Database} driver An instance of SQLite3 driver library.
+   * @param {{Promise: PromiseConstructor}} promiseLibrary ES6 Promise library to use.
      */
-  constructor(driver, { Promise }) {
+  constructor(driver, promiseLibrary) {
     this.driver = driver;
-    this.Promise = Promise;
+    this.Promise = promiseLibrary.Promise;
   }
 
   /**
@@ -37,6 +38,16 @@ class Database {
         }
       });
     });
+  }
+
+  /**
+   * Register listeners for Sqlite3 events
+   *
+   * @param {'trace'|'profile'|'error'|'open'|'close'} eventName
+   * @param {() => void} listener trigger listener function
+   */
+  on(eventName, listener) {
+    this.driver.on(eventName, listener);
   }
 
   run(sql) {

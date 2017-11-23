@@ -57,6 +57,12 @@ declare module 'sqlite' {
     prepare(sql: string, ...params: any[]): Promise<Statement>;
 
     migrate(options: { force?: string, table?: string, migrationsPath?: string }): Promise<Database>;
+
+    on(event: "trace", listener: (sql: string) => void): void;
+    on(event: "profile", listener: (sql: string, time: number) => void): void;
+    on(event: "error", listener: (err: Error) => void): void;
+    on(event: "open" | "close", listener: () => void): void;
+    on(event: string, listener: (...args: any[]) => void): void;
   }
 
   export function open(filename: string, options?: { mode?: number, verbose?: boolean, promise?: typeof Promise }): Promise<Database>;
