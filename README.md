@@ -39,7 +39,7 @@ import sqlite from 'sqlite';
 
 const app = express();
 const port = process.env.PORT || 3000;
-const dbPromise = sqlite.open('./database.sqlite', { Promise }));
+const dbPromise = sqlite.open('./database.sqlite', { Promise });
 
 app.get('/post/:id', async (req, res, next) => {
   try {
@@ -62,7 +62,7 @@ app.listen(port);
 If you want to enable the [database object cache](https://github.com/mapbox/node-sqlite3/wiki/Caching)
 
 ```js
-sqlite.open('./database.sqlite', { cached: true }))
+sqlite.open('./database.sqlite', { cached: true })
 ```
 
 ### Migrations
