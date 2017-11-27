@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+### [v2.9.0]
+> 2017-11-27
+
+- Move away from global db object in readme ([#45](https://github.com/kriasoft/node-sqlite/pull/45))
+- Fix typescript 2.6.1 issue where *.d.ts contains executable code when it is no longer allowed ([#47](https://github.com/kriasoft/node-sqlite/pull/47))
+- Fix readme typo ([#46](https://github.com/kriasoft/node-sqlite/pull/49))
+- Bump up baseline `sqlite3` version from `3.1.8` -> `3.1.13`
+
 ### [v2.8.0]
 > 2017-05-21
 
