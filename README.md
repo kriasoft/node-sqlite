@@ -46,7 +46,7 @@ app.get('/post/:id', async (req, res, next) => {
     const db = await dbPromise;
     const [post, categories] = await Promise.all([
       db.get('SELECT * FROM Post WHERE id = ?', req.params.id),
-      db.all('SELECT * FROM Category');
+      db.all('SELECT * FROM Category')
     ]);
     res.render('post', { post, categories });
   } catch (err) {
