@@ -136,6 +136,13 @@ class Database {
   }
 
   /**
+   * Set a configuration option for the database.
+   */
+  configure(option, value) {
+    this.driver.configure(option, value);
+  }
+
+  /**
    * Migrates database schema to the latest version
    */
   async migrate({ force, table = 'migrations', migrationsPath = './migrations' } = {}) {

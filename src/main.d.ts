@@ -56,6 +56,9 @@ declare module 'sqlite' {
     prepare(sql: string): Promise<Statement>;
     prepare(sql: string, ...params: any[]): Promise<Statement>;
 
+    configure(option: "busyTimeout", value: number): void;
+    configure(option: string, value: any): void;
+
     migrate(options: { force?: string, table?: string, migrationsPath?: string }): Promise<Database>;
 
     on(event: "trace", listener: (sql: string) => void): void;
