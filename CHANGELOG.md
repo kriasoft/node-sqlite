@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+### [v2.9.1]
+> 2018-01-13
+
+- Expose the `sqlite3#configure` method ([#53](https://github.com/kriasoft/node-sqlite/pull/53))
+- Example fixes ([#52](https://github.com/kriasoft/node-sqlite/pull/52))
+- Example fixes ([#49](https://github.com/kriasoft/node-sqlite/pull/49))
+- Expose `sqlite3` debugging hooksk ([#48](https://github.com/kriasoft/node-sqlite/pull/48))
+- Typescript updates ([#47](https://github.com/kriasoft/node-sqlite/pull/47))
+
 ### [v2.9.0]
 > 2017-11-27
 
