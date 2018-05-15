@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+### [v2.9.2]
+> 2018-04-20
+
+- Bump up baseline `sqlite3` version from `3.1.13` -> `4.0.0` ([#56](https://github.com/kriasoft/node-sqlite/pull/56))
+
 ### [v2.9.1]
 > 2018-01-13
 
@@ -92,6 +97,7 @@ All notable changes to this project will be documented in this file.
   (Harmony Modules)
 
 [unreleased]: https://github.com/kriasoft/node-sqlite/compare/v2.7.0...HEAD
+[v2.9.2]: https://github.com/kriasoft/node-sqlite/compare/v2.9.1...v2.9.2
 [v2.7.0]: https://github.com/kriasoft/node-sqlite/compare/v2.6.0...v2.7.0
 [v2.6.0]: https://github.com/kriasoft/node-sqlite/compare/v2.5.0...v2.6.0
 [v2.5.0]: https://github.com/kriasoft/node-sqlite/compare/v2.4.0...v2.5.0
