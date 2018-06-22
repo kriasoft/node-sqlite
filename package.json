@@ -68,6 +68,9 @@
     "rollup": "^0.41.4",
     "rollup-plugin-babel": "^2.7.1"
   },
+  "optionalDependencies": {
+    "sql-template-strings": "^2.2.2"
+  },
   "scripts": {
     "lint": "eslint src test tools",
     "test": "node tools/build && mocha",

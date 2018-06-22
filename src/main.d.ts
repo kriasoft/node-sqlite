@@ -1,3 +1,5 @@
+import { SQLStatement } from "sql-template-strings";
+
 declare module 'sqlite' {
   export interface Statement {
     readonly sql: string;
@@ -35,26 +37,33 @@ declare module 'sqlite' {
 
     run(sql: string): Promise<Statement>;
     run(sql: string, ...params: any[]): Promise<Statement>;
+    run(sql: SQLStatement): Promise<Statement>;
 
     get(sql: string): Promise<any>;
     get(sql: string, ...params: any[]): Promise<any>;
+    get(sql: SQLStatement): Promise<any>;
 
     get<T>(sql: string): Promise<T>;
     get<T>(sql: string, ...params: any[]): Promise<T>;
+    get<T>(sql: SQLStatement): Promise<T>;
 
     all(sql: string): Promise<any[]>;
     all(sql: string, ...params: any[]): Promise<any[]>;
+    all(sql: SQLStatement): Promise<any[]>;
 
     all<T>(sql: string): Promise<T[]>;
     all<T>(sql: string, ...params: any[]): Promise<T[]>;
+    all<T>(sql: SQLStatement): Promise<T[]>;
 
     exec(sql: string): Promise<Database>;
 
     each(sql: string, callback?: (err: Error, row: any) => void): Promise<number>;
     each(sql: string, ...params: any[]): Promise<number>;
+    each(sql: SQLStatement, callback?: (err: Error, row: any) => void): Promise<number>;
 
     prepare(sql: string): Promise<Statement>;
     prepare(sql: string, ...params: any[]): Promise<Statement>;
+    prepare(sql: SQLStatement): Promise<Statement>;
 
     configure(option: "busyTimeout", value: number): void;
     configure(option: string, value: any): void;

@@ -7,7 +7,7 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import prepareParams from './utils';
+import { prepareParams } from './utils';
 
 class Statement {
 

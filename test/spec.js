@@ -9,6 +9,7 @@
 
 const db = require('../build/main');
 const expect = require('chai').expect;
+const SQL = require('sql-template-strings');
 
 // enable the sqlite cached database or not
 const cache = [false, true];
@@ -147,6 +148,37 @@ it('Should handle BLOBs', (done) => {
     expect(result.b).to.be.instanceof(Buffer);
     expect(result.b.toString('utf8')).to.equal('Hello world!');
   }));
+  p.then(done, done);
+});
+
+it('Should work with sql-template-strings', (done) => {
+  let p = db.open(':memory:');
+  const value1 = 'test';
+  const value2 = 'foo';
+  p = p.then(() => db.exec('CREATE TABLE tbl (col TEXT)'));
+  p = p.then(() => db.run(SQL`INSERT INTO tbl VALUES (${value1})`));
+  p = p.then(() => db.get(SQL`SELECT col FROM tbl`).then((result) => {
+    expect(result).to.be.deep.equal({ col: value1 });
+  }));
+  p = p.then(() => db.all(SQL`SELECT col FROM tbl`).then((result) => {
+    expect(result).to.be.deep.equal([{ col: value1 }]);
+  }));
+  p = p.then(() => db.all(SQL`SELECT * FROM tbl WHERE col = ${value1}`).then((result) => {
+    expect(result).to.have.length(1);
+  }));
+  p = p.then(() => db.prepare(SQL`UPDATE tbl SET col = ${value2} WHERE col = ${value1}`)).then(s => s.run().then((stmt) => {
+    // Cannot use deep equals because stmt is a Statement instance
+    expect(stmt.lastID).to.equal(1);
+    expect(stmt.changes).to.equal(1);
+    expect(stmt.sql).to.equal('UPDATE tbl SET col = ? WHERE col = ?');
+    return stmt.finalize();
+  }));
+  p = p.then(() => db.each(SQL`SELECT col FROM tbl`, (err, result) => {
+    expect(result).to.be.deep.equal({ col: value2 });
+  }).then((rowsCount) => {
+    expect(rowsCount).to.equal(1);
+  }));
+  p = p.then(() => db.close());
   p.then(done, done);
 });
 
