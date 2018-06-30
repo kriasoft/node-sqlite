@@ -162,7 +162,7 @@ main();
 
 * [Node.js API Starter](https://github.com/kriasoft/nodejs-api-starter) — Data API server boilerplate (Node.js, PostgreSQL, Redis, Passport.js and GraphQL)
 * [React Starter Kit](https://github.com/kriasoft/react-starter-kit) — Isomorphic web app boilerplate (Node.js/Express, React.js, GraphQL)
-* [ASP.NET Core Starter Kit](https://github.com/kriasoft/react-starter-kit) — Single-page app boilerplate (ASP.NET Core, React.js, Web API)
+* [ASP.NET Core Starter Kit](https://github.com/kriasoft/aspnet-starter-kit) — Single-page app boilerplate (ASP.NET Core, React.js, Web API)
 * [Babel Starter Kit](https://github.com/kriasoft/babel-starter-kit) — JavaScript library boilerplate (ES2015, Babel, Rollup)
 * [Membership Database](https://github.com/membership/membership.db) — SQL database boilerplate for web app users, roles and auth tokens
 
