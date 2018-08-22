@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+### [v2.9.3]
+> 2018-08-22
+
+- Change baseline `sqlite3` version from `4.0.0` -> `^4.0.0` ([#71](https://github.com/kriasoft/node-sqlite/pull/71))
+
 ### [v2.9.2]
 > 2018-04-20
 
