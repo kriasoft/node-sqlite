@@ -106,7 +106,9 @@ All notable changes to this project will be documented in this file.
 - Built the project with Babel and Rollup for Node.js v3-5, Node.js v6, Node.js vNext
   (Harmony Modules)
 
-[unreleased]: https://github.com/kriasoft/node-sqlite/compare/v2.7.0...HEAD
+[unreleased]: https://github.com/kriasoft/node-sqlite/compare/v3.0.0...HEAD
+[v3.0.0]: https://github.com/kriasoft/node-sqlite/compare/v2.9.3...v3.0.0
+[v2.9.3]: https://github.com/kriasoft/node-sqlite/compare/v2.9.2...v2.9.3
 [v2.9.2]: https://github.com/kriasoft/node-sqlite/compare/v2.9.1...v2.9.2
 [v2.7.0]: https://github.com/kriasoft/node-sqlite/compare/v2.6.0...v2.7.0
 [v2.6.0]: https://github.com/kriasoft/node-sqlite/compare/v2.5.0...v2.6.0
