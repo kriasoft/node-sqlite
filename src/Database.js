@@ -12,7 +12,7 @@ import path from 'path';
 // eslint-disable-next-line no-unused-vars,import/no-unresolved,import/extensions
 import sqlite3 from 'sqlite3'; // import sqlite3 for jsdoc type information only
 import Statement from './Statement';
-import prepareParams from './utils';
+import { resolveTemplateStringObject } from './utils';
 
 class Database {
   /**
@@ -50,8 +50,8 @@ class Database {
     this.driver.on(eventName, listener);
   }
 
-  run(sql) {
-    const params = prepareParams(arguments, { offset: 1 });
+  run() {
+    const { sql, params } = resolveTemplateStringObject(arguments);
     const Promise = this.Promise;
     return new Promise((resolve, reject) => {
       this.driver.run(sql, params, function runExecResult(err) {
@@ -67,8 +67,8 @@ class Database {
     });
   }
 
-  get(sql) {
-    const params = prepareParams(arguments, { offset: 1 });
+  get() {
+    const { sql, params } = resolveTemplateStringObject(arguments);
     return new this.Promise((resolve, reject) => {
       this.driver.get(sql, params, (err, row) => {
         if (err) {
@@ -80,8 +80,8 @@ class Database {
     });
   }
 
-  all(sql) {
-    const params = prepareParams(arguments, { offset: 1 });
+  all() {
+    const { sql, params } = resolveTemplateStringObject(arguments);
     return new this.Promise((resolve, reject) => {
       this.driver.all(sql, params, (err, rows) => {
         if (err) {
@@ -108,8 +108,8 @@ class Database {
     });
   }
 
-  each(sql) {
-    const params = prepareParams(arguments, { offset: 1, excludeLastArg: true });
+  each() {
+    const { sql, params } = resolveTemplateStringObject(arguments, { excludeLastArg: true });
     const callback = arguments[arguments.length - 1];
     return new this.Promise((resolve, reject) => {
       this.driver.each(sql, params, callback, (err, rowsCount = 0) => {
@@ -122,8 +122,8 @@ class Database {
     });
   }
 
-  prepare(sql) {
-    const params = prepareParams(arguments, { offset: 1 });
+  prepare() {
+    const { sql, params } = resolveTemplateStringObject(arguments);
     return new this.Promise((resolve, reject) => {
       const stmt = this.driver.prepare(sql, params, (err) => {
         if (err) {

@@ -57,6 +57,22 @@ app.get('/post/:id', async (req, res, next) => {
 app.listen(port);
 ```
 
+### ES6 tagged template strings
+
+This module is compatible with [sql-template-strings](https://www.npmjs.com/package/sql-template-strings).
+
+```js
+import SQL from 'sql-template-strings';
+import sqlite from 'sqlite';
+
+const db = await sqlite.open('./database.sqlite');
+
+const book = 'harry potter';
+const author = 'J. K. Rowling';
+
+const data = await db.all(SQL`SELECT author FROM books WHERE name = ${book} AND author = ${author}`);
+```
+
 ### Cached DB Driver
 
 If you want to enable the [database object cache](https://github.com/mapbox/node-sqlite3/wiki/Caching)
@@ -156,6 +172,7 @@ main();
 
 * [Using SQLite with Node.js for Rapid Prototyping](https://medium.com/@tarkus/node-js-and-sqlite-for-rapid-prototyping-bc9cf1f26f10) on Medium.com
 * [SQLite Documentation](https://www.sqlite.org/docs.html), e.g. [SQL Syntax](https://www.sqlite.org/lang.html), [Data Types](https://www.sqlite.org/datatype3.html) etc. on SQLite.org
+* ES6 tagged [sql-template-strings](https://www.npmjs.com/package/sql-template-strings).
 
 
 ### Related Projects

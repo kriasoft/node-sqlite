@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+### [v3.0.0]
+> 2018-08-22
+
+- Add support for ES6 tagged template strings ([#66](https://github.com/kriasoft/node-sqlite/pull/66))
+
 ### [v2.9.3]
 > 2018-08-22
 
