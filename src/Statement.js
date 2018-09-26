@@ -115,16 +115,17 @@ class Statement {
   }
 
   * iterate(params) {
-    if(params){
-      this.bind(params)
+    if (params) {
+      this.bind(params);
     }
-    while(true){
-      const value = this.get()
-      if(value===undefined){
-        break
+    let value;
+    do {
+      value = this.get();
+      if (value !== undefined) {
+        yield value;
       }
-      yield value
     }
+    while (value !== undefined);
   }
 
 }
