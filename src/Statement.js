@@ -114,6 +114,19 @@ class Statement {
     });
   }
 
+  iterate = function* (params){
+    if(params){
+      this.bind(params)
+    }
+    while(true){
+      const value = this.get()
+      if(value===undefined){
+        break
+      }
+      yield value
+    }
+  }
+
 }
 
 export default Statement;
