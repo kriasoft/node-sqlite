@@ -114,13 +114,14 @@ class Statement {
     });
   }
 
-  * iterate(params) {
+  /* eslint-disable no-await-in-loop */
+  async * iterate(params) {
     if (params) {
       this.bind(params);
     }
     let value;
     do {
-      value = this.get();
+      value = await this.get();
       if (value !== undefined) {
         yield value;
       }
