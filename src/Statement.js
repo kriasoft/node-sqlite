@@ -114,7 +114,7 @@ class Statement {
     });
   }
 
-  iterate = function* (params){
+  * iterate(params) {
     if(params){
       this.bind(params)
     }
