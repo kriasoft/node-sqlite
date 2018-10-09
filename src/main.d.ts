@@ -36,19 +36,19 @@ declare module 'sqlite' {
     close(): Promise<void>;
 
     run(sql: string | SQLStatement): Promise<Statement>;
-    run(sql: string, ...params: any[]): Promise<Statement>;
+    run(sql: string | SQLStatement, ...params: any[]): Promise<Statement>;
 
     get(sql: string | SQLStatement): Promise<any>;
-    get(sql: string, ...params: any[]): Promise<any>;
+    get(sql: string | SQLStatement, ...params: any[]): Promise<any>;
 
     get<T>(sql: string | SQLStatement): Promise<T>;
-    get<T>(sql: string, ...params: any[]): Promise<T>;
+    get<T>(sql: string | SQLStatement, ...params: any[]): Promise<T>;
 
     all(sql: string | SQLStatement): Promise<any[]>;
-    all(sql: string, ...params: any[]): Promise<any[]>;
+    all(sql: string | SQLStatement, ...params: any[]): Promise<any[]>;
 
     all<T>(sql: string | SQLStatement): Promise<T[]>;
-    all<T>(sql: string, ...params: any[]): Promise<T[]>;
+    all<T>(sql: string | SQLStatement, ...params: any[]): Promise<T[]>;
 
     exec(sql: string): Promise<Database>;
 
