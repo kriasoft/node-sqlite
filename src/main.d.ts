@@ -77,5 +77,5 @@ declare module 'sqlite' {
     on(event: string, listener: (...args: any[]) => void): void;
   }
 
-  export function open(filename: string, options?: { mode?: number, verbose?: boolean, promise?: typeof Promise }): Promise<Database>;
+  export function open(filename: string, options?: { mode?: number, verbose?: boolean, promise?: typeof Promise, cached?: boolean }): Promise<Database>;
 }
