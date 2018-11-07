@@ -170,7 +170,7 @@ class Database {
       throw new Error(`No migration files found in '${location}'.`);
     }
 
-    // Ge the list of migrations, for example:
+    // Get the list of migrations, for example:
     //   { id: 1, name: 'initial', filename: '001-initial.sql', up: ..., down: ... }
     //   { id: 2, name: 'feature', fielname: '002-feature.sql', up: ..., down: ... }
     await Promise.all(migrations.map(migration => new this.Promise((resolve, reject) => {
