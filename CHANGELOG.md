@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 - Typescript: Add cached option to open function [#81](https://github.com/kriasoft/node-sqlite/pull/81)
 - Typescript: Merged declarations for methods that accepts both string and SQLStatements in Database [#80](https://github.com/kriasoft/node-sqlite/pull/80)
 - Misc: Fix small typo [#84](https://github.com/kriasoft/node-sqlite/pull/84)
+- Apply `npm audit` fixes (`mocha` updated to latest)
 
 ### [v3.0.0]
 > 2018-08-22
