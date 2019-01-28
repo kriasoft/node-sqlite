@@ -35,35 +35,28 @@ declare module 'sqlite' {
   export interface Database {
     close(): Promise<void>;
 
-    run(sql: string): Promise<Statement>;
-    run(sql: string, ...params: any[]): Promise<Statement>;
-    run(sql: SQLStatement): Promise<Statement>;
+    run(sql: string | SQLStatement): Promise<Statement>;
+    run(sql: string | SQLStatement, ...params: any[]): Promise<Statement>;
 
-    get(sql: string): Promise<any>;
-    get(sql: string, ...params: any[]): Promise<any>;
-    get(sql: SQLStatement): Promise<any>;
+    get(sql: string | SQLStatement): Promise<any>;
+    get(sql: string | SQLStatement, ...params: any[]): Promise<any>;
 
-    get<T>(sql: string): Promise<T>;
-    get<T>(sql: string, ...params: any[]): Promise<T>;
-    get<T>(sql: SQLStatement): Promise<T>;
+    get<T>(sql: string | SQLStatement): Promise<T>;
+    get<T>(sql: string | SQLStatement, ...params: any[]): Promise<T>;
 
-    all(sql: string): Promise<any[]>;
-    all(sql: string, ...params: any[]): Promise<any[]>;
-    all(sql: SQLStatement): Promise<any[]>;
+    all(sql: string | SQLStatement): Promise<any[]>;
+    all(sql: string | SQLStatement, ...params: any[]): Promise<any[]>;
 
-    all<T>(sql: string): Promise<T[]>;
-    all<T>(sql: string, ...params: any[]): Promise<T[]>;
-    all<T>(sql: SQLStatement): Promise<T[]>;
+    all<T>(sql: string | SQLStatement): Promise<T[]>;
+    all<T>(sql: string | SQLStatement, ...params: any[]): Promise<T[]>;
 
     exec(sql: string): Promise<Database>;
 
-    each(sql: string, callback?: (err: Error, row: any) => void): Promise<number>;
-    each(sql: string, ...params: any[]): Promise<number>;
-    each(sql: SQLStatement, callback?: (err: Error, row: any) => void): Promise<number>;
+    each(sql: string | SQLStatement, callback?: (err: Error, row: any) => void): Promise<number>;
+    each(sql: string | SQLStatement, ...params: any[]): Promise<number>;
 
-    prepare(sql: string): Promise<Statement>;
-    prepare(sql: string, ...params: any[]): Promise<Statement>;
-    prepare(sql: SQLStatement): Promise<Statement>;
+    prepare(sql: string | SQLStatement): Promise<Statement>;
+    prepare(sql: string | SQLStatement, ...params: any[]): Promise<Statement>;
 
     configure(option: "busyTimeout", value: number): void;
     configure(option: string, value: any): void;
