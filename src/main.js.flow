@@ -1,0 +1,82 @@
+// @flow strict
+
+export type DataType = number | string;
+
+export type MigrateOptions = {|
+  force?: 'last',
+  migrationsPath?: string,
+  table?: string
+|};
+
+export type Params = DataType[] | { [param: string]: DataType };
+
+export type RowCallback<T> = (err: ?Error, row: T) => void;
+
+export type SqliteOpenFlag = {|
+  OPEN_READONLY: 0x01,
+  OPEN_READWRITE: 0x02,
+  OPEN_READWRITE_CREATE: 0x06 // 0x02 | 0x04
+|};
+
+export type OpenOptions = {|
+  cached?: boolean,
+  mode?: $Values<SqliteOpenFlag>,
+  promise?: typeof Promise,
+  verbose?: boolean
+|};
+
+declare class Statement {
+  +sql: string;
+  +lastID: number;
+  +changes: number;
+
+  all<T: Object>(params?: Params): Promise<T[]>;
+  all<T: Object>(...params: DataType[]): Promise<T[]>;
+
+  bind(params: Params): Promise<Statement>;
+  bind(...params: DataType[]): Promise<Statement>;
+
+  each<T: Object>(callback: RowCallback<T>): Promise<number>;
+  each<T: Object>(params: Params | DataType, callback: RowCallback<T>): Promise<number>;
+  each<T: Object>(param1: DataType, param2: DataType, ...params: Array<DataType | RowCallback<T>>): Promise<number>;
+
+  get<T: Object>(params?: Params): Promise<?T>;
+  get<T: Object>(...params: DataType[]): Promise<?T>;
+
+  finalize(): Promise<void>;
+
+  reset(): Promise<Statement>;
+
+  run(params: Params): Promise<Statement>;
+  run(...params: DataType[]): Promise<Statement>;
+};
+
+declare class Database {
+  all<T: Object>(sql: string, params?: Params): Promise<T[]>;
+  all<T: Object>(sql: string, ...params: DataType[]): Promise<T[]>;
+
+  close(): Promise<void>;
+
+  configure(option: 'busyTimeout', value: number): void;
+  configure(option: 'profile', value: (sql: string) => void): void;
+  configure(option: 'trace', value: (sql: string, nsecs: number) => void): void;
+
+  each<T: Object>(sql: string, callback: RowCallback<T>): Promise<number>;
+  each<T: Object>(sql: string, params: Params | DataType, callback: RowCallback<T>): Promise<number>;
+  each<T: Object>(sql: string, param1: DataType, param2: DataType, ...params: Array<DataType | RowCallback<T>>): Promise<number>;
+
+  exec(sql: string): Promise<Database>;
+
+  get<T: Object>(sql: string, params?: Params): Promise<?T>;
+  get<T: Object>(sql: string, ...params: DataType[]): Promise<?T>;
+
+  migrate(options?: MigrateOptions): Promise<Database>;
+
+  prepare(sql: string, params?: Params): Promise<Statement>;
+  prepare(sql: string, ...params: DataType[]): Promise<Statement>;
+
+  run(sql: string, params?: Params): Promise<Statement>;
+  run(sql: string, ...params: DataType[]): Promise<Statement>;
+};
+
+declare export function open(filename: string, options?: OpenOptions): Promise<Database>;
