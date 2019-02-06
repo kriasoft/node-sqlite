@@ -57,6 +57,7 @@ promise = promise.then(() => {
   delete pkg.babel;
   fs.writeFileSync('build/package.json', JSON.stringify(pkg, null, '  '), 'utf-8');
   fs.writeFileSync('build/main.d.ts', fs.readFileSync('src/main.d.ts', 'utf-8'), 'utf-8');
+  fs.writeFileSync('build/main.js.flow', fs.readFileSync('src/main.js.flow', 'utf-8'), 'utf-8');
   fs.writeFileSync('build/LICENSE.txt', fs.readFileSync('LICENSE.txt', 'utf-8'), 'utf-8');
   fs.writeFileSync('build/README.md', fs.readFileSync('README.md', 'utf-8'), 'utf-8');
 });
