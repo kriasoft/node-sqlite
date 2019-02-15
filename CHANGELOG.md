@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+### [v3.0.2]
+> 2019-02-14
+
+- Flow: Add Flow typings [#86](https://github.com/kriasoft/node-sqlite/pull/86)
+
 ### [v3.0.1]
 > 2019-01-28
 
