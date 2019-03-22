@@ -79,4 +79,6 @@ declare class Database {
   run(sql: string, ...params: DataType[]): Promise<Statement>;
 };
 
+export type { Database, Statement };
+
 declare export function open(filename: string, options?: OpenOptions): Promise<Database>;
