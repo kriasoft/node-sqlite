@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+### [v3.0.3]
+> 2019-03-22
+
+- Export class types for flow [#88](https://github.com/kriasoft/node-sqlite/pull/88)
+
 ### [v3.0.2]
 > 2019-02-14
 
