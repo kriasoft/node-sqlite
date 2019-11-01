@@ -168,6 +168,26 @@ async function main() {
 main();
 ```
 
+#### Getting the ID of the Row You Inserted
+
+```js
+const sqlite = require('sqlite');
+const SQL = require('sql-template-strings');
+
+async function main() {
+    const db = await sqlite.open("./my-db.sqlite");
+    const firstName = 'Tamika';
+    const lastName = 'Washington';
+    // First value is auto-incrementing primary key
+    const statement = await db.run(SQL`insert into People values (NULL, ${firstName}, ${lastName})`);
+    // Get access to the primary key of the inserted row:
+    console.log(statement.lastID);
+    await sqlite.close(db);
+}
+
+main();
+```
+
 ### References
 
 * [Using SQLite with Node.js for Rapid Prototyping](https://medium.com/@tarkus/node-js-and-sqlite-for-rapid-prototyping-bc9cf1f26f10) on Medium.com
