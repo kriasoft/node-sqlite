@@ -30,6 +30,8 @@ before using this wrapper library.
   * The `README.md` file explains how to do this.
 - Opening a new database has changed. See `README.md` for example.
 - migrations API: `force` is now a `boolean`.
+- Can no longer specify a custom `Promise` library. Uses native `Promise` instead.
+
 
 ### [v3.0.3]
 > 2019-03-22

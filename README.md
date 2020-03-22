@@ -162,6 +162,34 @@ import { open } from 'sqlite'
 })()
 ```
 
+#### Opening multiple databases
+
+```typescript
+import sqlite3 from 'sqlite3'
+import { open } from 'sqlite'
+
+(async () => {
+  const [db1, db2] = await Promise.all([
+    open({
+      filename: '/tmp/database.db',
+      driver: sqlite3.Database
+    }),
+    open({
+      filename: '/tmp/database2.db',
+      driver: sqlite3.Database
+    }),
+  ])
+
+  await db1.migrate({
+    migrationsPath: '...'
+  })
+
+  await db2.migrate({
+    migrationsPath: '...'
+  })
+})()
+```
+
 #### `open` config params
 
 ```typescript
