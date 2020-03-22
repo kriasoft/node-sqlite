@@ -8,10 +8,10 @@ import { toSqlParams } from '../utils/strings'
 import MigrationParams = Migrate.MigrationParams
 
 export class Sqlite3Database {
-  config: Sqlite3.DatabaseConfigParams
+  config: Sqlite3.Config
   db: sqlite.Database
 
-  constructor (config: Sqlite3.DatabaseConfigParams) {
+  constructor (config: Sqlite3.Config) {
     this.config = config
     this.db = null
   }

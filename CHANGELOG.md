@@ -8,6 +8,7 @@ If you are using an older version of node < 10, use the 3.x version of the libra
 
 What's new:
 
+- ZERO dependencies!
 - Re-written in Typescript.
 - All existing features maintained.
 - Support for alternative drivers such as `sqlite3-offline` as long as they match the `node-sqlite3`
@@ -20,8 +21,14 @@ API.
 
 Breaking Changes:
 
+- `sqlite3` is no longer a dependency of this project. You must install it first 
+before using this wrapper library.
+  * This allows for usage of alternative libraries.
+  * This means `verbose` and `cache` modes must be enabled before using the library.
+  The `README.md` file will explain how to do this.
 - Opening a new database has changed. See `README.md` for example.
 - migrations API: `force` is now a `boolean`.
+
 
 ### [v3.0.3]
 > 2019-03-22

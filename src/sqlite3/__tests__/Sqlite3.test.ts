@@ -3,6 +3,7 @@
 import { Sqlite3Database } from '../Sqlite3Database'
 import SQL from 'sql-template-strings'
 import sqlite3 from 'sqlite3'
+import { open } from '../../../build'
 
 let db: Sqlite3Database
 
@@ -290,5 +291,23 @@ describe('Sqlite3Database', () => {
     await stmt.finalize()
 
     await db.close()
+  })
+
+  it('should enable verbose mode', async done => {
+    sqlite3.verbose()
+
+    const db = await open({
+      filename: ':memory:',
+      driver: sqlite3.Database
+    })
+
+    await db.open()
+
+    db.on('trace', async () => {
+      await db.close()
+      done()
+    })
+
+    await db.exec('CREATE TABLE tbl (col1 TEXT, col2 TEXT, col3 TEXT)')
   })
 })

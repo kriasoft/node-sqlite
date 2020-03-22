@@ -25,9 +25,7 @@ export namespace Sqlite3 {
      * sqlite3.OPEN_CREATE. The default value is OPEN_READWRITE | OPEN_CREATE.
      */
     mode?: OpenDatabaseEnum
-  }
 
-  export interface DatabaseConfigParams extends Config {
     /**
      * Use an alternative library instead of sqlite3. The interface of the library must
      * conform to sqlite3.

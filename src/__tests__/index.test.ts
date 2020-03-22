@@ -1,5 +1,6 @@
 import sqlite3Offline from 'sqlite3-offline'
-import { open, Sqlite3Database } from '..'
+import { open } from '..'
+import sqlite3 from 'sqlite3'
 
 describe('index', () => {
   const cached = [false, true]
@@ -8,7 +9,7 @@ describe('index', () => {
     it(`should create an instance of sqlite3, cached = ${c}`, async () => {
       const db = await open({
         filename: ':memory:',
-        cached: c
+        driver: sqlite3.Database
       })
 
       await db.migrate()
@@ -22,22 +23,6 @@ describe('index', () => {
 
       await db.close()
     })
-  })
-
-  it('should enable verbose mode', async done => {
-    const db = await open({
-      filename: ':memory:',
-      verbose: true
-    })
-
-    await db.open()
-
-    db.on('trace', async () => {
-      await db.close()
-      done()
-    })
-
-    await db.exec('CREATE TABLE tbl (col1 TEXT, col2 TEXT, col3 TEXT)')
   })
 
   it('should allow a custom driver', async () => {

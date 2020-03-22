@@ -1,6 +1,6 @@
 {
   "name": "sqlite",
-  "version": "4.0.0-beta.4",
+  "version": "4.0.0-beta.5",
   "description": "SQLite client for Node.js applications with SQL-based migrations API written in Typescript",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -62,9 +62,7 @@
     "url": "https://github.com/kriasoft/node-sqlite/issues"
   },
   "homepage": "https://github.com/kriasoft/node-sqlite#readme",
-  "dependencies": {
-    "sqlite3": "^4.1.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@theo.gravity/changelog-version": "2.1.10",
     "@theo.gravity/version-bump": "1.2.6",
@@ -81,6 +79,7 @@
     "pre-commit": "1.2.2",
     "prettier-standard": "16.2.1",
     "sql-template-strings": "^2.2.2",
+    "sqlite3": "^4.1.1",
     "sqlite3-offline": "^4.2.0",
     "standardx": "^5.0.0",
     "toc-md-alt": "^0.3.2",

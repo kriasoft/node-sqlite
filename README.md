@@ -13,10 +13,13 @@
 
 <!-- TOC -->
 - [Installation](#installation)
+  - [Install `sqlite3`](#install-sqlite3)
+  - [Install `sqlite`](#install-sqlite)
 - [Usage](#usage)
   - [Opening the database](#opening-the-database)
     - [Without caching](#without-caching)
     - [With caching](#with-caching)
+    - [Enable verbose / debug mode](#enable-verbose--debug-mode)
     - [With a custom driver](#with-a-custom-driver)
     - [`open` config params](#open-config-params)
   - [Examples](#examples)
@@ -39,6 +42,18 @@
 
 ## Installation
 
+### Install `sqlite3`
+
+Most people who use this library will use [sqlite3](https://github.com/mapbox/node-sqlite3/) 
+as the database driver. 
+
+Any library that conforms to the `sqlite3` ([API](https://github.com/mapbox/node-sqlite3/wiki/API)) 
+should also work.
+
+`$ npm install sqlite3 --save`
+
+### Install `sqlite`
+
 ```sh
 # v4 of sqlite is targted for nodejs 10 and on.
 $ npm install sqlite@4.0.0-beta.4 --save
@@ -58,23 +73,27 @@ except that all its API methods return ES6 Promises and do not accept callback a
 #### Without caching
 
 ```typescript
+import sqlite3 from 'sqlite3'
 import { open } from 'sqlite'
 
 // this is a top-level await
 (async () => {
     // open the database
     const db = await open({
-      filename: '/tmp/database.db'
+      filename: '/tmp/database.db',
+      driver: sqlite3.Database
     })
 })()
 ```
 or
 
 ```typescript
+import sqlite3 from 'sqlite3'
 import { open } from 'sqlite'
 
 open({
-  filename: '/tmp/database.db'
+  filename: '/tmp/database.db',
+  driver: sqlite3.Database
 }).then((db) => {
   // do your thing
 })
@@ -85,14 +104,23 @@ open({
 If you want to enable the [database object cache](https://github.com/mapbox/node-sqlite3/wiki/Caching)
 
 ```typescript
+import sqlite3 from 'sqlite3'
 import { open } from 'sqlite'
 
 (async () => {
     const db = await open({
       filename: '/tmp/database.db',
-      cache: true
+      driver: sqlite3.cached.Database
     })
 })()
+```
+
+#### Enable verbose / debug mode
+
+```typescript
+import sqlite3 from 'sqlite3'
+
+sqlite3.verbose()
 ```
 
 #### With a custom driver
@@ -102,12 +130,13 @@ You can use an alternative library to `sqlite3` as long as it conforms to the `s
 For example, using `sqlite3-offline`:
 
 ```typescript
+import sqlite3Offline from 'sqlite3-offline'
 import { open } from 'sqlite'
 
 (async () => {
     const db = await open({
       filename: '/tmp/database.db',
-      cache: true
+      driver: sqlite3Offline.Database
     })
 })()
 ```
@@ -141,24 +170,7 @@ const db = await open({
    *
    * @see https://github.com/mapbox/node-sqlite3/wiki/API
    */
-  driver?: any
-
-  /**
-   * If true, uses the `sqlite3` built-in database object cache to avoid opening the same
-   * database multiple times.
-   *
-   * Does not apply if `driver` is defined.
-   *
-   * @see https://github.com/mapbox/node-sqlite3/wiki/Caching
-   */
-  cached?: boolean
-
-  /**
-   * Enables verbose mode.
-   *
-   * This only applies to the `sqlite3` driver.
-   */
-  verbose?: boolean
+  driver: any
 })
 ```
 
