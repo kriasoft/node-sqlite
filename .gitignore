@@ -9,3 +9,4 @@ npm-debug.log*
 .eslint-cache
 .yarn-integrity
 .idea
+coverage/
