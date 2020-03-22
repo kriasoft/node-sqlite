@@ -35,8 +35,8 @@
   - [ES6 tagged template strings](#es6-tagged-template-strings)
   - [Migrations](#migrations)
   - [Typescript tricks](#typescript-tricks)
+    - [specify typings for a specific database driver](#specify-typings-for-a-specific-database-driver)
     - [Use generics to get better typings on your rows](#use-generics-to-get-better-typings-on-your-rows)
-      - [open example](#open-example)
       - [Get example](#get-example)
       - [All example](#all-example)
   - [API Documentation](#api-documentation)
@@ -371,13 +371,8 @@ await db.migrate({
 
 ### Typescript tricks
 
-#### Use generics to get better typings on your rows
+##### specify typings for a specific database driver
 
-Most methods allow for the use of [generics](https://www.typescriptlang.org/docs/handbook/generics.html)
-to specify the data type of your returned data. This allows your IDE to perform better autocomplete
-and the typescript compiler to perform better static type analysis.
-
-##### open example
 ```typescript
 import sqlite3 from 'sqlite3'
 
@@ -386,6 +381,12 @@ await open<sqlite3.Database>({
   filename: ':memory'
 })
 ```
+
+#### Use generics to get better typings on your rows
+
+Most methods allow for the use of [generics](https://www.typescriptlang.org/docs/handbook/generics.html)
+to specify the data type of your returned data. This allows your IDE to perform better autocomplete
+and the typescript compiler to perform better static type analysis.
 
 ##### Get example
 
@@ -416,7 +417,7 @@ result.each((row) => {
 
 ### API Documentation
 
-See the `docs` directory for full documentation.
+See the [`docs`](docs/globals.md) directory for full documentation.
 
 ## References
 

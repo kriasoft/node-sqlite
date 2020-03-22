@@ -6,8 +6,9 @@
   "types": "build/index.d.ts",
   "scripts": {
     "build": "npm run build:clean && npm run compile",
-    "compile": "tsc",
+    "build:docs": "typedoc --options typedoc.js --plugin typedoc-plugin-markdown src/ --out docs",
     "build:clean": "rm -rf build/*",
+    "compile": "tsc",
     "debug": "ts-node-dev --inspect -- src/index.ts",
     "debug:break": "ts-node-dev --inspect-brk -- src/index.ts",
     "test": "jest",
@@ -86,6 +87,8 @@
     "ts-jest": "25.2.1",
     "ts-node": "8.7.0",
     "ts-node-dev": "1.0.0-pre.44",
+    "typedoc": "^0.17.3",
+    "typedoc-plugin-markdown": "^2.2.17",
     "typescript": "3.8.3"
   },
   "eslintConfig": {

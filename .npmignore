@@ -20,3 +20,5 @@ migrations/
 docs/
 wallaby.js
 coverage/
+api-doc.md
+typedoc.js

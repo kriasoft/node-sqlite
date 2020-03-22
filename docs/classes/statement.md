@@ -1,6 +1,10 @@
-[sqlite](../README.md) › [Globals](../globals.md) › ["sqlite3/Statement"](../modules/_sqlite3_sqlite3statement_.md) › [Statement](_sqlite3_sqlite3statement_.sqlite3statement.md)
+[sqlite](../README.md) › [Globals](../globals.md) › [Statement](statement.md)
 
-# Class: Statement
+# Class: Statement <**S**>
+
+## Type parameters
+
+▪ **S**: *Statement*
 
 ## Hierarchy
 
@@ -10,46 +14,46 @@
 
 ### Constructors
 
-* [constructor](_sqlite3_sqlite3statement_.sqlite3statement.md#constructor)
+* [constructor](statement.md#constructor)
 
 ### Properties
 
-* [stmt](_sqlite3_sqlite3statement_.sqlite3statement.md#stmt)
+* [stmt](statement.md#stmt)
 
 ### Methods
 
-* [all](_sqlite3_sqlite3statement_.sqlite3statement.md#all)
-* [bind](_sqlite3_sqlite3statement_.sqlite3statement.md#bind)
-* [each](_sqlite3_sqlite3statement_.sqlite3statement.md#each)
-* [finalize](_sqlite3_sqlite3statement_.sqlite3statement.md#finalize)
-* [get](_sqlite3_sqlite3statement_.sqlite3statement.md#get)
-* [getStatementInstance](_sqlite3_sqlite3statement_.sqlite3statement.md#getstatementinstance)
-* [reset](_sqlite3_sqlite3statement_.sqlite3statement.md#reset)
-* [run](_sqlite3_sqlite3statement_.sqlite3statement.md#run)
+* [all](statement.md#all)
+* [bind](statement.md#bind)
+* [each](statement.md#each)
+* [finalize](statement.md#finalize)
+* [get](statement.md#get)
+* [getStatementInstance](statement.md#getstatementinstance)
+* [reset](statement.md#reset)
+* [run](statement.md#run)
 
 ## Constructors
 
 ###  constructor
 
-\+ **new Statement**(`stmt`: Statement): *[Statement](_sqlite3_sqlite3statement_.sqlite3statement.md)*
+\+ **new Statement**(`stmt`: S): *[Statement](statement.md)*
 
-*Defined in [sqlite3/Statement.ts:5](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L5)*
+*Defined in [Statement.ts:5](https://github.com/kriasoft/node-sqlite/blob/18fcde2/src/Statement.ts#L5)*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`stmt` | Statement |
+`stmt` | S |
 
-**Returns:** *[Statement](_sqlite3_sqlite3statement_.sqlite3statement.md)*
+**Returns:** *[Statement](statement.md)*
 
 ## Properties
 
 ###  stmt
 
-• **stmt**: *Statement*
+• **stmt**: *S*
 
-*Defined in [sqlite3/Statement.ts:5](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L5)*
+*Defined in [Statement.ts:5](https://github.com/kriasoft/node-sqlite/blob/18fcde2/src/Statement.ts#L5)*
 
 ## Methods
 
@@ -57,7 +61,7 @@ Name | Type |
 
 ▸ **all**<**T**>(...`params`: any[]): *Promise‹T›*
 
-*Defined in [sqlite3/Statement.ts:143](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L143)*
+*Defined in [Statement.ts:143](https://github.com/kriasoft/node-sqlite/blob/18fcde2/src/Statement.ts#L143)*
 
 Binds parameters, executes the statement and calls the callback with all result rows.
 The parameters are the same as the Statement#run function, with the following differences:
@@ -86,7 +90,7 @@ ___
 
 ▸ **bind**(...`params`: any[]): *Promise‹void›*
 
-*Defined in [sqlite3/Statement.ts:24](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L24)*
+*Defined in [Statement.ts:24](https://github.com/kriasoft/node-sqlite/blob/18fcde2/src/Statement.ts#L24)*
 
 Binds parameters to the prepared statement.
 
@@ -107,7 +111,7 @@ ___
 
 ▸ **each**<**T**>(...`params`: any[]): *Promise‹number›*
 
-*Defined in [sqlite3/Statement.ts:177](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L177)*
+*Defined in [Statement.ts:177](https://github.com/kriasoft/node-sqlite/blob/18fcde2/src/Statement.ts#L177)*
 
 Binds parameters, executes the statement and calls the callback for each result row.
 
@@ -149,7 +153,7 @@ ___
 
 ▸ **finalize**(): *Promise‹void›*
 
-*Defined in [sqlite3/Statement.ts:55](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L55)*
+*Defined in [Statement.ts:55](https://github.com/kriasoft/node-sqlite/blob/18fcde2/src/Statement.ts#L55)*
 
 Finalizes the statement. This is typically optional, but if you experience long delays before
 the next query is executed, explicitly finalizing your statement might be necessary.
@@ -165,7 +169,7 @@ ___
 
 ▸ **get**<**T**>(...`params`: any[]): *Promise‹T | undefined›*
 
-*Defined in [sqlite3/Statement.ts:115](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L115)*
+*Defined in [Statement.ts:115](https://github.com/kriasoft/node-sqlite/blob/18fcde2/src/Statement.ts#L115)*
 
 Binds parameters, executes the statement and retrieves the first result row.
 The parameters are the same as the Statement#run function, with the following differences:
@@ -191,13 +195,13 @@ ___
 
 ###  getStatementInstance
 
-▸ **getStatementInstance**(): *Statement*
+▸ **getStatementInstance**(): *S*
 
-*Defined in [sqlite3/Statement.ts:14](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L14)*
+*Defined in [Statement.ts:14](https://github.com/kriasoft/node-sqlite/blob/18fcde2/src/Statement.ts#L14)*
 
 Returns the underlying sqlite3 Statement instance
 
-**Returns:** *Statement*
+**Returns:** *S*
 
 ___
 
@@ -205,7 +209,7 @@ ___
 
 ▸ **reset**(): *Promise‹void›*
 
-*Defined in [sqlite3/Statement.ts:40](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L40)*
+*Defined in [Statement.ts:40](https://github.com/kriasoft/node-sqlite/blob/18fcde2/src/Statement.ts#L40)*
 
 Resets the row cursor of the statement and preserves the parameter bindings.
 Use this function to re-execute the same query with the same bindings.
@@ -216,9 +220,9 @@ ___
 
 ###  run
 
-▸ **run**(...`params`: any[]): *Promise‹[RunResult](../modules/_interfaces_sqlite3_interfaces_.md#runresult)›*
+▸ **run**(...`params`: any[]): *Promise‹[RunResult](../globals.md#runresult)›*
 
-*Defined in [sqlite3/Statement.ts:82](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L82)*
+*Defined in [Statement.ts:82](https://github.com/kriasoft/node-sqlite/blob/18fcde2/src/Statement.ts#L82)*
 
 Binds parameters and executes the statement.
 
@@ -234,4 +238,4 @@ Name | Type |
 ------ | ------ |
 `...params` | any[] |
 
-**Returns:** *Promise‹[RunResult](../modules/_interfaces_sqlite3_interfaces_.md#runresult)›*
+**Returns:** *Promise‹[RunResult](../globals.md#runresult)›*
