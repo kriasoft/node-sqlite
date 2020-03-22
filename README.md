@@ -82,7 +82,7 @@ except that all its API methods return ES6 Promises and do not accept callback a
 import sqlite3 from 'sqlite3'
 import { open } from 'sqlite'
 
-// this is a top-level await
+// this is a top-level await 
 (async () => {
     // open the database
     const db = await open({
@@ -103,6 +103,21 @@ open({
 }).then((db) => {
   // do your thing
 })
+```
+
+or
+
+```typescript
+import sqlite3 from 'sqlite3'
+import { open } from 'sqlite'
+
+// you would have to import / invoke this in another file
+export async function openDb () {
+  return open({
+    filename: '/tmp/database.db',
+    driver: sqlite3.Database
+  })
+}
 ```
 
 #### With caching
