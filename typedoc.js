@@ -9,5 +9,5 @@ module.exports = {
   excludePrivate: true,
   excludeNotExported: true,
   target: 'ES6',
-  mode: 'file'
+  mode: 'modules'
 }
