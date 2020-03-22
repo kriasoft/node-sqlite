@@ -1,0 +1,108 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2.1
+
+npm-login: &npm-login
+  # NPM_TOKEN is manually defined in CircleCI
+  # project settings > Build settings > Environment variables
+  # Add the NPM_TOKEN name and the value is your npm token
+  # Get your npm token via npm token create
+  # https://docs.npmjs.com/cli/token
+  run:
+    name: Create .npmrc
+    command: |
+      echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
+
+orbs:
+  node: circleci/node@1.1.6
+
+jobs:
+  test:
+    executor:
+      name: node/default
+      tag: '10'
+    working_directory: ~/repo
+    steps:
+      # Check out the git repo to the working directory
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            # You need to add a deploy key with write permission in order for the CI to commit changes
+            # back to the repo
+            # https://circleci.com/docs/2.0/gh-bb-integration/#adding-readwrite-deployment-keys-to-github-or-bitbucket
+            - "36:2c:16:f2:d0:59:13:25:f1:7f:44:87:a4:52:8f:03"
+      # Download and cache dependencies so subsequent builds run faster
+      - restore_cache:
+          keys:
+            - dependencies-{{ checksum "package-lock.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - dependencies-
+      - run:
+          name: Install deps
+          command: |
+            npm i
+      - save_cache:
+          paths:
+            - node_modules
+          key: dependencies-{{ checksum "package-lock.json" }}
+      - run:
+          name: Run tests
+          command: |
+            npm run test:ci
+      - run:
+          name: Build the libraries
+          command: |
+            npm run build
+  publish:
+    executor:
+      name: node/default
+      tag: '12'
+    working_directory: ~/repo
+    steps:
+      # Check out the git repo to the working directory
+      - checkout
+      # Create the .npmrc file so npm can auth for publishing
+      - *npm-login
+      - add_ssh_keys:
+          fingerprints:
+            # You need to add a deploy key with write permission in order for the CI to commit changes
+            # back to the repo
+            # https://circleci.com/docs/2.0/gh-bb-integration/#adding-readwrite-deployment-keys-to-github-or-bitbucket
+            - "36:2c:16:f2:d0:59:13:25:f1:7f:44:87:a4:52:8f:03"
+      # Download and cache dependencies so subsequent builds run faster
+      - restore_cache:
+          keys:
+            - dependencies-{{ checksum "package-lock.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - dependencies-
+      - run:
+          name: Install deps
+          command: |
+            npm i
+      - save_cache:
+          paths:
+            - node_modules
+          key: dependencies-{{ checksum "package-lock.json" }}
+      - run:
+          name: Build the libraries
+          command: |
+            npm run build
+      - run:
+          name: npm publish (master only)
+          command: |
+            .circleci/deploy.sh
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - test
+      - publish:
+          filters:
+            branches:
+              only: master
+          requires:
+            - test
+          context: npm-build

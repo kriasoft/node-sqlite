@@ -1,6 +1,27 @@
-## SQLite Client Change Log
+### UNRELEASED
 
-All notable changes to this project will be documented in this file.
+New major version 4!
+
+This version has been written in Typescript with a target of node.js v10 or greater.
+
+If you are using an older version of node < 10, use the 3.x version of the library instead.
+
+What's new:
+
+- Re-written in Typescript.
+- All existing features maintained.
+- Support for alternative drivers such as `sqlite3-offline` as long as they match the `node-sqlite3`
+API.
+- Existing unit tests were cleaned up and pass, new tests added.
+- Better documentation. See `README.md`.
+- New CI process - pull requests merged into master will run tests, build, and auto-publish to NPM.
+- Parity with the `node-sqlite3` API.
+  * Exceptions are `serialize` and `parallelize` (PRs are welcomed!)
+
+Breaking Changes:
+
+- Opening a new database has changed. See `README.md` for example.
+- migrations API: `force` is now a `boolean`.
 
 ### [v3.0.3]
 > 2019-03-22

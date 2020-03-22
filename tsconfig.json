@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "module": "commonjs",
+    "target": "ES2018",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "outDir": "build",
+    "baseUrl": ".",
+    "declaration": true,
+    "lib": [
+      "ES2018",
+      "dom"
+    ],
+    "paths": {
+      "*": [
+        "node_modules/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "src/**/__tests__/*"
+  ]
+}

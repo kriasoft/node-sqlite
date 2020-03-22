@@ -1,3 +1,7 @@
+[sqlite](README.md) › [Globals](globals.md)
+
+# sqlite
+
 # SQLite Client for Node.js Apps
 
 [![NPM version](http://img.shields.io/npm/v/sqlite.svg?style=flat-square)](https://www.npmjs.com/package/sqlite)
@@ -9,8 +13,6 @@
 > A wrapper library that adds ES6 promises and SQL-based migrations API to
 > [sqlite3](https://github.com/mapbox/node-sqlite3/) ([docs](https://github.com/mapbox/node-sqlite3/wiki)).
 
-**note** v4 of `sqlite` has breaking changes compared to v3! Please see `CHANGELOG.md` for more details.
-
 <!-- TOC -->
 - [Installation](#installation)
 - [Usage](#usage)
@@ -18,19 +20,8 @@
     - [Without caching](#without-caching)
     - [With caching](#with-caching)
     - [With a custom driver](#with-a-custom-driver)
-    - [`open` config params](#open-config-params)
-  - [Examples](#examples)
-    - [Creating a table and inserting data](#creating-a-table-and-inserting-data)
-    - [Getting a single row](#getting-a-single-row)
-    - [Getting many rows](#getting-many-rows)
-    - [Inserting rows (part 2)](#inserting-rows-part-2)
-    - [Updating rows](#updating-rows)
-    - [Prepared statement](#prepared-statement)
-    - [Get the driver instance](#get-the-driver-instance)
-    - [Closing the database](#closing-the-database)
   - [ES6 tagged template strings](#es6-tagged-template-strings)
   - [Migrations](#migrations)
-  - [API Documentation](#api-documentation)
 - [References](#references)
 - [Support](#support)
 - [License](#license)
@@ -112,178 +103,6 @@ import { open } from 'sqlite'
 })()
 ```
 
-#### `open` config params
-
-```typescript
-
-// db is an instance of Sqlite3Database
-// which is a wrapper around `sqlite3#Database`
-const db = await open({
-  /**
-   * Valid values are filenames, ":memory:" for an anonymous in-memory
-   * database and an empty string for an anonymous disk-based database.
-   * Anonymous databases are not persisted and when closing the database
-   * handle, their contents are lost.
-   */
-  filename: string
-
-  /**
-   * One or more of sqlite3.OPEN_READONLY, sqlite3.OPEN_READWRITE and
-   * sqlite3.OPEN_CREATE. The default value is OPEN_READWRITE | OPEN_CREATE.
-   */
-  mode?: OpenDatabaseEnum
-
-  /**
-   * Use an alternative library instead of sqlite3. The interface of the library must
-   * conform to `sqlite3`.
-   *
-   * The default is to use `sqlite3` as the driver.
-   *
-   * @see https://github.com/mapbox/node-sqlite3/wiki/API
-   */
-  driver?: any
-
-  /**
-   * If true, uses the `sqlite3` built-in database object cache to avoid opening the same
-   * database multiple times.
-   *
-   * Does not apply if `driver` is defined.
-   *
-   * @see https://github.com/mapbox/node-sqlite3/wiki/Caching
-   */
-  cached?: boolean
-
-  /**
-   * Enables verbose mode.
-   *
-   * This only applies to the `sqlite3` driver.
-   */
-  verbose?: boolean
-})
-```
-
-### Examples
-
-- See the `src/**/__tests__` directory for more example usages
-- See the `docs/` directory for full documentation.
-- Also visit the `sqlite3` library [API docs](https://github.com/mapbox/node-sqlite3/wiki/API)
-
-#### Creating a table and inserting data
-
-```typescript
-await db.exec('CREATE TABLE tbl (col TEXT)')
-await db.exec('INSERT INTO tbl VALUES ("test")')
-```
-
-#### Getting a single row
-
-```typescript
-const result = await db.get('SELECT col FROM tbl WHERE col = ?', 'test')
-
-// { col: 'test' }
-```
-
-```typescript
-const result = await db.get('SELECT col FROM tbl WHERE col = ?', ['test'])
-
-// { col: 'test' }
-```
-
-```typescript
-const result = await db.get('SELECT col FROM tbl WHERE col = :test', {
-  ':test': 'test'
-})
-
-// { col: 'test' }
-```
-
-#### Getting many rows
-
-```typescript
-const result = await db.all('SELECT col FROM tbl')
-
-// [{ col: 'test' }]
-```
-
-#### Inserting rows (part 2)
-
-```typescript
-const result = await db.run(
-  'INSERT INTO tbl (col) VALUES (?)',
-  'foo'
-)
-
-/*
-{
-  // row ID of the inserted row
-  lastId: 1,
-  // instance of Sqlite3Statement
-  // which is a wrapper around `sqlite3#Statement`
-  stmt: <Sqlite3Statement>
-}
-*/
-```
-
-```typescript
-const result = await db.run('INSERT INTO tbl(col) VALUES (:col)', {
-  ':col': 'something'
-})
-```
-
-#### Updating rows
-
-```typescript
-const result = await db.run(
-  'UPDATE tbl SET col = ? WHERE col = ?',
-  'foo',
-  'test'
-)
-
-/*
-{
-  // number of rows changed
-  changes: 1,
-  // instance of Sqlite3Statement
-  // which is a wrapper around `sqlite3#Statement`
-  stmt: <Sqlite3Statement>
-}
-*/
-```
-
-#### Prepared statement
-
-```typescript
-// stmt is an instance of Sqlite3Statement
-// which is a wrapper around `sqlite3#Statement`
-const stmt = await db.prepare('SELECT col FROM tbl WHERE 1 = ? AND 5 = ?5')
-await stmt.bind({ 1: 1, 5: 5 })
-let result = await stmt.get()
-// { col: 'some text' }
-```
-
-```typescript
-const stmt = await db.prepare(
-  'SELECT col FROM tbl WHERE 13 = @thirteen ORDER BY col DESC'
-)
-
-const result = await stmt.all({ '@thirteen': 13 })
-```
-
-#### Get the driver instance
-
-Useful if you need to call methods that are not supported yet.
-
-```typescript
-const rawDb = db.getDatabaseInstance()
-const rawStatement = stmt.getStatementInstance()
-```
-
-#### Closing the database
-
-```typescript
-await db.close()
-```
-
 ### ES6 tagged template strings
 
 This module is compatible with [sql-template-strings](https://www.npmjs.com/package/sql-template-strings).
@@ -300,11 +119,6 @@ const data = await db.all(SQL`SELECT author FROM books WHERE name = ${book} AND 
 ### Migrations
 
 This module comes with a lightweight migrations API that works with [SQL-based migration files](https://github.com/kriasoft/node-sqlite/tree/master/migrations)
-
-With default configuration, you can create a `migrations/` directory in your project with SQL files,
-and call the `migrate()` method to run the SQL in the directory against the database.
-
-See this project's `migrations/` folder for examples.
 
 ```typescript
 await db.migrate({    
@@ -323,10 +137,6 @@ await db.migrate({
     migrationsPath?: string
 })
 ```
-
-### API Documentation
-
-See the `docs` directory for full documentation.
 
 ## References
 
