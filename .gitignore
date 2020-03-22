@@ -10,3 +10,4 @@ npm-debug.log*
 .yarn-integrity
 .idea
 coverage/
+test-report.xml

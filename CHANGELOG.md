@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-### [v3.0.4], [v3.0.5]
+### [v3.0.4], [v3.0.5], [v3.0.6]
 > 2020-03-22
 
 Accidentally published v4 beta into mainline npm. This is a revert publish.
