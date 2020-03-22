@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### [v3.0.4]
+> 2020-03-22
+
+Accidentally published v4 beta into mainline npm. This is a revert publish.
+
+(Check out the v4 beta: https://github.com/kriasoft/node-sqlite/issues/105)
+
 ### [v3.0.3]
 > 2019-03-22
 
