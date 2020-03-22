@@ -68,9 +68,3 @@ export namespace Sqlite3 {
     changes?: number
   }
 }
-
-declare module 'sqlite3' {
-  interface Database {
-    loadExtension(path: string, callback?: (err) => void)
-  }
-}

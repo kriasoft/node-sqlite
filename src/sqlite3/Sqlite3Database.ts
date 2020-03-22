@@ -298,6 +298,9 @@ export class Sqlite3Database {
    */
   loadExtension (path: string) {
     return new Promise((resolve, reject) => {
+      // @todo if anyone can augment the typescript defs for loadExtension
+      // feel free to open a PR!
+      // @ts-ignore
       this.db.loadExtension(path, err => {
         if (err) {
           return reject(err)
