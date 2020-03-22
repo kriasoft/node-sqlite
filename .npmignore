@@ -17,3 +17,5 @@ CONTRIBUTING.md
 test-report.xml
 .quokka
 migrations/
+docs/
+wallaby.js

@@ -41,7 +41,7 @@
 
 ```sh
 # v4 of sqlite is targted for nodejs 10 and on.
-$ npm install sqlite@4.0.0-beta.0 --save
+$ npm install sqlite@4.0.0-beta.1 --save
 
 # If you need a legacy version for an older version of nodejs
 # install v3 instead, and look at the v3 branch readme for usage details
