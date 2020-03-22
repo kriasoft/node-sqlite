@@ -53,7 +53,7 @@ ___
 
 *Inherited from [Config](../modules/_interfaces_sqlite3_interfaces_.md#config).[filename](../modules/_interfaces_sqlite3_interfaces_.md#filename)*
 
-*Defined in [interfaces/Sqlite3.interfaces.ts:21](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L21)*
+*Defined in [interfaces/Sqlite.interfaces.ts:21](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L21)*
 
 Valid values are filenames, ":memory:" for an anonymous in-memory
 database and an empty string for an anonymous disk-based database.
@@ -68,7 +68,7 @@ ___
 
 *Inherited from [Config](../modules/_interfaces_sqlite3_interfaces_.md#config).[mode](../modules/_interfaces_sqlite3_interfaces_.md#optional-mode)*
 
-*Defined in [interfaces/Sqlite3.interfaces.ts:27](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L27)*
+*Defined in [interfaces/Sqlite.interfaces.ts:27](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L27)*
 
 One or more of sqlite3.OPEN_READONLY, sqlite3.OPEN_READWRITE and
 sqlite3.OPEN_CREATE. The default value is OPEN_READWRITE | OPEN_CREATE.

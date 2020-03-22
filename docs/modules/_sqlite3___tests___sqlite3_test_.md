@@ -12,6 +12,6 @@
 
 ### `Let` db
 
-• **db**: *[Sqlite3Database](../classes/_sqlite3_sqlite3database_.sqlite3database.md)*
+• **db**: *[Database](../classes/_sqlite3_sqlite3database_.sqlite3database.md)*
 
 *Defined in [sqlite3/__tests__/Sqlite3.test.ts:7](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/__tests__/Sqlite3.test.ts#L7)*

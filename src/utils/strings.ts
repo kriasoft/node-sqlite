@@ -1,6 +1,13 @@
-import { Sqlite3, SqlObj } from '../interfaces/Sqlite3.interfaces'
+import { ISqlite, SqlObj } from '../interfaces/Sqlite.interfaces'
 
-export function toSqlParams (sql: Sqlite3.SqlType, params: any[] = []): SqlObj {
+/**
+ * Allows for using strings and `sql-template-strings`. Converts both to a
+ * format that's usable by the SQL methods
+ *
+ * @param sql A SQL string or `sql-template-strings` object
+ * @param params An array of parameters
+ */
+export function toSqlParams (sql: ISqlite.SqlType, params: any[] = []): SqlObj {
   if (typeof sql === 'string') {
     return {
       sql,

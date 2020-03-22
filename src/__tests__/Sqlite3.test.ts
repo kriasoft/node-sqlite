@@ -1,11 +1,11 @@
 /* eslint-env jest */
 
-import { Sqlite3Database } from '../Sqlite3Database'
+import { Database } from '../Database'
 import SQL from 'sql-template-strings'
 import sqlite3 from 'sqlite3'
-import { open } from '../../../build'
+import { open } from '../../build'
 
-let db: Sqlite3Database
+let db: Database
 
 describe('Sqlite3Database', () => {
   // enable the sqlite cached database or not
@@ -21,7 +21,7 @@ describe('Sqlite3Database', () => {
   ]
 
   driver.forEach(c => {
-    db = new Sqlite3Database({
+    db = new Database({
       driver: c.driver,
       filename: ':memory:'
     })
@@ -67,7 +67,7 @@ describe('Sqlite3Database', () => {
   })
 
   it('should allow named parameters to be used', async () => {
-    db = new Sqlite3Database({
+    db = new Database({
       filename: ':memory:',
       driver: sqlite3.Database
     })
@@ -104,6 +104,10 @@ describe('Sqlite3Database', () => {
       'SELECT col FROM tbl WHERE ROWID = ?',
       [2],
       (err, result) => {
+        if (err) {
+          throw err
+        }
+
         expect(result).toEqual({ col: 'other thing' })
       }
     )
@@ -116,7 +120,7 @@ describe('Sqlite3Database', () => {
   })
 
   it('should allow named parameters to be used with prepared statements', async () => {
-    db = new Sqlite3Database({
+    db = new Database({
       filename: ':memory:',
       driver: sqlite3.Database
     })
@@ -144,6 +148,9 @@ describe('Sqlite3Database', () => {
 
     stmt = await db.prepare('SELECT col FROM tbl WHERE ROWID = ?')
     const rowsCount = await stmt.each(2, (err, result) => {
+      if (err) {
+        throw err
+      }
       expect(result).toEqual({ col: 'other text' })
     })
     expect(rowsCount).toBe(1)
@@ -160,14 +167,15 @@ describe('Sqlite3Database', () => {
   })
 
   it('should allow chaining Statement.run() calls', async () => {
-    db = new Sqlite3Database({
+    db = new Database({
       filename: ':memory:',
       driver: sqlite3.Database
     })
 
     await db.open()
     await db.exec('CREATE TABLE tbl (col1 TEXT, col2 TEXT, col3 TEXT)')
-    let stmt = await db.prepare(
+
+    const stmt = await db.prepare(
       'INSERT INTO tbl(col1, col2, col3) VALUES (?, ?, ?)'
     )
 
@@ -196,7 +204,7 @@ describe('Sqlite3Database', () => {
   })
 
   it('should handle BLOBs', async () => {
-    db = new Sqlite3Database({
+    db = new Database({
       filename: ':memory:',
       driver: sqlite3.Database
     })
@@ -205,10 +213,10 @@ describe('Sqlite3Database', () => {
     await db.open()
     await db.exec('CREATE TABLE dat (b BLOB)')
 
-    let stmt = await db.run('INSERT INTO dat(b) VALUES(?)', buf)
+    const stmt = await db.run('INSERT INTO dat(b) VALUES(?)', buf)
     expect(stmt.lastID).toBe(1)
 
-    let result = await db.get('SELECT b FROM dat')
+    const result = await db.get('SELECT b FROM dat')
     expect(result.b).toBeInstanceOf(Buffer)
     expect(result.b.toString('utf8')).toBe('Hello world!')
 
@@ -216,7 +224,7 @@ describe('Sqlite3Database', () => {
   })
 
   it('should get the underlying database instance', async () => {
-    db = new Sqlite3Database({
+    db = new Database({
       filename: ':memory:',
       driver: sqlite3.Database
     })
@@ -226,7 +234,7 @@ describe('Sqlite3Database', () => {
   })
 
   it('should call configure', async () => {
-    db = new Sqlite3Database({
+    db = new Database({
       filename: ':memory:',
       driver: sqlite3.Database
     })
@@ -239,7 +247,7 @@ describe('Sqlite3Database', () => {
   })
 
   it('should migrate the database', async () => {
-    db = new Sqlite3Database({
+    db = new Database({
       filename: ':memory:',
       driver: sqlite3.Database
     })
@@ -247,7 +255,7 @@ describe('Sqlite3Database', () => {
     await db.open()
     await db.migrate()
 
-    let result = await db.all('SELECT id, name FROM migrations')
+    const result = await db.all('SELECT id, name FROM migrations')
     expect(result).toEqual([
       { id: 1, name: 'initial' },
       { id: 2, name: 'some-feature' },
@@ -258,7 +266,7 @@ describe('Sqlite3Database', () => {
   })
 
   it('should work with sql-template-strings', async () => {
-    db = new Sqlite3Database({
+    db = new Database({
       filename: ':memory:',
       driver: sqlite3.Database
     })
@@ -281,7 +289,7 @@ describe('Sqlite3Database', () => {
 
     expect(result.length).toBe(1)
 
-    let stmt = await db.prepare(
+    const stmt = await db.prepare(
       SQL`UPDATE tbl SET col = ${value2} WHERE col = ${value1}`
     )
     result = await stmt.run()

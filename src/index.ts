@@ -1,8 +1,8 @@
-import { Sqlite3Statement } from './sqlite3/Sqlite3Statement'
-import { Sqlite3Database } from './sqlite3/Sqlite3Database'
-import { Sqlite3 } from './interfaces/Sqlite3.interfaces'
+import { Statement } from './Statement'
+import { Database } from './Database'
+import { ISqlite } from './interfaces/Sqlite.interfaces'
 
-export interface OpenParams extends Sqlite3.Config {
+export interface OpenParams extends ISqlite.Config {
   /**
    * Use an alternative library instead of sqlite3. The interface of the library must
    * conform to `sqlite3`.
@@ -14,12 +14,12 @@ export interface OpenParams extends Sqlite3.Config {
   driver: any
 }
 
-async function open (config: OpenParams): Promise<Sqlite3Database> {
-  const db = new Sqlite3Database(config)
+async function open (config: OpenParams): Promise<Database> {
+  const db = new Database(config)
 
   await db.open()
 
   return db
 }
 
-export { open, Sqlite3Statement, Sqlite3Database, Sqlite3 }
+export { open, Statement, Database, ISqlite }

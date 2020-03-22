@@ -19,19 +19,19 @@
 
 • **"sqlite3"**:
 
-*Defined in [interfaces/Sqlite3.interfaces.ts:72](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L72)*
+*Defined in [interfaces/Sqlite.interfaces.ts:72](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L72)*
 
 ###  Database
 
 • **Database**:
 
-*Defined in [interfaces/Sqlite3.interfaces.ts:73](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L73)*
+*Defined in [interfaces/Sqlite.interfaces.ts:73](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L73)*
 
 ###  loadExtension
 
 ▸ **loadExtension**(`path`: string, `callback?`: function): *any*
 
-*Defined in [interfaces/Sqlite3.interfaces.ts:74](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L74)*
+*Defined in [interfaces/Sqlite.interfaces.ts:74](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L74)*
 
 **Parameters:**
 
@@ -55,43 +55,43 @@ ___
 
 • **Sqlite3**:
 
-*Defined in [interfaces/Sqlite3.interfaces.ts:11](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L11)*
+*Defined in [interfaces/Sqlite.interfaces.ts:11](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L11)*
 
 ###  OpenDatabaseEnum
 
 • **OpenDatabaseEnum**:
 
-*Defined in [interfaces/Sqlite3.interfaces.ts:38](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L38)*
+*Defined in [interfaces/Sqlite.interfaces.ts:38](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L38)*
 
 ###  OPEN_CREATE
 
 • **OPEN_CREATE**: = sqlite.OPEN_CREATE
 
-*Defined in [interfaces/Sqlite3.interfaces.ts:41](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L41)*
+*Defined in [interfaces/Sqlite.interfaces.ts:41](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L41)*
 
 ###  OPEN_READONLY
 
 • **OPEN_READONLY**: = sqlite.OPEN_READONLY
 
-*Defined in [interfaces/Sqlite3.interfaces.ts:39](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L39)*
+*Defined in [interfaces/Sqlite.interfaces.ts:39](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L39)*
 
 ###  OPEN_READWRITE
 
 • **OPEN_READWRITE**: = sqlite.OPEN_READWRITE
 
-*Defined in [interfaces/Sqlite3.interfaces.ts:40](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L40)*
+*Defined in [interfaces/Sqlite.interfaces.ts:40](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L40)*
 
 ###  Config
 
 • **Config**:
 
-*Defined in [interfaces/Sqlite3.interfaces.ts:14](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L14)*
+*Defined in [interfaces/Sqlite.interfaces.ts:14](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L14)*
 
 ###  filename
 
 • **filename**: *string*
 
-*Defined in [interfaces/Sqlite3.interfaces.ts:21](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L21)*
+*Defined in [interfaces/Sqlite.interfaces.ts:21](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L21)*
 
 Valid values are filenames, ":memory:" for an anonymous in-memory
 database and an empty string for an anonymous disk-based database.
@@ -102,7 +102,7 @@ handle, their contents are lost.
 
 • **mode**? : *[OpenDatabaseEnum](_interfaces_sqlite3_interfaces_.md#opendatabaseenum)*
 
-*Defined in [interfaces/Sqlite3.interfaces.ts:27](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L27)*
+*Defined in [interfaces/Sqlite.interfaces.ts:27](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L27)*
 
 One or more of sqlite3.OPEN_READONLY, sqlite3.OPEN_READWRITE and
 sqlite3.OPEN_CREATE. The default value is OPEN_READWRITE | OPEN_CREATE.
@@ -111,13 +111,13 @@ sqlite3.OPEN_CREATE. The default value is OPEN_READWRITE | OPEN_CREATE.
 
 • **DatabaseConfigParams**:
 
-*Defined in [interfaces/Sqlite3.interfaces.ts:30](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L30)*
+*Defined in [interfaces/Sqlite.interfaces.ts:30](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L30)*
 
 ###  driver
 
 • **driver**: *any*
 
-*Defined in [interfaces/Sqlite3.interfaces.ts:35](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L35)*
+*Defined in [interfaces/Sqlite.interfaces.ts:35](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L35)*
 
 Use an alternative library instead of sqlite3. The interface of the library must
 conform to sqlite3.
@@ -128,7 +128,7 @@ conform to sqlite3.
 
 *Inherited from [Config](_interfaces_sqlite3_interfaces_.md#config).[filename](_interfaces_sqlite3_interfaces_.md#filename)*
 
-*Defined in [interfaces/Sqlite3.interfaces.ts:21](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L21)*
+*Defined in [interfaces/Sqlite.interfaces.ts:21](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L21)*
 
 Valid values are filenames, ":memory:" for an anonymous in-memory
 database and an empty string for an anonymous disk-based database.
@@ -141,7 +141,7 @@ handle, their contents are lost.
 
 *Inherited from [Config](_interfaces_sqlite3_interfaces_.md#config).[mode](_interfaces_sqlite3_interfaces_.md#optional-mode)*
 
-*Defined in [interfaces/Sqlite3.interfaces.ts:27](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L27)*
+*Defined in [interfaces/Sqlite.interfaces.ts:27](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L27)*
 
 One or more of sqlite3.OPEN_READONLY, sqlite3.OPEN_READWRITE and
 sqlite3.OPEN_CREATE. The default value is OPEN_READWRITE | OPEN_CREATE.
@@ -150,13 +150,13 @@ sqlite3.OPEN_CREATE. The default value is OPEN_READWRITE | OPEN_CREATE.
 
 • **RunResult**:
 
-*Defined in [interfaces/Sqlite3.interfaces.ts:46](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L46)*
+*Defined in [interfaces/Sqlite.interfaces.ts:46](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L46)*
 
 ### `Optional` changes
 
 • **changes**? : *number*
 
-*Defined in [interfaces/Sqlite3.interfaces.ts:68](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L68)*
+*Defined in [interfaces/Sqlite.interfaces.ts:68](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L68)*
 
 Number of rows changed.
 
@@ -167,7 +167,7 @@ successfully completed UPDATE or DELETE statement.
 
 • **lastID**? : *number*
 
-*Defined in [interfaces/Sqlite3.interfaces.ts:61](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L61)*
+*Defined in [interfaces/Sqlite.interfaces.ts:61](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L61)*
 
 Row id of the inserted row.
 
@@ -176,9 +176,9 @@ completed INSERT statement.
 
 ###  stmt
 
-• **stmt**: *[Sqlite3Statement](../classes/_sqlite3_sqlite3statement_.sqlite3statement.md)*
+• **stmt**: *[Statement](../classes/_sqlite3_sqlite3statement_.sqlite3statement.md)*
 
-*Defined in [interfaces/Sqlite3.interfaces.ts:54](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L54)*
+*Defined in [interfaces/Sqlite.interfaces.ts:54](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L54)*
 
 Statement object.
 
@@ -190,10 +190,10 @@ Any subsequent attempts to run the statement again will fail.
 
 Ƭ **ConfigureOption**: *"trace" | "profile" | "busyTimeout"*
 
-*Defined in [interfaces/Sqlite3.interfaces.ts:44](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L44)*
+*Defined in [interfaces/Sqlite.interfaces.ts:44](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L44)*
 
 ###  SqlType
 
 Ƭ **SqlType**: *SQLStatement | string*
 
-*Defined in [interfaces/Sqlite3.interfaces.ts:12](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L12)*
+*Defined in [interfaces/Sqlite.interfaces.ts:12](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L12)*

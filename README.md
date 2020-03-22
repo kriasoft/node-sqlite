@@ -29,6 +29,7 @@
     - [Inserting rows (part 2)](#inserting-rows-part-2)
     - [Updating rows](#updating-rows)
     - [Prepared statement](#prepared-statement)
+    - [`each()`](#each)
     - [Get the driver instance](#get-the-driver-instance)
     - [Closing the database](#closing-the-database)
   - [ES6 tagged template strings](#es6-tagged-template-strings)
@@ -56,7 +57,7 @@ should also work.
 
 ```sh
 # v4 of sqlite is targted for nodejs 10 and on.
-$ npm install sqlite@4.0.0-beta.4 --save
+$ npm install sqlite@4.0.0-beta.5 --save
 
 # If you need a legacy version for an older version of nodejs
 # install v3 instead, and look at the v3 branch readme for usage details
@@ -145,7 +146,7 @@ import { open } from 'sqlite'
 
 ```typescript
 
-// db is an instance of Sqlite3Database
+// db is an instance of `sqlite#Database`
 // which is a wrapper around `sqlite3#Database`
 const db = await open({
   /**
@@ -229,9 +230,9 @@ const result = await db.run(
 {
   // row ID of the inserted row
   lastId: 1,
-  // instance of Sqlite3Statement
+  // instance of `sqlite#Statement`
   // which is a wrapper around `sqlite3#Statement`
-  stmt: <Sqlite3Statement>
+  stmt: <Statement>
 }
 */
 ```
@@ -255,9 +256,9 @@ const result = await db.run(
 {
   // number of rows changed
   changes: 1,
-  // instance of Sqlite3Statement
+  // instance of `sqlite#Statement`
   // which is a wrapper around `sqlite3#Statement`
-  stmt: <Sqlite3Statement>
+  stmt: <Statement>
 }
 */
 ```
@@ -265,7 +266,7 @@ const result = await db.run(
 #### Prepared statement
 
 ```typescript
-// stmt is an instance of Sqlite3Statement
+// stmt is an instance of `sqlite#Statement`
 // which is a wrapper around `sqlite3#Statement`
 const stmt = await db.prepare('SELECT col FROM tbl WHERE 1 = ? AND 5 = ?5')
 await stmt.bind({ 1: 1, 5: 5 })
@@ -279,6 +280,33 @@ const stmt = await db.prepare(
 )
 
 const result = await stmt.all({ '@thirteen': 13 })
+```
+
+#### `each()`
+
+`each()` is a bit different compared to the other operations.
+
+The function signature looks like this:
+
+`async each (sql, [...params], callback)`
+
+- `callback(err, row)` is triggered when the database has a row to return
+- The promise resolves when all rows have returned with the number or rows returned.
+
+```typescript
+const rowsCount = await db.each(
+  'SELECT col FROM tbl WHERE ROWID = ?',
+  [2],
+  (err, row) => {
+    if (err) {
+      throw err
+    }
+
+    // row = { col: 'other thing' }
+  }
+)
+
+// rowsCount = 1
 ```
 
 #### Get the driver instance

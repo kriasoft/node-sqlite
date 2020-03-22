@@ -1,13 +1,13 @@
 /* eslint-env jest */
 
 import { migrate } from '../migrate'
-import { Sqlite3Database } from '../../sqlite3/Sqlite3Database'
+import { Database } from '../../Database'
 import sqlite3 from 'sqlite3'
 
 let db
 
 beforeEach(async () => {
-  db = new Sqlite3Database({
+  db = new Database({
     filename: ':memory:',
     driver: sqlite3.Database
   })

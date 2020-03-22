@@ -9,10 +9,12 @@ If you are using an older version of node < 10, use the 3.x version of the libra
 What's new:
 
 - ZERO dependencies!
+  * This should make troubleshooting the library vs the `sqlite3` driver easier. Most issues relate
+  to the `sqlite3` driver vs the library.
+  * Allows support for alternative drivers such as `sqlite3-offline` as long as they match the `node-sqlite3`
+  API.
 - Re-written in Typescript.
 - All existing features maintained.
-- Support for alternative drivers such as `sqlite3-offline` as long as they match the `node-sqlite3`
-API.
 - Existing unit tests were cleaned up and pass, new tests added.
 - Better documentation. See `README.md`.
 - New CI process - pull requests merged into master will run tests, build, and auto-publish to NPM.
@@ -25,10 +27,9 @@ Breaking Changes:
 before using this wrapper library.
   * This allows for usage of alternative libraries.
   * This means `verbose` and `cache` modes must be enabled before using the library.
-  The `README.md` file will explain how to do this.
+  * The `README.md` file explains how to do this.
 - Opening a new database has changed. See `README.md` for example.
 - migrations API: `force` is now a `boolean`.
-
 
 ### [v3.0.3]
 > 2019-03-22

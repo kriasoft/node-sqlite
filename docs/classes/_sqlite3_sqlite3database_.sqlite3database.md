@@ -1,10 +1,10 @@
-[sqlite](../README.md) › [Globals](../globals.md) › ["sqlite3/Sqlite3Database"](../modules/_sqlite3_sqlite3database_.md) › [Sqlite3Database](_sqlite3_sqlite3database_.sqlite3database.md)
+[sqlite](../README.md) › [Globals](../globals.md) › ["sqlite3/Database"](../modules/_sqlite3_sqlite3database_.md) › [Database](_sqlite3_sqlite3database_.sqlite3database.md)
 
-# Class: Sqlite3Database
+# Class: Database
 
 ## Hierarchy
 
-* **Sqlite3Database**
+* **Database**
 
 ## Index
 
@@ -40,9 +40,9 @@
 
 ###  constructor
 
-\+ **new Sqlite3Database**(`config`: [DatabaseConfigParams](../modules/_interfaces_sqlite3_interfaces_.md#databaseconfigparams)): *[Sqlite3Database](_sqlite3_sqlite3database_.sqlite3database.md)*
+\+ **new Database**(`config`: [DatabaseConfigParams](../modules/_interfaces_sqlite3_interfaces_.md#databaseconfigparams)): *[Database](_sqlite3_sqlite3database_.sqlite3database.md)*
 
-*Defined in [sqlite3/Sqlite3Database.ts:12](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L12)*
+*Defined in [sqlite3/Database.ts:12](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L12)*
 
 **Parameters:**
 
@@ -50,7 +50,7 @@ Name | Type |
 ------ | ------ |
 `config` | [DatabaseConfigParams](../modules/_interfaces_sqlite3_interfaces_.md#databaseconfigparams) |
 
-**Returns:** *[Sqlite3Database](_sqlite3_sqlite3database_.sqlite3database.md)*
+**Returns:** *[Database](_sqlite3_sqlite3database_.sqlite3database.md)*
 
 ## Properties
 
@@ -58,7 +58,7 @@ Name | Type |
 
 • **config**: *[DatabaseConfigParams](../modules/_interfaces_sqlite3_interfaces_.md#databaseconfigparams)*
 
-*Defined in [sqlite3/Sqlite3Database.ts:11](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L11)*
+*Defined in [sqlite3/Database.ts:11](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L11)*
 
 ___
 
@@ -66,7 +66,7 @@ ___
 
 • **db**: *[Database](../modules/_interfaces_sqlite3_interfaces_.md#database)*
 
-*Defined in [sqlite3/Sqlite3Database.ts:12](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L12)*
+*Defined in [sqlite3/Database.ts:12](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L12)*
 
 ## Methods
 
@@ -74,7 +74,7 @@ ___
 
 ▸ **all**<**T**>(`sql`: [SqlType](../modules/_interfaces_sqlite3_interfaces_.md#sqltype), ...`params`: any[]): *Promise‹T›*
 
-*Defined in [sqlite3/Sqlite3Database.ts:236](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L236)*
+*Defined in [sqlite3/Database.ts:236](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L236)*
 
 Runs the SQL query with the specified parameters. The parameters are the same as the
 Database#run function, with the following differences:
@@ -109,7 +109,7 @@ ___
 
 ▸ **close**(): *Promise‹void›*
 
-*Defined in [sqlite3/Sqlite3Database.ts:75](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L75)*
+*Defined in [sqlite3/Database.ts:75](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L75)*
 
 Closes the database.
 
@@ -121,7 +121,7 @@ ___
 
 ▸ **configure**(`option`: [ConfigureOption](../modules/_interfaces_sqlite3_interfaces_.md#configureoption), `value`: any): *any*
 
-*Defined in [sqlite3/Sqlite3Database.ts:90](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L90)*
+*Defined in [sqlite3/Database.ts:90](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L90)*
 
 **`see`** https://github.com/mapbox/node-sqlite3/wiki/API#databaseconfigureoption-value
 
@@ -140,7 +140,7 @@ ___
 
 ▸ **each**<**T**>(`sql`: [SqlType](../modules/_interfaces_sqlite3_interfaces_.md#sqltype), ...`params`: any[]): *Promise‹number›*
 
-*Defined in [sqlite3/Sqlite3Database.ts:180](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L180)*
+*Defined in [sqlite3/Database.ts:180](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L180)*
 
 Runs the SQL query with the specified parameters and calls the callback once for each result
 row. The parameters are the same as the Database#run function, with the following differences:
@@ -181,7 +181,7 @@ ___
 
 ▸ **exec**(`sql`: [SqlType](../modules/_interfaces_sqlite3_interfaces_.md#sqltype)): *Promise‹void›*
 
-*Defined in [sqlite3/Sqlite3Database.ts:261](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L261)*
+*Defined in [sqlite3/Database.ts:261](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L261)*
 
 Runs all SQL queries in the supplied string. No result rows are retrieved. If a query fails,
 no subsequent statements will be executed (wrap it in a transaction if you want all
@@ -206,7 +206,7 @@ ___
 
 ▸ **get**<**T**>(`sql`: [SqlType](../modules/_interfaces_sqlite3_interfaces_.md#sqltype), ...`params`: any[]): *Promise‹T | undefined›*
 
-*Defined in [sqlite3/Sqlite3Database.ts:143](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L143)*
+*Defined in [sqlite3/Database.ts:143](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L143)*
 
 Runs the SQL query with the specified parameters and resolves with
 with the first result row afterwards. If the result set is empty, returns undefined.
@@ -235,7 +235,7 @@ ___
 
 ▸ **getDatabaseInstance**(): *[Database](../modules/_interfaces_sqlite3_interfaces_.md#database)‹›*
 
-*Defined in [sqlite3/Sqlite3Database.ts:37](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L37)*
+*Defined in [sqlite3/Database.ts:37](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L37)*
 
 Returns the underlying sqlite3 Database instance
 
@@ -247,7 +247,7 @@ ___
 
 ▸ **loadExtension**(`path`: string): *Promise‹unknown›*
 
-*Defined in [sqlite3/Sqlite3Database.ts:306](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L306)*
+*Defined in [sqlite3/Database.ts:306](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L306)*
 
 Loads a compiled SQLite extension into the database connection object.
 
@@ -265,7 +265,7 @@ ___
 
 ▸ **migrate**(`config?`: [MigrationParams](../modules/_interfaces_migrate_interfaces_.md#migrationparams)): *Promise‹void›*
 
-*Defined in [sqlite3/Sqlite3Database.ts:321](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L321)*
+*Defined in [sqlite3/Database.ts:321](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L321)*
 
 Performs a database migration.
 
@@ -283,7 +283,7 @@ ___
 
 ▸ **on**(`event`: string, `listener`: any): *void*
 
-*Defined in [sqlite3/Sqlite3Database.ts:30](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L30)*
+*Defined in [sqlite3/Database.ts:30](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L30)*
 
 Event handler when verbose mode is enabled.
 
@@ -304,7 +304,7 @@ ___
 
 ▸ **open**(): *Promise‹void›*
 
-*Defined in [sqlite3/Sqlite3Database.ts:44](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L44)*
+*Defined in [sqlite3/Database.ts:44](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L44)*
 
 Opens the database
 
@@ -316,7 +316,7 @@ ___
 
 ▸ **parallelize**(): *void*
 
-*Defined in [sqlite3/Sqlite3Database.ts:341](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L341)*
+*Defined in [sqlite3/Database.ts:341](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L341)*
 
 **Returns:** *void*
 
@@ -324,9 +324,9 @@ ___
 
 ###  prepare
 
-▸ **prepare**(`sql`: [SqlType](../modules/_interfaces_sqlite3_interfaces_.md#sqltype), ...`params`: any[]): *Promise‹[Sqlite3Statement](_sqlite3_sqlite3statement_.sqlite3statement.md)›*
+▸ **prepare**(`sql`: [SqlType](../modules/_interfaces_sqlite3_interfaces_.md#sqltype), ...`params`: any[]): *Promise‹[Statement](_sqlite3_sqlite3statement_.sqlite3statement.md)›*
 
-*Defined in [sqlite3/Sqlite3Database.ts:287](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L287)*
+*Defined in [sqlite3/Database.ts:287](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L287)*
 
 Prepares the SQL statement and optionally binds the specified parameters.
 When bind parameters are supplied, they are bound to the prepared statement.
@@ -338,7 +338,7 @@ Name | Type | Description |
 `sql` | [SqlType](../modules/_interfaces_sqlite3_interfaces_.md#sqltype) | The SQL query to run. |
 `...params` | any[] | - |
 
-**Returns:** *Promise‹[Sqlite3Statement](_sqlite3_sqlite3statement_.sqlite3statement.md)›*
+**Returns:** *Promise‹[Statement](_sqlite3_sqlite3statement_.sqlite3statement.md)›*
 
 Promise<Statement> Statement object
 
@@ -348,7 +348,7 @@ ___
 
 ▸ **run**(`sql`: [SqlType](../modules/_interfaces_sqlite3_interfaces_.md#sqltype), ...`params`: any[]): *Promise‹[RunResult](../modules/_interfaces_sqlite3_interfaces_.md#runresult)›*
 
-*Defined in [sqlite3/Sqlite3Database.ts:108](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L108)*
+*Defined in [sqlite3/Database.ts:108](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L108)*
 
 Runs the SQL query with the specified parameters. It does not retrieve any result data.
 The function returns the Database object for which it was called to allow for function chaining.
@@ -370,7 +370,7 @@ ___
 
 ▸ **serialize**(): *void*
 
-*Defined in [sqlite3/Sqlite3Database.ts:332](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L332)*
+*Defined in [sqlite3/Database.ts:332](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L332)*
 
 The methods underneath requires creative work to implement. PRs / proposals accepted!
 
@@ -382,7 +382,7 @@ ___
 
 ▸ **enableVerboseMode**(): *void*
 
-*Defined in [sqlite3/Sqlite3Database.ts:22](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L22)*
+*Defined in [sqlite3/Database.ts:22](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L22)*
 
 **`see`** https://github.com/mapbox/node-sqlite3/wiki/Debugging
 

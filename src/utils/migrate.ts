@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { Sqlite3Database } from '../sqlite3/Sqlite3Database'
+import { Database } from '../Database'
 import { Migrate } from '../interfaces/migrate.interfaces'
 
 import MigrationFile = Migrate.MigrationFile
@@ -9,10 +9,7 @@ import MigrationParams = Migrate.MigrationParams
 /**
  * Migrates database schema to the latest version
  */
-export async function migrate (
-  db: Sqlite3Database,
-  config: MigrationParams = {}
-) {
+export async function migrate (db: Database, config: MigrationParams = {}) {
   config.force = config.force || false
   config.table = config.table || 'migrations'
   config.migrationsPath =

@@ -1,17 +1,17 @@
-import { Statement } from 'sqlite3'
-import { Sqlite3 } from '../interfaces/Sqlite3.interfaces'
+import sqlite from 'sqlite3'
+import { ISqlite } from './interfaces/Sqlite.interfaces'
 
-export class Sqlite3Statement {
-  stmt: Statement
+export class Statement<S extends sqlite.Statement = sqlite.Statement> {
+  stmt: S
 
-  constructor (stmt: Statement) {
+  constructor (stmt: S) {
     this.stmt = stmt
   }
 
   /**
    * Returns the underlying sqlite3 Statement instance
    */
-  getStatementInstance (): Statement {
+  getStatementInstance (): S {
     return this.stmt
   }
 
@@ -79,7 +79,7 @@ export class Sqlite3Statement {
    * the function's arguments, as an array, and as an object for named
    * parameters. This automatically sanitizes inputs.
    */
-  run (...params: any[]): Promise<Sqlite3.RunResult> {
+  run (...params: any[]): Promise<ISqlite.RunResult> {
     return new Promise((resolve, reject) => {
       const stmt = this
 
@@ -180,7 +180,7 @@ export class Sqlite3Statement {
 
       if (!callback || typeof callback !== 'function') {
         throw new Error(
-          'Last param of Sqlite3Statement#each() must be a callback function'
+          'Last param of Statement#each() must be a callback function'
         )
       }
 

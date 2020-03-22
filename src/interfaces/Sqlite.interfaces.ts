@@ -1,14 +1,17 @@
-/* eslint-disable */
 import * as sqlite from 'sqlite3'
 import { SQLStatement } from 'sql-template-strings'
-import { Sqlite3Statement } from '../sqlite3/Sqlite3Statement'
+import { Statement } from '../Statement'
 
 export interface SqlObj {
   sql: string
   params?: any[]
 }
 
-export namespace Sqlite3 {
+export namespace ISqlite {
+  /**
+   * Allows for input of a normal SQL string or
+   * `sql-template-strings` object
+   */
   export type SqlType = SQLStatement | string
 
   export interface Config {
@@ -27,8 +30,18 @@ export namespace Sqlite3 {
     mode?: OpenDatabaseEnum
 
     /**
-     * Use an alternative library instead of sqlite3. The interface of the library must
-     * conform to sqlite3.
+     * The database driver. Most will install `sqlite3` and use the `Database` class from it.
+     * As long as the library you are using conforms to the `sqlite3` API, you can use it as
+     * the driver.
+     *
+     * @example
+     *
+     * ```
+     * import sqlite from 'sqlite3'
+     *
+     * const driver = sqlite.Database
+     * ```
+     *
      */
     driver: any
   }
@@ -49,7 +62,7 @@ export namespace Sqlite3 {
      * automatically finalized after running for the first time.
      * Any subsequent attempts to run the statement again will fail.
      */
-    stmt: Sqlite3Statement
+    stmt: Statement
     /**
      * Row id of the inserted row.
      *

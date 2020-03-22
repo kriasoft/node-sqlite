@@ -1,3 +1,5 @@
+/* eslint-env jest */
+
 import sqlite3Offline from 'sqlite3-offline'
 import { open } from '..'
 import sqlite3 from 'sqlite3'
@@ -14,7 +16,7 @@ describe('index', () => {
 
       await db.migrate()
 
-      let result = await db.all('SELECT id, name FROM migrations')
+      const result = await db.all('SELECT id, name FROM migrations')
       expect(result).toEqual([
         { id: 1, name: 'initial' },
         { id: 2, name: 'some-feature' },
@@ -33,7 +35,7 @@ describe('index', () => {
 
     await db.migrate()
 
-    let result = await db.all('SELECT id, name FROM migrations')
+    const result = await db.all('SELECT id, name FROM migrations')
     expect(result).toEqual([
       { id: 1, name: 'initial' },
       { id: 2, name: 'some-feature' },

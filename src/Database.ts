@@ -1,17 +1,18 @@
 import * as sqlite from 'sqlite3'
-import { Sqlite3 } from '../interfaces/Sqlite3.interfaces'
-import { Sqlite3Statement } from './Sqlite3Statement'
-import { Migrate } from '../interfaces/migrate.interfaces'
-import { migrate } from '../utils/migrate'
-import { toSqlParams } from '../utils/strings'
+import { ISqlite } from './interfaces/Sqlite.interfaces'
+import { Migrate } from './interfaces/migrate.interfaces'
+
+import { Statement } from './Statement'
+import { migrate } from './utils/migrate'
+import { toSqlParams } from './utils/strings'
 
 import MigrationParams = Migrate.MigrationParams
 
-export class Sqlite3Database {
-  config: Sqlite3.Config
-  db: sqlite.Database
+export class Database<Driver extends sqlite.Database = sqlite.Database> {
+  config: ISqlite.Config
+  db: Driver
 
-  constructor (config: Sqlite3.Config) {
+  constructor (config: ISqlite.Config) {
     this.config = config
     this.db = null
   }
@@ -27,7 +28,7 @@ export class Sqlite3Database {
   /**
    * Returns the underlying sqlite3 Database instance
    */
-  getDatabaseInstance () {
+  getDatabaseInstance (): Driver {
     return this.db
   }
 
@@ -48,8 +49,8 @@ export class Sqlite3Database {
 
       if (!mode) {
         mode =
-          Sqlite3.OpenDatabaseEnum.OPEN_READWRITE |
-          Sqlite3.OpenDatabaseEnum.OPEN_CREATE
+          ISqlite.OpenDatabaseEnum.OPEN_READWRITE |
+          ISqlite.OpenDatabaseEnum.OPEN_CREATE
       }
 
       this.db = new driver(filename, mode, err => {
@@ -80,7 +81,7 @@ export class Sqlite3Database {
   /**
    * @see https://github.com/mapbox/node-sqlite3/wiki/API#databaseconfigureoption-value
    */
-  configure (option: Sqlite3.ConfigureOption, value: any): any {
+  configure (option: ISqlite.ConfigureOption, value: any): any {
     this.db.configure(option as any, value)
   }
 
@@ -98,7 +99,7 @@ export class Sqlite3Database {
    *
    * @see https://github.com/mapbox/node-sqlite3/wiki/API#databaserunsql-param--callback
    */
-  run (sql: Sqlite3.SqlType, ...params: any[]): Promise<Sqlite3.RunResult> {
+  run (sql: ISqlite.SqlType, ...params: any[]): Promise<ISqlite.RunResult> {
     return new Promise((resolve, reject) => {
       const sqlObj = toSqlParams(sql, params)
 
@@ -108,7 +109,7 @@ export class Sqlite3Database {
         }
 
         resolve({
-          stmt: new Sqlite3Statement(this.stmt),
+          stmt: new Statement(this.stmt),
           lastID: this.lastID,
           changes: this.changes
         })
@@ -134,7 +135,7 @@ export class Sqlite3Database {
    * @see https://github.com/mapbox/node-sqlite3/wiki/API#databasegetsql-param--callback
    */
   get<T = any> (
-    sql: Sqlite3.SqlType,
+    sql: ISqlite.SqlType,
     ...params: any[]
   ): Promise<T | undefined> {
     return new Promise((resolve, reject) => {
@@ -170,13 +171,13 @@ export class Sqlite3Database {
    * @see https://github.com/mapbox/node-sqlite3/wiki/API#databaseeachsql-param--callback-complete
    * @returns Promise<number> Number of rows returned
    */
-  each<T = any> (sql: Sqlite3.SqlType, ...params: any[]): Promise<number> {
+  each<T = any> (sql: ISqlite.SqlType, ...params: any[]): Promise<number> {
     return new Promise((resolve, reject) => {
       const callback: (err, row: T) => void = params.pop()
 
       if (!callback || typeof callback !== 'function') {
         throw new Error(
-          'Last param of Sqlite3Database#each() must be a callback( function'
+          'Last param of Database#each() must be a callback( function'
         )
       }
 
@@ -226,7 +227,7 @@ export class Sqlite3Database {
    *
    * @see https://github.com/mapbox/node-sqlite3/wiki/API#databaseallsql-param--callback
    */
-  all<T = any[]> (sql: Sqlite3.SqlType, ...params: any[]): Promise<T> {
+  all<T = any[]> (sql: ISqlite.SqlType, ...params: any[]): Promise<T> {
     return new Promise((resolve, reject) => {
       const sqlObj = toSqlParams(sql, params)
 
@@ -251,7 +252,7 @@ export class Sqlite3Database {
    * @param {string} sql The SQL query to run.
    * @see https://github.com/mapbox/node-sqlite3/wiki/API#databaseexecsql-callback
    */
-  exec (sql: Sqlite3.SqlType): Promise<void> {
+  exec (sql: ISqlite.SqlType): Promise<void> {
     return new Promise((resolve, reject) => {
       const sqlObj = toSqlParams(sql)
 
@@ -277,7 +278,7 @@ export class Sqlite3Database {
    * parameters. This automatically sanitizes inputs.
    * @returns Promise<Statement> Statement object
    */
-  prepare (sql: Sqlite3.SqlType, ...params: any[]): Promise<Sqlite3Statement> {
+  prepare (sql: ISqlite.SqlType, ...params: any[]): Promise<Statement> {
     return new Promise((resolve, reject) => {
       const sqlObj = toSqlParams(sql, params)
 
@@ -286,7 +287,7 @@ export class Sqlite3Database {
           return reject(err)
         }
 
-        resolve(new Sqlite3Statement(stmt))
+        resolve(new Statement(stmt))
       })
     })
   }

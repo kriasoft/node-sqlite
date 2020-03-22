@@ -33,7 +33,7 @@ ___
 
 ###  migrate
 
-▸ **migrate**(`db`: [Sqlite3Database](../classes/_sqlite3_sqlite3database_.sqlite3database.md), `config`: [MigrationParams](_interfaces_migrate_interfaces_.md#migrationparams)): *Promise‹void›*
+▸ **migrate**(`db`: [Database](../classes/_sqlite3_sqlite3database_.sqlite3database.md), `config`: [MigrationParams](_interfaces_migrate_interfaces_.md#migrationparams)): *Promise‹void›*
 
 *Defined in [utils/migrate.ts:12](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/utils/migrate.ts#L12)*
 
@@ -43,7 +43,7 @@ Migrates database schema to the latest version
 
 Name | Type | Default |
 ------ | ------ | ------ |
-`db` | [Sqlite3Database](../classes/_sqlite3_sqlite3database_.sqlite3database.md) | - |
+`db` | [Database](../classes/_sqlite3_sqlite3database_.sqlite3database.md) | - |
 `config` | [MigrationParams](_interfaces_migrate_interfaces_.md#migrationparams) | {} |
 
 **Returns:** *Promise‹void›*

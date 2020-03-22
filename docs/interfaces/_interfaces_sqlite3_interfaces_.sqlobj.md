@@ -19,7 +19,7 @@
 
 • **params**? : *any[]*
 
-*Defined in [interfaces/Sqlite3.interfaces.ts:8](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L8)*
+*Defined in [interfaces/Sqlite.interfaces.ts:8](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L8)*
 
 ___
 
@@ -27,4 +27,4 @@ ___
 
 • **sql**: *string*
 
-*Defined in [interfaces/Sqlite3.interfaces.ts:7](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L7)*
+*Defined in [interfaces/Sqlite.interfaces.ts:7](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/interfaces/Sqlite3.interfaces.ts#L7)*

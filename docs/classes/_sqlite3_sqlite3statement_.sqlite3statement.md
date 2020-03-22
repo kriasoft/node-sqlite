@@ -1,10 +1,10 @@
-[sqlite](../README.md) › [Globals](../globals.md) › ["sqlite3/Sqlite3Statement"](../modules/_sqlite3_sqlite3statement_.md) › [Sqlite3Statement](_sqlite3_sqlite3statement_.sqlite3statement.md)
+[sqlite](../README.md) › [Globals](../globals.md) › ["sqlite3/Statement"](../modules/_sqlite3_sqlite3statement_.md) › [Statement](_sqlite3_sqlite3statement_.sqlite3statement.md)
 
-# Class: Sqlite3Statement
+# Class: Statement
 
 ## Hierarchy
 
-* **Sqlite3Statement**
+* **Statement**
 
 ## Index
 
@@ -31,9 +31,9 @@
 
 ###  constructor
 
-\+ **new Sqlite3Statement**(`stmt`: Statement): *[Sqlite3Statement](_sqlite3_sqlite3statement_.sqlite3statement.md)*
+\+ **new Statement**(`stmt`: Statement): *[Statement](_sqlite3_sqlite3statement_.sqlite3statement.md)*
 
-*Defined in [sqlite3/Sqlite3Statement.ts:5](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L5)*
+*Defined in [sqlite3/Statement.ts:5](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L5)*
 
 **Parameters:**
 
@@ -41,7 +41,7 @@ Name | Type |
 ------ | ------ |
 `stmt` | Statement |
 
-**Returns:** *[Sqlite3Statement](_sqlite3_sqlite3statement_.sqlite3statement.md)*
+**Returns:** *[Statement](_sqlite3_sqlite3statement_.sqlite3statement.md)*
 
 ## Properties
 
@@ -49,7 +49,7 @@ Name | Type |
 
 • **stmt**: *Statement*
 
-*Defined in [sqlite3/Sqlite3Statement.ts:5](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L5)*
+*Defined in [sqlite3/Statement.ts:5](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L5)*
 
 ## Methods
 
@@ -57,7 +57,7 @@ Name | Type |
 
 ▸ **all**<**T**>(...`params`: any[]): *Promise‹T›*
 
-*Defined in [sqlite3/Sqlite3Statement.ts:143](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L143)*
+*Defined in [sqlite3/Statement.ts:143](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L143)*
 
 Binds parameters, executes the statement and calls the callback with all result rows.
 The parameters are the same as the Statement#run function, with the following differences:
@@ -86,7 +86,7 @@ ___
 
 ▸ **bind**(...`params`: any[]): *Promise‹void›*
 
-*Defined in [sqlite3/Sqlite3Statement.ts:24](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L24)*
+*Defined in [sqlite3/Statement.ts:24](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L24)*
 
 Binds parameters to the prepared statement.
 
@@ -107,7 +107,7 @@ ___
 
 ▸ **each**<**T**>(...`params`: any[]): *Promise‹number›*
 
-*Defined in [sqlite3/Sqlite3Statement.ts:177](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L177)*
+*Defined in [sqlite3/Statement.ts:177](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L177)*
 
 Binds parameters, executes the statement and calls the callback for each result row.
 
@@ -149,7 +149,7 @@ ___
 
 ▸ **finalize**(): *Promise‹void›*
 
-*Defined in [sqlite3/Sqlite3Statement.ts:55](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L55)*
+*Defined in [sqlite3/Statement.ts:55](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L55)*
 
 Finalizes the statement. This is typically optional, but if you experience long delays before
 the next query is executed, explicitly finalizing your statement might be necessary.
@@ -165,7 +165,7 @@ ___
 
 ▸ **get**<**T**>(...`params`: any[]): *Promise‹T | undefined›*
 
-*Defined in [sqlite3/Sqlite3Statement.ts:115](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L115)*
+*Defined in [sqlite3/Statement.ts:115](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L115)*
 
 Binds parameters, executes the statement and retrieves the first result row.
 The parameters are the same as the Statement#run function, with the following differences:
@@ -193,7 +193,7 @@ ___
 
 ▸ **getStatementInstance**(): *Statement*
 
-*Defined in [sqlite3/Sqlite3Statement.ts:14](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L14)*
+*Defined in [sqlite3/Statement.ts:14](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L14)*
 
 Returns the underlying sqlite3 Statement instance
 
@@ -205,7 +205,7 @@ ___
 
 ▸ **reset**(): *Promise‹void›*
 
-*Defined in [sqlite3/Sqlite3Statement.ts:40](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L40)*
+*Defined in [sqlite3/Statement.ts:40](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L40)*
 
 Resets the row cursor of the statement and preserves the parameter bindings.
 Use this function to re-execute the same query with the same bindings.
@@ -218,7 +218,7 @@ ___
 
 ▸ **run**(...`params`: any[]): *Promise‹[RunResult](../modules/_interfaces_sqlite3_interfaces_.md#runresult)›*
 
-*Defined in [sqlite3/Sqlite3Statement.ts:82](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L82)*
+*Defined in [sqlite3/Statement.ts:82](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Statement.ts#L82)*
 
 Binds parameters and executes the statement.
 

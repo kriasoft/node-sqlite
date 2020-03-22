@@ -1,12 +1,12 @@
-[sqlite](../README.md) › [Globals](../globals.md) › ["sqlite3/Sqlite3Database"](_sqlite3_sqlite3database_.md)
+[sqlite](../README.md) › [Globals](../globals.md) › ["sqlite3/Database"](_sqlite3_sqlite3database_.md)
 
-# Module: "sqlite3/Sqlite3Database"
+# Module: "sqlite3/Database"
 
 ## Index
 
 ### Classes
 
-* [Sqlite3Database](../classes/_sqlite3_sqlite3database_.sqlite3database.md)
+* [Database](../classes/_sqlite3_sqlite3database_.sqlite3database.md)
 
 ### Variables
 
@@ -18,4 +18,4 @@
 
 • **MigrationParams**: *any*
 
-*Defined in [sqlite3/Sqlite3Database.ts:8](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L8)*
+*Defined in [sqlite3/Database.ts:8](https://github.com/theogravity/sqlite-v3/blob/d520ca5/src/sqlite3/Sqlite3Database.ts#L8)*
