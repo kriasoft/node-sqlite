@@ -40,7 +40,6 @@ export namespace ISqlite {
      *
      * const driver = sqlite.Database
      * ```
-     *
      */
     driver: any
   }

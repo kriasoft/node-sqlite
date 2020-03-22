@@ -364,6 +364,51 @@ await db.migrate({
 })
 ```
 
+### Typescript tricks
+
+#### Use generics to get better typings on your rows
+
+Most methods allow for the use of [generics](https://www.typescriptlang.org/docs/handbook/generics.html)
+to specify the data type of your returned data. This allows your IDE to perform better autocomplete
+and the typescript compiler to perform better static type analysis.
+
+##### open example
+```typescript
+import sqlite3 from 'sqlite3'
+
+// sqlite3.Database is the default if no explicit generic is specified
+await open<sqlite3.Database>({
+  filename: ':memory'
+})
+```
+
+##### Get example
+
+```typescript
+
+interface Row {
+  col: string
+}
+
+// result will be of type Row, allowing Typescript supported IDEs to autocomplete on the properties!
+const result = await db.get<Row>('SELECT col FROM tbl WHERE col = ?', 'test')
+```
+
+##### All example
+
+```typescript
+interface Row {
+  col: string
+}
+
+// Result is an array of rows, you can now have array-autocompletion data
+const result = await db.all<Row[]>('SELECT col FROM tbl')
+
+result.each((row) => {
+  // row should have type information now!
+})
+```
+
 ### API Documentation
 
 See the `docs` directory for full documentation.

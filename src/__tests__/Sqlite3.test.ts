@@ -3,7 +3,7 @@
 import { Database } from '../Database'
 import SQL from 'sql-template-strings'
 import sqlite3 from 'sqlite3'
-import { open } from '../../build'
+import { open } from '..'
 
 let db: Database
 
