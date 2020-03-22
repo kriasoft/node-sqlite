@@ -35,7 +35,7 @@
   - [ES6 tagged template strings](#es6-tagged-template-strings)
   - [Migrations](#migrations)
   - [Typescript tricks](#typescript-tricks)
-    - [specify typings for a specific database driver](#specify-typings-for-a-specific-database-driver)
+    - [Specify typings for a specific database driver](#specify-typings-for-a-specific-database-driver)
     - [Use generics to get better typings on your rows](#use-generics-to-get-better-typings-on-your-rows)
       - [Get example](#get-example)
       - [All example](#all-example)
@@ -371,7 +371,7 @@ await db.migrate({
 
 ### Typescript tricks
 
-##### specify typings for a specific database driver
+##### Specify typings for a specific database driver
 
 ```typescript
 import sqlite3 from 'sqlite3'
