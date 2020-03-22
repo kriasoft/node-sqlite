@@ -20,7 +20,9 @@
     - [Without caching](#without-caching)
     - [With caching](#with-caching)
     - [Enable verbose / debug mode](#enable-verbose--debug-mode)
+    - [Tracing SQL errors](#tracing-sql-errors)
     - [With a custom driver](#with-a-custom-driver)
+    - [Opening multiple databases](#opening-multiple-databases)
     - [`open` config params](#open-config-params)
   - [Examples](#examples)
     - [Creating a table and inserting data](#creating-a-table-and-inserting-data)
@@ -142,6 +144,16 @@ import { open } from 'sqlite'
 import sqlite3 from 'sqlite3'
 
 sqlite3.verbose()
+```
+
+#### Tracing SQL errors
+
+For more info, see this [doc](https://github.com/mapbox/node-sqlite3/wiki/Debugging#databaseontrace-callback).
+
+```typescript
+db.on('trace', (data) => {
+  
+})
 ```
 
 #### With a custom driver
