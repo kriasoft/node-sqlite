@@ -55,12 +55,23 @@ describe('index', () => {
     await db.close()
   })
 
-  it('should allow for a generic driver type definition', async () => {
-    const db = await open<sqlite3.Database>({
-      filename: ':memory:',
-      driver: sqlite3.Database
+  describe('typings', () => {
+    it('should allow for a generic driver type definition', async () => {
+      const db = await open<sqlite3.Database>({
+        filename: ':memory:',
+        driver: sqlite3.Database
+      })
+
+      await db.close()
     })
 
-    await db.close()
+    it('should allow for a generic driver and statement type definition', async () => {
+      const db = await open<sqlite3.Database, sqlite3.Statement>({
+        filename: ':memory:',
+        driver: sqlite3.Database
+      })
+
+      await db.close()
+    })
   })
 })

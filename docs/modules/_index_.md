@@ -12,13 +12,17 @@
 
 ###  open
 
-▸ **open**<**Driver**>(`config`: [Config](_interfaces_sqlite_interfaces_.md#config)): *Promise‹[Database](../classes/_database_.database.md)›*
+▸ **open**<**Driver**, **Stmt**>(`config`: [Config](_interfaces_sqlite_interfaces_.md#config)): *Promise‹[Database](../classes/_database_.database.md)›*
 
-*Defined in [index.ts:6](https://github.com/kriasoft/node-sqlite/blob/16a8dec/src/index.ts#L6)*
+*Defined in [index.ts:9](https://github.com/kriasoft/node-sqlite/blob/8aac44a/src/index.ts#L9)*
+
+Opens a database for manipulation. Most users will call this to get started.
 
 **Type parameters:**
 
 ▪ **Driver**: *Database*
+
+▪ **Stmt**: *Statement*
 
 **Parameters:**
 

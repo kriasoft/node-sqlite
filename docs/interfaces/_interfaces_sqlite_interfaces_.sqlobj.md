@@ -19,7 +19,7 @@
 
 • **params**? : *any[]*
 
-*Defined in [interfaces/Sqlite.interfaces.ts:6](https://github.com/kriasoft/node-sqlite/blob/16a8dec/src/interfaces/Sqlite.interfaces.ts#L6)*
+*Defined in [interfaces/Sqlite.interfaces.ts:7](https://github.com/kriasoft/node-sqlite/blob/8aac44a/src/interfaces/Sqlite.interfaces.ts#L7)*
 
 ___
 
@@ -27,4 +27,4 @@ ___
 
 • **sql**: *string*
 
-*Defined in [interfaces/Sqlite.interfaces.ts:5](https://github.com/kriasoft/node-sqlite/blob/16a8dec/src/interfaces/Sqlite.interfaces.ts#L5)*
+*Defined in [interfaces/Sqlite.interfaces.ts:6](https://github.com/kriasoft/node-sqlite/blob/8aac44a/src/interfaces/Sqlite.interfaces.ts#L6)*

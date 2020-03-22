@@ -376,8 +376,8 @@ await db.migrate({
 ```typescript
 import sqlite3 from 'sqlite3'
 
-// sqlite3.Database is the default if no explicit generic is specified
-await open<sqlite3.Database>({
+// sqlite3.Database, sqlite3.Statement is the default if no explicit generic is specified
+await open<sqlite3.Database, sqlite3.Statement>({
   filename: ':memory'
 })
 ```

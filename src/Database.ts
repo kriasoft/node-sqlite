@@ -1,4 +1,4 @@
-import * as sqlite from 'sqlite3'
+import * as sqlite3 from 'sqlite3'
 import { ISqlite } from './interfaces/Sqlite.interfaces'
 import { Migrate } from './interfaces/migrate.interfaces'
 
@@ -8,7 +8,13 @@ import { toSqlParams } from './utils/strings'
 
 import MigrationParams = Migrate.MigrationParams
 
-export class Database<Driver extends sqlite.Database = sqlite.Database> {
+/**
+ * Promisified wrapper for the sqlite3#Database interface.
+ */
+export class Database<
+  Driver extends sqlite3.Database = sqlite3.Database,
+  Stmt extends sqlite3.Statement = sqlite3.Statement
+> {
   config: ISqlite.Config
   db: Driver
 
@@ -103,7 +109,10 @@ export class Database<Driver extends sqlite.Database = sqlite.Database> {
    *
    * @see https://github.com/mapbox/node-sqlite3/wiki/API#databaserunsql-param--callback
    */
-  run (sql: ISqlite.SqlType, ...params: any[]): Promise<ISqlite.RunResult> {
+  run (
+    sql: ISqlite.SqlType,
+    ...params: any[]
+  ): Promise<ISqlite.RunResult<Stmt>> {
     return new Promise((resolve, reject) => {
       const sqlObj = toSqlParams(sql, params)
 
@@ -113,7 +122,7 @@ export class Database<Driver extends sqlite.Database = sqlite.Database> {
         }
 
         resolve({
-          stmt: new Statement(this.stmt),
+          stmt: new Statement<Stmt>(this.stmt),
           lastID: this.lastID,
           changes: this.changes
         })
@@ -282,7 +291,7 @@ export class Database<Driver extends sqlite.Database = sqlite.Database> {
    * parameters. This automatically sanitizes inputs.
    * @returns Promise<Statement> Statement object
    */
-  prepare (sql: ISqlite.SqlType, ...params: any[]): Promise<Statement> {
+  prepare (sql: ISqlite.SqlType, ...params: any[]): Promise<Statement<Stmt>> {
     return new Promise((resolve, reject) => {
       const sqlObj = toSqlParams(sql, params)
 
@@ -291,8 +300,8 @@ export class Database<Driver extends sqlite.Database = sqlite.Database> {
           return reject(err)
         }
 
-        resolve(new Statement(stmt))
-      })
+        resolve(new Statement<Stmt>(stmt))
+      }) as Stmt
     })
   }
 

@@ -336,4 +336,28 @@ describe('Sqlite3Database', () => {
 
     await db.exec('CREATE TABLE tbl (col1 TEXT, col2 TEXT, col3 TEXT)')
   })
+
+  describe('typings', () => {
+    it('should allow for a custom statement', async () => {
+      db = new Database<sqlite3.Database, sqlite3.Statement>({
+        filename: ':memory:',
+        driver: sqlite3.Database
+      })
+
+      await db.open()
+
+      await db.exec('CREATE TABLE tbl (col TEXT)')
+
+      const result = await db.run(SQL`INSERT INTO tbl VALUES (1)`)
+
+      expect(result.stmt).toBeDefined()
+
+      const stmt = await db.prepare(SQL`UPDATE tbl SET col = 1 WHERE col = 2`)
+
+      await stmt.run()
+      await stmt.finalize()
+
+      await db.close()
+    })
+  })
 })

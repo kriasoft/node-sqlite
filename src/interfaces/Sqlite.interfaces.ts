@@ -1,3 +1,4 @@
+import sqlite3 from 'sqlite3'
 import { SQLStatement } from 'sql-template-strings'
 import { Statement } from '../Statement'
 
@@ -46,7 +47,9 @@ export namespace ISqlite {
 
   export type ConfigureOption = 'trace' | 'profile' | 'busyTimeout'
 
-  export interface RunResult {
+  export interface RunResult<
+    Stmt extends sqlite3.Statement = sqlite3.Statement
+  > {
     /**
      * Statement object.
      *
@@ -54,7 +57,7 @@ export namespace ISqlite {
      * automatically finalized after running for the first time.
      * Any subsequent attempts to run the statement again will fail.
      */
-    stmt: Statement
+    stmt: Statement<Stmt>
     /**
      * Row id of the inserted row.
      *

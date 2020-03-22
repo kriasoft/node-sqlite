@@ -1,6 +1,9 @@
 import sqlite from 'sqlite3'
 import { ISqlite } from './interfaces/Sqlite.interfaces'
 
+/**
+ * Promisified wrapper for the sqlite3#Statement interface.
+ */
 export class Statement<S extends sqlite.Statement = sqlite.Statement> {
   stmt: S
 

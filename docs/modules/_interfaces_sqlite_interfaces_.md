@@ -18,19 +18,19 @@
 
 • **ISqlite**:
 
-*Defined in [interfaces/Sqlite.interfaces.ts:9](https://github.com/kriasoft/node-sqlite/blob/16a8dec/src/interfaces/Sqlite.interfaces.ts#L9)*
+*Defined in [interfaces/Sqlite.interfaces.ts:10](https://github.com/kriasoft/node-sqlite/blob/8aac44a/src/interfaces/Sqlite.interfaces.ts#L10)*
 
 ###  Config
 
 • **Config**:
 
-*Defined in [interfaces/Sqlite.interfaces.ts:16](https://github.com/kriasoft/node-sqlite/blob/16a8dec/src/interfaces/Sqlite.interfaces.ts#L16)*
+*Defined in [interfaces/Sqlite.interfaces.ts:17](https://github.com/kriasoft/node-sqlite/blob/8aac44a/src/interfaces/Sqlite.interfaces.ts#L17)*
 
 ###  driver
 
 • **driver**: *any*
 
-*Defined in [interfaces/Sqlite.interfaces.ts:44](https://github.com/kriasoft/node-sqlite/blob/16a8dec/src/interfaces/Sqlite.interfaces.ts#L44)*
+*Defined in [interfaces/Sqlite.interfaces.ts:45](https://github.com/kriasoft/node-sqlite/blob/8aac44a/src/interfaces/Sqlite.interfaces.ts#L45)*
 
 The database driver. Most will install `sqlite3` and use the `Database` class from it.
 As long as the library you are using conforms to the `sqlite3` API, you can use it as
@@ -48,7 +48,7 @@ const driver = sqlite.Database
 
 • **filename**: *string*
 
-*Defined in [interfaces/Sqlite.interfaces.ts:23](https://github.com/kriasoft/node-sqlite/blob/16a8dec/src/interfaces/Sqlite.interfaces.ts#L23)*
+*Defined in [interfaces/Sqlite.interfaces.ts:24](https://github.com/kriasoft/node-sqlite/blob/8aac44a/src/interfaces/Sqlite.interfaces.ts#L24)*
 
 Valid values are filenames, ":memory:" for an anonymous in-memory
 database and an empty string for an anonymous disk-based database.
@@ -59,7 +59,7 @@ handle, their contents are lost.
 
 • **mode**? : *number*
 
-*Defined in [interfaces/Sqlite.interfaces.ts:29](https://github.com/kriasoft/node-sqlite/blob/16a8dec/src/interfaces/Sqlite.interfaces.ts#L29)*
+*Defined in [interfaces/Sqlite.interfaces.ts:30](https://github.com/kriasoft/node-sqlite/blob/8aac44a/src/interfaces/Sqlite.interfaces.ts#L30)*
 
 One or more of sqlite3.OPEN_READONLY, sqlite3.OPEN_READWRITE and
 sqlite3.OPEN_CREATE. The default value is OPEN_READWRITE | OPEN_CREATE.
@@ -68,13 +68,13 @@ sqlite3.OPEN_CREATE. The default value is OPEN_READWRITE | OPEN_CREATE.
 
 • **RunResult**:
 
-*Defined in [interfaces/Sqlite.interfaces.ts:49](https://github.com/kriasoft/node-sqlite/blob/16a8dec/src/interfaces/Sqlite.interfaces.ts#L49)*
+*Defined in [interfaces/Sqlite.interfaces.ts:50](https://github.com/kriasoft/node-sqlite/blob/8aac44a/src/interfaces/Sqlite.interfaces.ts#L50)*
 
 ### `Optional` changes
 
 • **changes**? : *number*
 
-*Defined in [interfaces/Sqlite.interfaces.ts:71](https://github.com/kriasoft/node-sqlite/blob/16a8dec/src/interfaces/Sqlite.interfaces.ts#L71)*
+*Defined in [interfaces/Sqlite.interfaces.ts:74](https://github.com/kriasoft/node-sqlite/blob/8aac44a/src/interfaces/Sqlite.interfaces.ts#L74)*
 
 Number of rows changed.
 
@@ -85,7 +85,7 @@ successfully completed UPDATE or DELETE statement.
 
 • **lastID**? : *number*
 
-*Defined in [interfaces/Sqlite.interfaces.ts:64](https://github.com/kriasoft/node-sqlite/blob/16a8dec/src/interfaces/Sqlite.interfaces.ts#L64)*
+*Defined in [interfaces/Sqlite.interfaces.ts:67](https://github.com/kriasoft/node-sqlite/blob/8aac44a/src/interfaces/Sqlite.interfaces.ts#L67)*
 
 Row id of the inserted row.
 
@@ -94,9 +94,9 @@ completed INSERT statement.
 
 ###  stmt
 
-• **stmt**: *[Statement](../classes/_statement_.statement.md)*
+• **stmt**: *[Statement](../classes/_statement_.statement.md)‹Stmt›*
 
-*Defined in [interfaces/Sqlite.interfaces.ts:57](https://github.com/kriasoft/node-sqlite/blob/16a8dec/src/interfaces/Sqlite.interfaces.ts#L57)*
+*Defined in [interfaces/Sqlite.interfaces.ts:60](https://github.com/kriasoft/node-sqlite/blob/8aac44a/src/interfaces/Sqlite.interfaces.ts#L60)*
 
 Statement object.
 
@@ -108,13 +108,13 @@ Any subsequent attempts to run the statement again will fail.
 
 Ƭ **ConfigureOption**: *"trace" | "profile" | "busyTimeout"*
 
-*Defined in [interfaces/Sqlite.interfaces.ts:47](https://github.com/kriasoft/node-sqlite/blob/16a8dec/src/interfaces/Sqlite.interfaces.ts#L47)*
+*Defined in [interfaces/Sqlite.interfaces.ts:48](https://github.com/kriasoft/node-sqlite/blob/8aac44a/src/interfaces/Sqlite.interfaces.ts#L48)*
 
 ###  SqlType
 
 Ƭ **SqlType**: *SQLStatement | string*
 
-*Defined in [interfaces/Sqlite.interfaces.ts:14](https://github.com/kriasoft/node-sqlite/blob/16a8dec/src/interfaces/Sqlite.interfaces.ts#L14)*
+*Defined in [interfaces/Sqlite.interfaces.ts:15](https://github.com/kriasoft/node-sqlite/blob/8aac44a/src/interfaces/Sqlite.interfaces.ts#L15)*
 
 Allows for input of a normal SQL string or
 `sql-template-strings` object
