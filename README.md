@@ -166,15 +166,20 @@ const db = await open({
    * One or more of sqlite3.OPEN_READONLY, sqlite3.OPEN_READWRITE and
    * sqlite3.OPEN_CREATE. The default value is OPEN_READWRITE | OPEN_CREATE.
    */
-  mode?: OpenDatabaseEnum
+  mode?: number
 
   /**
-   * Use an alternative library instead of sqlite3. The interface of the library must
-   * conform to `sqlite3`.
+   * The database driver. Most will install `sqlite3` and use the `Database` class from it.
+   * As long as the library you are using conforms to the `sqlite3` API, you can use it as
+   * the driver.
    *
-   * The default is to use `sqlite3` as the driver.
+   * @example
    *
-   * @see https://github.com/mapbox/node-sqlite3/wiki/API
+   * ```
+   * import sqlite from 'sqlite3'
+   *
+   * const driver = sqlite.Database
+   * ```
    */
   driver: any
 })
@@ -371,7 +376,7 @@ await db.migrate({
 
 ### Typescript tricks
 
-##### Specify typings for a specific database driver
+#### Specify typings for a specific database driver
 
 ```typescript
 import sqlite3 from 'sqlite3'
