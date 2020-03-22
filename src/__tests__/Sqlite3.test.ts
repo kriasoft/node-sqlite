@@ -66,6 +66,24 @@ describe('Sqlite3Database', () => {
     })
   })
 
+  it('should open with a custom mode', async () => {
+    db = new Database({
+      filename: ':memory:',
+      driver: sqlite3.Database,
+      mode: sqlite3.OPEN_READONLY
+    })
+
+    await db.open()
+
+    try {
+      await db.exec('CREATE TABLE tbl (col TEXT)')
+    } catch (e) {
+      expect(e.message).toEqual(
+        'SQLITE_READONLY: attempt to write a readonly database'
+      )
+    }
+  })
+
   it('should allow named parameters to be used', async () => {
     db = new Database({
       filename: ':memory:',

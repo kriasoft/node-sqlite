@@ -1,4 +1,3 @@
-import * as sqlite from 'sqlite3'
 import { SQLStatement } from 'sql-template-strings'
 import { Statement } from '../Statement'
 
@@ -27,7 +26,7 @@ export namespace ISqlite {
      * One or more of sqlite3.OPEN_READONLY, sqlite3.OPEN_READWRITE and
      * sqlite3.OPEN_CREATE. The default value is OPEN_READWRITE | OPEN_CREATE.
      */
-    mode?: OpenDatabaseEnum
+    mode?: number
 
     /**
      * The database driver. Most will install `sqlite3` and use the `Database` class from it.
@@ -44,12 +43,6 @@ export namespace ISqlite {
      *
      */
     driver: any
-  }
-
-  export enum OpenDatabaseEnum {
-    OPEN_READONLY = sqlite.OPEN_READONLY,
-    OPEN_READWRITE = sqlite.OPEN_READWRITE,
-    OPEN_CREATE = sqlite.OPEN_CREATE
   }
 
   export type ConfigureOption = 'trace' | 'profile' | 'busyTimeout'

@@ -40,26 +40,30 @@ export class Database<Driver extends sqlite.Database = sqlite.Database> {
       let { filename, mode, driver } = this.config
 
       if (!filename) {
-        throw new Error('filename is not defined')
+        throw new Error('sqlite: filename is not defined')
       }
 
       if (!driver) {
-        throw new Error('driver is not defined')
+        throw new Error('sqlite: driver is not defined')
       }
 
-      if (!mode) {
-        mode =
-          ISqlite.OpenDatabaseEnum.OPEN_READWRITE |
-          ISqlite.OpenDatabaseEnum.OPEN_CREATE
+      if (mode) {
+        this.db = new driver(filename, mode, err => {
+          if (err) {
+            return reject(err)
+          }
+
+          resolve()
+        })
+      } else {
+        this.db = new driver(filename, err => {
+          if (err) {
+            return reject(err)
+          }
+
+          resolve()
+        })
       }
-
-      this.db = new driver(filename, mode, err => {
-        if (err) {
-          return reject(err)
-        }
-
-        resolve()
-      })
     })
   }
 
@@ -177,7 +181,7 @@ export class Database<Driver extends sqlite.Database = sqlite.Database> {
 
       if (!callback || typeof callback !== 'function') {
         throw new Error(
-          'Last param of Database#each() must be a callback( function'
+          'sqlite: Last param of Database#each() must be a callback( function'
         )
       }
 
@@ -328,7 +332,7 @@ export class Database<Driver extends sqlite.Database = sqlite.Database> {
    */
   serialize () {
     throw new Error(
-      'Currently not implemented. Use getDatabaseInstance().serialize() instead.'
+      'sqlite: Currently not implemented. Use getDatabaseInstance().serialize() instead.'
     )
   }
 
@@ -337,7 +341,7 @@ export class Database<Driver extends sqlite.Database = sqlite.Database> {
    */
   parallelize () {
     throw new Error(
-      'Currently not implemented. Use getDatabaseInstance().parallelize() instead.'
+      'sqlite: Currently not implemented. Use getDatabaseInstance().parallelize() instead.'
     )
   }
 }

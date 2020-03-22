@@ -180,7 +180,7 @@ export class Statement<S extends sqlite.Statement = sqlite.Statement> {
 
       if (!callback || typeof callback !== 'function') {
         throw new Error(
-          'Last param of Statement#each() must be a callback function'
+          'sqlite: Last param of Statement#each() must be a callback function'
         )
       }
 
