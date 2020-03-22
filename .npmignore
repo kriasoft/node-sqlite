@@ -19,3 +19,4 @@ test-report.xml
 migrations/
 docs/
 wallaby.js
+coverage/
