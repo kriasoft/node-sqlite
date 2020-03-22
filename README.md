@@ -429,9 +429,9 @@ await db.migrate({
 })
 ```
 
-### Typescript tricks
+## Typescript tricks
 
-#### Specify typings for a specific database driver
+### Specify typings for a specific database driver
 
 ```typescript
 import sqlite3 from 'sqlite3'
@@ -442,13 +442,13 @@ await open<sqlite3.Database, sqlite3.Statement>({
 })
 ```
 
-#### Use generics to get better typings on your rows
+### Use generics to get better typings on your rows
 
 Most methods allow for the use of [generics](https://www.typescriptlang.org/docs/handbook/generics.html)
 to specify the data type of your returned data. This allows your IDE to perform better autocomplete
 and the typescript compiler to perform better static type analysis.
 
-##### Get example
+#### Get example
 
 ```typescript
 
@@ -460,7 +460,7 @@ interface Row {
 const result = await db.get<Row>('SELECT col FROM tbl WHERE col = ?', 'test')
 ```
 
-##### All example
+#### All example
 
 ```typescript
 interface Row {
