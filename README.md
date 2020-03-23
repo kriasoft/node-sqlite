@@ -488,7 +488,7 @@ fits your use-case. You might want to try these other SQLite libraries:
 - [better-sqlite3](https://github.com/JoshuaWise/better-sqlite3): Totes itself as the fastest and 
 simplest library for SQLite3 in Node.js.
 - [sql.js](https://github.com/sql-js/sql.js): SQLite compiled to Webassembly.
-- [sqlite3-offline](https://www.npmjs.com/package/sqlite3-offline): Offers pre-compiled `sqlite3` 
+- [sqlite3-offline](https://github.com/DenisCarriere/sqlite3-offline): Offers pre-compiled `sqlite3` 
 binaries if your machine cannot compile it. Should be mostly compatible with this library.
 
 If you know of any others, feel free to open a PR to add them to the list.
