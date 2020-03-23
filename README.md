@@ -42,6 +42,7 @@
     - [Get example](#get-example)
     - [All example](#all-example)
   - [API Documentation](#api-documentation)
+- [Alternative SQLite libraries](#alternative-sqlite-libraries)
 - [References](#references)
 - [Support](#support)
 - [License](#license)
@@ -478,6 +479,19 @@ result.each((row) => {
 ### API Documentation
 
 See the [`docs`](docs/globals.md) directory for full documentation.
+
+## Alternative SQLite libraries
+
+This library and the library it primarily supports, `sqlite3`, may not be the best library that
+fits your use-case. You might want to try these other SQLite libraries:
+
+- [better-sqlite3](https://github.com/JoshuaWise/better-sqlite3): Totes itself as the fastest and 
+simplest library for SQLite3 in Node.js.
+- [sql.js](https://github.com/sql-js/sql.js): SQLite compiled to Webassembly.
+- [sqlite3-offline](https://www.npmjs.com/package/sqlite3-offline): Offers pre-compiled `sqlite3` 
+binaries if your machine cannot compile it. Should be mostly compatible with this library.
+
+If you know of any others, feel free to open a PR to add them to the list.
 
 ## References
 
