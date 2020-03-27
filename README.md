@@ -476,7 +476,7 @@ result.each((row) => {
 })
 ```
 
-### API Documentation
+## API Documentation
 
 See the [`docs`](docs/globals.md) directory for full documentation.
 
