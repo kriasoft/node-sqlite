@@ -41,7 +41,7 @@
   - [Use generics to get better typings on your rows](#use-generics-to-get-better-typings-on-your-rows)
     - [Get example](#get-example)
     - [All example](#all-example)
-  - [API Documentation](#api-documentation)
+- [API Documentation](#api-documentation)
 - [Alternative SQLite libraries](#alternative-sqlite-libraries)
 - [References](#references)
 - [Support](#support)
