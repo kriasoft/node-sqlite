@@ -10,6 +10,7 @@ npm-login: &npm-login
   # Add the NPM_TOKEN name and the value is your npm token
   # Get your npm token via npm token create
   # https://docs.npmjs.com/cli/token
+  # Token represents the npm gravity.bot user
   run:
     name: Create .npmrc
     command: |
@@ -105,4 +106,3 @@ workflows:
               only: master
           requires:
             - test
-          context: npm-build

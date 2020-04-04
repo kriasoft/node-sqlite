@@ -1,6 +1,6 @@
 {
   "name": "sqlite",
-  "version": "4.0.0-beta.7",
+  "version": "4.0.0",
   "description": "SQLite client for Node.js applications with SQL-based migrations API written in Typescript",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -17,9 +17,9 @@
     "test:watch": "jest --watch",
     "test:coverage:watch": "jest --coverage --watch",
     "toc": "toc-md README.md README.md",
-    "add-readme": "git add README.md",
     "lint-staged": "lint-staged",
     "prepare-publish": "npm run changelog:prepare && version-bump && npm run changelog:release && npm run changelog:stamp",
+    "add-readme": "git add README.md",
     "version-bump": "version-bump",
     "changelog:help": "changelog-version",
     "changelog:verify": "changelog-version verify",
@@ -91,7 +91,8 @@
     "ts-node-dev": "1.0.0-pre.44",
     "typedoc": "^0.17.3",
     "typedoc-plugin-markdown": "^2.2.17",
-    "typescript": "3.8.3"
+    "typescript": "3.8.3",
+    "version-bump-plugin-git": "^2.0.1"
   },
   "eslintConfig": {
     "parserOptions": {
@@ -116,8 +117,7 @@
   },
   "lint-staged": {
     "src/**/*.ts": [
-      "prettier-standard",
-      "git add"
+      "prettier-standard"
     ]
   },
   "pre-commit": [
