@@ -1,3 +1,7 @@
+# 4.0.2 - Sat Apr 04 2020 22:19:38
+
+- Add management tools section to readme
+
 # 4.0.1 - Sat Apr 04 2020 21:46:39
 
 New major version 4!
