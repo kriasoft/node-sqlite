@@ -1,9 +1,5 @@
 # 4.0.1 - Sat Apr 04 2020 21:46:39
 
-- v4 release
-
-### UNRELEASED
-
 New major version 4!
 
 This version has been written in Typescript with a target of node.js v10 or greater.
