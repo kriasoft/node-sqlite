@@ -15,12 +15,6 @@
 
 ---
 
-## v4 beta announcement
-
-3/22/2020: Version 4 of `sqlite` is now in beta.
-
-Installation instructions and changelog [here](https://github.com/kriasoft/node-sqlite/issues/105).
-
 ### How to Install (v3)
 
 ```sh
