@@ -117,7 +117,8 @@
   },
   "lint-staged": {
     "src/**/*.ts": [
-      "prettier-standard"
+      "prettier-standard",
+      "git add"
     ]
   },
   "pre-commit": [
