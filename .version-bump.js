@@ -7,5 +7,5 @@
 // since the file is imported using require()
 // See command line options for additional available properties
 module.exports = {
-  strategy: 'cli'
+  strategy: 'git-commit-subj'
 }
