@@ -59,7 +59,7 @@ jobs:
   publish:
     executor:
       name: node/default
-      tag: '12'
+      tag: '10'
     working_directory: ~/repo
     steps:
       # Check out the git repo to the working directory
