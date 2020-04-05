@@ -14,7 +14,8 @@ module.exports = {
   // ==== Options specific to prepare ====
   newUnreleasedText: `## UNRELEASED
 
-- Contributor: [{{author.name}}](https://github.com/{{author.name}})
+**Contributor:** [{{author.name}}](https://github.com/{{author.name}})
+
 - {{{subject}}}{{{body}}}`,
   unreleasedTag: () => {
     return 'UNRELEASED'

@@ -1,6 +1,7 @@
 ## 4.0.5 - Sun Apr 05 2020 20:13:43
 
-- Contributor: [jameswilddev](https://github.com/jameswilddev)
+**Contributor:** [jameswilddev](https://github.com/jameswilddev)
+
 - Use non-default imports rather than synthetic default imports. (#110)
 
 ## 4.0.4 - Sun Apr 05 2020 07:44:39
