@@ -16,8 +16,9 @@ This is my commit body
 Then the changelog will be stamped in the following fashion on merge:
 
 ```text
-# <version> - <date>
+## <version> - <date>
 
+- Contributor: <author>
 - <git subject>
 
 <git body>
@@ -25,5 +26,4 @@ Then the changelog will be stamped in the following fashion on merge:
 
 # Merging
 
-Once merged, the CI will auto-publish to npm and the changelog will be updated
-with the subject of your commit.
+Once merged, the CI will auto-publish to npm and the changelog will be updated.
