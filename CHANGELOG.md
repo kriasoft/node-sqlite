@@ -1,16 +1,16 @@
 # 4.0.5 - Sun Apr 05 2020 20:13:43
 
-- Use non-default imports rather than synthetic default imports. (#110)
+- ([jameswilddev](https://github.com/jameswilddev)) Use non-default imports rather than synthetic default imports. (#110)
 
 # 4.0.4 - Sun Apr 05 2020 07:44:39
 
 - Fix Typescript reference issues for sqlite3 if it is not installed (#109)
 
-This allows the usage of the &#x60;sqlite3-offline&#x60; library in Typescript.
+This allows the usage of the `sqlite3-offline`; library in Typescript.
 
 # 4.0.3 - Sun Apr 05 2020 00:01:31
 
-- Fix Typescript issue where sql-template-strings is a forced requirement (#108)
+- Fix Typescript issue where `sql-template-strings` is a forced requirement (#108)
 
 It should be an optional dependency and is not required for installation.
 
