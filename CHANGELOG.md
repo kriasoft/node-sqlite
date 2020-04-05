@@ -1,3 +1,9 @@
+# 4.0.4 - Sun Apr 05 2020 07:44:39
+
+- Fix Typescript reference issues for sqlite3 if it is not installed (#109)
+
+This allows the usage of the &#x60;sqlite3-offline&#x60; library in Typescript.
+
 # 4.0.3 - Sun Apr 05 2020 00:01:31
 
 - Fix Typescript issue where sql-template-strings is a forced requirement (#108)
