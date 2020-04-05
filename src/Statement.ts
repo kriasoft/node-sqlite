@@ -1,4 +1,4 @@
-import sqlite from 'sqlite3'
+import * as sqlite from 'sqlite3'
 import { ISqlite } from './interfaces'
 
 /**
