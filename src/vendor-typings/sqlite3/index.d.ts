@@ -157,6 +157,8 @@ declare module 'sqlite3' {
 
     configure (option: 'busyTimeout', value: number): void
     interrupt (): void
+
+    loadExtension (path: string, callback?: (err: Error | null) => void)
   }
 
   export function verbose (): sqlite3
