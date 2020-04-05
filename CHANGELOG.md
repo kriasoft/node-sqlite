@@ -1,3 +1,7 @@
+# 4.0.5 - Sun Apr 05 2020 20:13:43
+
+- Use non-default imports rather than synthetic default imports. (#110)
+
 # 4.0.4 - Sun Apr 05 2020 07:44:39
 
 - Fix Typescript reference issues for sqlite3 if it is not installed (#109)
