@@ -1,5 +1,5 @@
 import sqlite from 'sqlite3'
-import { ISqlite } from './interfaces/Sqlite.interfaces'
+import { ISqlite } from './interfaces'
 
 /**
  * Promisified wrapper for the sqlite3#Statement interface.

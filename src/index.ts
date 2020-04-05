@@ -1,7 +1,9 @@
+/// <reference types="./vendor-typings/sqlite3" />
+
 import sqlite3 from 'sqlite3'
 import { Statement } from './Statement'
 import { Database } from './Database'
-import { ISqlite } from './interfaces/Sqlite.interfaces'
+import { ISqlite, IMigrate } from './interfaces'
 
 /**
  * Opens a database for manipulation. Most users will call this to get started.
@@ -17,4 +19,4 @@ async function open<
   return db
 }
 
-export { open, Statement, Database, ISqlite }
+export { open, Statement, Database, ISqlite, IMigrate }

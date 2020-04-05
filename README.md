@@ -37,6 +37,7 @@
   - [ES6 tagged template strings](#es6-tagged-template-strings)
   - [Migrations](#migrations)
 - [Typescript tricks](#typescript-tricks)
+  - [Import interfaces from sqlite](#import-interfaces-from-sqlite)
   - [Specify typings for a specific database driver](#specify-typings-for-a-specific-database-driver)
   - [Use generics to get better typings on your rows](#use-generics-to-get-better-typings-on-your-rows)
     - [Get example](#get-example)
@@ -433,9 +434,16 @@ await db.migrate({
 
 ## Typescript tricks
 
+### Import interfaces from sqlite
+
+`import { ISqlite, IMigrate } from 'sqlite'`
+
+See the definitions for more details.
+
 ### Specify typings for a specific database driver
 
 ```typescript
+// Assuming you have @types/sqlite3 installed
 import sqlite3 from 'sqlite3'
 
 // sqlite3.Database, sqlite3.Statement is the default if no explicit generic is specified
