@@ -1,3 +1,5 @@
+/// <reference types="../vendor-typings/sql-template-strings" />
+
 import sqlite3 from 'sqlite3'
 import { SQLStatement } from 'sql-template-strings'
 import { Statement } from '../Statement'

@@ -5,7 +5,7 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
-    "build": "npm run build:clean && npm run compile",
+    "build": "npm run build:clean && npm run compile && cp -R src/vendor-typings build",
     "build:docs": "typedoc --options typedoc.js --plugin typedoc-plugin-markdown src/ --out docs",
     "build:clean": "rm -rf build/*",
     "compile": "tsc",
