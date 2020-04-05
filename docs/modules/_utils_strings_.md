@@ -12,9 +12,9 @@
 
 ###  toSqlParams
 
-▸ **toSqlParams**(`sql`: [SqlType](_interfaces_sqlite_interfaces_.md#sqltype), `params`: any[]): *[SqlObj](../interfaces/_interfaces_sqlite_interfaces_.sqlobj.md)*
+▸ **toSqlParams**(`sql`: [SqlType](_interfaces_.md#sqltype), `params`: any[]): *[SqlObj](_interfaces_.md#sqlobj)*
 
-*Defined in [utils/strings.ts:10](https://github.com/kriasoft/node-sqlite/blob/8aac44a/src/utils/strings.ts#L10)*
+*Defined in [utils/strings.ts:10](https://github.com/kriasoft/node-sqlite/blob/4fec1c3/src/utils/strings.ts#L10)*
 
 Allows for using strings and `sql-template-strings`. Converts both to a
 format that's usable by the SQL methods
@@ -23,7 +23,7 @@ format that's usable by the SQL methods
 
 Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
-`sql` | [SqlType](_interfaces_sqlite_interfaces_.md#sqltype) | - | A SQL string or `sql-template-strings` object |
+`sql` | [SqlType](_interfaces_.md#sqltype) | - | A SQL string or `sql-template-strings` object |
 `params` | any[] | [] | An array of parameters  |
 
-**Returns:** *[SqlObj](../interfaces/_interfaces_sqlite_interfaces_.sqlobj.md)*
+**Returns:** *[SqlObj](_interfaces_.md#sqlobj)*

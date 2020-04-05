@@ -12,9 +12,9 @@
 
 ###  open
 
-▸ **open**<**Driver**, **Stmt**>(`config`: [Config](_interfaces_sqlite_interfaces_.md#config)): *Promise‹[Database](../classes/_database_.database.md)›*
+▸ **open**<**Driver**, **Stmt**>(`config`: [Config](_interfaces_.md#config)): *Promise‹[Database](../classes/_database_.database.md)›*
 
-*Defined in [index.ts:9](https://github.com/kriasoft/node-sqlite/blob/8aac44a/src/index.ts#L9)*
+*Defined in [index.ts:11](https://github.com/kriasoft/node-sqlite/blob/4fec1c3/src/index.ts#L11)*
 
 Opens a database for manipulation. Most users will call this to get started.
 
@@ -28,6 +28,6 @@ Opens a database for manipulation. Most users will call this to get started.
 
 Name | Type |
 ------ | ------ |
-`config` | [Config](_interfaces_sqlite_interfaces_.md#config) |
+`config` | [Config](_interfaces_.md#config) |
 
 **Returns:** *Promise‹[Database](../classes/_database_.database.md)›*

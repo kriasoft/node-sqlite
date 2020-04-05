@@ -1,12 +1,11 @@
 import * as sqlite3 from 'sqlite3'
-import { ISqlite } from './interfaces/Sqlite.interfaces'
-import { Migrate } from './interfaces/migrate.interfaces'
+import { ISqlite, IMigrate } from './interfaces'
 
 import { Statement } from './Statement'
 import { migrate } from './utils/migrate'
 import { toSqlParams } from './utils/strings'
 
-import MigrationParams = Migrate.MigrationParams
+import MigrationParams = IMigrate.MigrationParams
 
 /**
  * Promisified wrapper for the sqlite3#Database interface.

@@ -1,10 +1,10 @@
 import fs from 'fs'
 import path from 'path'
 import { Database } from '../Database'
-import { Migrate } from '../interfaces/migrate.interfaces'
+import { IMigrate } from '../interfaces'
 
-import MigrationFile = Migrate.MigrationFile
-import MigrationParams = Migrate.MigrationParams
+import MigrationFile = IMigrate.MigrationFile
+import MigrationParams = IMigrate.MigrationParams
 
 /**
  * Migrates database schema to the latest version

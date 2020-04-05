@@ -1,15 +1,16 @@
-/// <reference types="../vendor-typings/sql-template-strings" />
+/// <reference types="./vendor-typings/sql-template-strings" />
+/// <reference types="./vendor-typings/sqlite3" />
 
 import sqlite3 from 'sqlite3'
 import { SQLStatement } from 'sql-template-strings'
-import { Statement } from '../Statement'
-
-export interface SqlObj {
-  sql: string
-  params?: any[]
-}
+import { Statement } from './Statement'
 
 export namespace ISqlite {
+  export interface SqlObj {
+    sql: string
+    params?: any[]
+  }
+
   /**
    * Allows for input of a normal SQL string or
    * `sql-template-strings` object
@@ -74,5 +75,31 @@ export namespace ISqlite {
      * successfully completed UPDATE or DELETE statement.
      */
     changes?: number
+  }
+}
+
+export namespace IMigrate {
+  export interface MigrationParams {
+    /**
+     * If true, will force the migration API to rollback and re-apply the latest migration over
+     * again each time when Node.js app launches.
+     */
+    force?: boolean
+    /**
+     * Migrations table name. Default is 'migrations'
+     */
+    table?: string
+    /**
+     * Path to the migrations folder. Default is `path.join(process.cwd(), 'migrations')`
+     */
+    migrationsPath?: string
+  }
+
+  export interface MigrationFile {
+    id: number
+    name: string
+    filename: string
+    up?: string
+    down?: string
   }
 }

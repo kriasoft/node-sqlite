@@ -1,4 +1,4 @@
-import { ISqlite, SqlObj } from '../interfaces/Sqlite.interfaces'
+import { ISqlite } from '../interfaces'
 
 /**
  * Allows for using strings and `sql-template-strings`. Converts both to a
@@ -7,7 +7,10 @@ import { ISqlite, SqlObj } from '../interfaces/Sqlite.interfaces'
  * @param sql A SQL string or `sql-template-strings` object
  * @param params An array of parameters
  */
-export function toSqlParams (sql: ISqlite.SqlType, params: any[] = []): SqlObj {
+export function toSqlParams (
+  sql: ISqlite.SqlType,
+  params: any[] = []
+): ISqlite.SqlObj {
   if (typeof sql === 'string') {
     return {
       sql,
