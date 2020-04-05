@@ -2,7 +2,7 @@
 
 import { migrate } from '../migrate'
 import { Database } from '../../Database'
-import sqlite3 from 'sqlite3'
+import * as sqlite3 from 'sqlite3'
 
 let db
 

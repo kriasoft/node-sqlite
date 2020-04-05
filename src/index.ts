@@ -1,6 +1,6 @@
 /// <reference types="./vendor-typings/sqlite3" />
 
-import sqlite3 from 'sqlite3'
+import * as sqlite3 from 'sqlite3'
 import { Statement } from './Statement'
 import { Database } from './Database'
 import { ISqlite, IMigrate } from './interfaces'

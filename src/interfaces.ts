@@ -1,7 +1,7 @@
 /// <reference types="./vendor-typings/sql-template-strings" />
 /// <reference types="./vendor-typings/sqlite3" />
 
-import sqlite3 from 'sqlite3'
+import * as sqlite3 from 'sqlite3'
 import { SQLStatement } from 'sql-template-strings'
 import { Statement } from './Statement'
 

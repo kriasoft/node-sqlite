@@ -1,8 +1,8 @@
 /* eslint-env jest */
 
-import sqlite3Offline from 'sqlite3-offline'
+import * as sqlite3Offline from 'sqlite3-offline'
 import { open } from '..'
-import sqlite3 from 'sqlite3'
+import * as sqlite3 from 'sqlite3'
 
 describe('index', () => {
   // enable the sqlite cached database or not
