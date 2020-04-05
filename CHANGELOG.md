@@ -1,3 +1,9 @@
+# 4.0.3 - Sun Apr 05 2020 00:01:31
+
+- Fix Typescript issue where sql-template-strings is a forced requirement (#108)
+
+It should be an optional dependency and is not required for installation.
+
 # 4.0.2 - Sat Apr 04 2020 22:19:38
 
 - Add management tools section to readme
