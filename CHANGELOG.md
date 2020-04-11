@@ -1,3 +1,18 @@
+## 4.0.6 - Sat Apr 11 2020 04:16:08
+
+**Contributor:** [Theo Gravity](https://github.com/Theo Gravity)
+
+- Throw an error if two callbacks are defined for #each()
+
+This addresses an issue where the `sqlite3` API for `each()` uses
+two callbacks, where this library only uses one for `each()`.
+
+An error is now thrown if two callbacks are defined when using the
+`sqlite` `each()` method.
+
+(In `sqlite`, the second callback of `sqlite3` is used to resolve the
+promise.)
+
 ## 4.0.5 - Sun Apr 05 2020 20:13:43
 
 **Contributor:** [jameswilddev](https://github.com/jameswilddev)
