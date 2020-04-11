@@ -189,8 +189,20 @@ export class Database<
 
       if (!callback || typeof callback !== 'function') {
         throw new Error(
-          'sqlite: Last param of Database#each() must be a callback( function'
+          'sqlite: Last param of Database#each() must be a callback function'
         )
+      }
+
+      if (params.length > 0) {
+        const positional = params.pop()
+
+        if (typeof positional === 'function') {
+          throw new Error(
+            'sqlite: Database#each() should only have a single callback defined. See readme for usage.'
+          )
+        }
+
+        params.push(positional)
       }
 
       const sqlObj = toSqlParams(sql, params)

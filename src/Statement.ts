@@ -187,6 +187,18 @@ export class Statement<S extends sqlite.Statement = sqlite.Statement> {
         )
       }
 
+      if (params.length > 0) {
+        const positional = params.pop()
+
+        if (typeof positional === 'function') {
+          throw new Error(
+            'sqlite: Statement#each() should only have a single callback defined. See readme for usage.'
+          )
+        }
+
+        params.push(positional)
+      }
+
       this.stmt.each(
         ...params,
         (err, row) => {
