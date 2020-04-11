@@ -1,6 +1,6 @@
 ## 4.0.6 - Sat Apr 11 2020 04:16:08
 
-**Contributor:** [Theo Gravity](https://github.com/Theo Gravity)
+**Contributor:** Theo Gravity
 
 - Throw an error if two callbacks are defined for #each()
 
