@@ -66,7 +66,7 @@ should also work.
 ### Install `sqlite`
 
 ```sh
-# v4 of sqlite is targted for nodejs 10 and on.
+# v4 of sqlite is targeted for nodejs 10 and on.
 $ npm install sqlite --save
 
 # If you need a legacy version for an older version of nodejs
