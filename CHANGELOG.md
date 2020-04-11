@@ -5,7 +5,7 @@
 - Throw an error if two callbacks are defined for #each()
 
 This addresses an issue where the `sqlite3` API for `each()` uses
-two callbacks, where this library only uses one for `each()`.
+two callbacks, while this library only uses one for `each()`.
 
 An error is now thrown if two callbacks are defined when using the
 `sqlite` `each()` method.
