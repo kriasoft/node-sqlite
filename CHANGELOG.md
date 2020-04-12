@@ -1,3 +1,9 @@
+## 4.0.7 - Sun Apr 12 2020 19:43:31
+
+**Contributor:** Yamavol
+
+- Fix typescript defs for sqlite3 loadExtension() (#112)
+
 ## 4.0.6 - Sat Apr 11 2020 04:16:08
 
 **Contributor:** Theo Gravity
