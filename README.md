@@ -496,7 +496,8 @@ See the [`docs`](docs/globals.md) directory for full documentation.
 - [datasette](https://github.com/simonw/datasette): Datasette is a tool for exploring and publishing 
 data. Starts up a server that provides a web interface to your SQLite data.
 - [SQLite Studio](https://github.com/pawelsalawa/sqlitestudio): A free, open source, multi-platform 
-SQLite database manager written in C++, with use of Qt framework.                                                                
+SQLite database manager written in C++, with use of Qt framework.                                                             - [HeidiSQL](https://www.heidisql.com/): Full-featured database editor.
+- [DBeaver](https://dbeaver.io/): Full-featured multi-platform database tool and designer.   
 
 ## Alternative SQLite libraries
 
