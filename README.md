@@ -491,6 +491,7 @@ See the [`docs`](docs/globals.md) directory for full documentation.
 
 ## Management Tools
 
+- [Beekeeper Studio](https://www.beekeeperstudio.io/): Open Source SQL Editor and Database Manager
 - [DB Browser for SQLite](https://github.com/sqlitebrowser/sqlitebrowser): Desktop-based browser.
 - [datasette](https://github.com/simonw/datasette): Datasette is a tool for exploring and publishing 
 data. Starts up a server that provides a web interface to your SQLite data.
