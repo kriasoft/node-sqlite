@@ -1,3 +1,5 @@
+/// <reference types="node" />
+
 declare module 'sqlite3' {
   // Type definitions for sqlite3 3.1
   // Project: http://github.com/mapbox/node-sqlite3
@@ -6,7 +8,6 @@ declare module 'sqlite3' {
   //                 Behind The Math <https://github.com/BehindTheMath>
   // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
-  /// <reference types="node" />
   import events = require('events')
 
   export const OPEN_READONLY: number
