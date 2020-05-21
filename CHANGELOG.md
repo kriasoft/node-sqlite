@@ -1,3 +1,9 @@
+## 4.0.8 - Thu May 21 2020 22:59:57
+
+**Contributor:** George Corney
+
+- Move triple-slash reference so it is recognized (#115)
+
 ## 4.0.7 - Sun Apr 12 2020 19:43:31
 
 **Contributor:** Yamavol
