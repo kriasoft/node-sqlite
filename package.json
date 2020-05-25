@@ -4,6 +4,11 @@
   "description": "SQLite client for Node.js applications with SQL-based migrations API written in Typescript",
   "main": "build/index.js",
   "types": "build/index.d.ts",
+  "type": "commonjs",
+  "exports": {
+    "require": "./build/index.js",
+    "import": "./index.mjs"
+  },
   "scripts": {
     "build": "npm run build:clean && npm run compile && cp -R src/vendor-typings build",
     "build:docs": "typedoc --options typedoc.js --plugin typedoc-plugin-markdown src/ --out docs",
