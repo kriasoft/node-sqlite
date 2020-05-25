@@ -1,3 +1,13 @@
+## 4.0.9 - Mon May 25 2020 22:50:02
+
+**Contributor:** Markus Felten
+
+- feat: provide native esm exports (#117)
+
+* feat: provide native esm exports
+
+Co-authored-by: Markus Felten <Markus.Felten@db.com>
+
 ## 4.0.8 - Thu May 21 2020 22:59:57
 
 **Contributor:** George Corney
