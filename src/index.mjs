@@ -1,6 +1,6 @@
-export * from "./build/Statement.js";
-export * from "./build/Database.js";
-import Database from "./build/Database.js";
+export * from "./Statement.js";
+export * from "./Database.js";
+import Database from "./Database.js";
 
 /**
  * Opens a database for manipulation. Most users will call this to get started.
