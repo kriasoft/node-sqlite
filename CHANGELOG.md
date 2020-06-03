@@ -1,3 +1,11 @@
+## 4.0.10 - Wed Jun 03 2020 00:51:41
+
+**Contributor:** Gustavo Rodrigues
+
+- Use HTTPS in README badges (#118)
+
+Shields.io badges were being loaded using HTTP causing mixed-content errors in the NPM page.
+
 ## 4.0.9 - Mon May 25 2020 22:50:02
 
 **Contributor:** Markus Felten
