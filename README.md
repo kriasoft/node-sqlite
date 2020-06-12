@@ -27,7 +27,7 @@
     - [Creating a table and inserting data](#creating-a-table-and-inserting-data)
     - [Getting a single row](#getting-a-single-row)
     - [Getting many rows](#getting-many-rows)
-    - [Inserting rows (part 2)](#inserting-rows-part-2)
+    - [Inserting rows](#inserting-rows)
     - [Updating rows](#updating-rows)
     - [Prepared statement](#prepared-statement)
     - [`each()`](#each)
@@ -285,7 +285,7 @@ const result = await db.all('SELECT col FROM tbl')
 // [{ col: 'test' }]
 ```
 
-#### Inserting rows (part 2)
+#### Inserting rows
 
 ```typescript
 const result = await db.run(
@@ -296,7 +296,7 @@ const result = await db.run(
 /*
 {
   // row ID of the inserted row
-  lastId: 1,
+  lastID: 1,
   // instance of `sqlite#Statement`
   // which is a wrapper around `sqlite3#Statement`
   stmt: <Statement>
