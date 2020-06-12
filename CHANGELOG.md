@@ -1,3 +1,11 @@
+## 4.0.11 - Fri Jun 12 2020 09:43:39
+
+**Contributor:** Theo Gravity
+
+- Update readme for inserting rows (#120)
+
+@akc42 pointed out that the docs for `db.run` says it returns `lastId` when it should be `lastID`.
+
 ## 4.0.10 - Wed Jun 03 2020 00:51:41
 
 **Contributor:** Gustavo Rodrigues
