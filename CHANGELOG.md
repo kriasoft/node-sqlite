@@ -1,3 +1,17 @@
+## 4.0.12 - Mon Jul 20 2020 04:19:01
+
+**Contributor:** dependabot[bot]
+
+- Bump lodash from 4.17.15 to 4.17.19 (#122)
+
+Bumps [lodash](https://github.com/lodash/lodash) from 4.17.15 to 4.17.19.
+- [Release notes](https://github.com/lodash/lodash/releases)
+- [Commits](https://github.com/lodash/lodash/compare/4.17.15...4.17.19)
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+
 ## 4.0.11 - Fri Jun 12 2020 09:43:39
 
 **Contributor:** Theo Gravity
