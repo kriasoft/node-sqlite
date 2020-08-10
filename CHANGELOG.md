@@ -4,8 +4,6 @@
 
 - Revert filename optional; update filename checks instead (#125)
 
-* Revert filename optional; update filename checks instead
-
 The `filename` property is back to being required, but empty strings are valid values for the purpose of using an anonymous disk-based database.
 
 Values of `undefined` or `null` for `filename` will throw.
