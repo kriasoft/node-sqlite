@@ -1,3 +1,15 @@
+## 4.0.14 - Mon Aug 10 2020 01:08:29
+
+**Contributor:** Theo Gravity
+
+- Revert filename optional; update filename checks instead (#125)
+
+* Revert filename optional; update filename checks instead
+
+The `filename` property is back to being required, but empty strings are valid values for the purpose of using an anonymous disk-based database.
+
+Values of `undefined` or `null` for `filename` will throw.
+
 ## 4.0.13 - Mon Aug 10 2020 00:57:58
 
 **Contributor:** Theo Gravity
