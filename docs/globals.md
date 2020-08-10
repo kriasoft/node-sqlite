@@ -6,9 +6,9 @@
 
 ### Modules
 
-* ["Database"](modules/_database_.md)
-* ["Statement"](modules/_statement_.md)
-* ["index"](modules/_index_.md)
-* ["interfaces"](modules/_interfaces_.md)
-* ["utils/migrate"](modules/_utils_migrate_.md)
-* ["utils/strings"](modules/_utils_strings_.md)
+* ["src/Database"](modules/_src_database_.md)
+* ["src/Statement"](modules/_src_statement_.md)
+* ["src/index"](modules/_src_index_.md)
+* ["src/interfaces"](modules/_src_interfaces_.md)
+* ["src/utils/migrate"](modules/_src_utils_migrate_.md)
+* ["src/utils/strings"](modules/_src_utils_strings_.md)
