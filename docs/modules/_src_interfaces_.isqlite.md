@@ -21,7 +21,7 @@
 
 Ƭ **ConfigureOption**: *"trace" | "profile" | "busyTimeout"*
 
-*Defined in [src/interfaces.ts:51](https://github.com/kriasoft/node-sqlite/blob/244b720/src/interfaces.ts#L51)*
+*Defined in [src/interfaces.ts:51](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/interfaces.ts#L51)*
 
 ___
 
@@ -29,7 +29,7 @@ ___
 
 Ƭ **SqlType**: *SQLStatement | string*
 
-*Defined in [src/interfaces.ts:18](https://github.com/kriasoft/node-sqlite/blob/244b720/src/interfaces.ts#L18)*
+*Defined in [src/interfaces.ts:18](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/interfaces.ts#L18)*
 
 Allows for input of a normal SQL string or
 `sql-template-strings` object

@@ -24,7 +24,7 @@
 
 • **changes**? : *number*
 
-*Defined in [src/interfaces.ts:77](https://github.com/kriasoft/node-sqlite/blob/244b720/src/interfaces.ts#L77)*
+*Defined in [src/interfaces.ts:77](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/interfaces.ts#L77)*
 
 Number of rows changed.
 
@@ -37,7 +37,7 @@ ___
 
 • **lastID**? : *number*
 
-*Defined in [src/interfaces.ts:70](https://github.com/kriasoft/node-sqlite/blob/244b720/src/interfaces.ts#L70)*
+*Defined in [src/interfaces.ts:70](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/interfaces.ts#L70)*
 
 Row id of the inserted row.
 
@@ -50,7 +50,7 @@ ___
 
 • **stmt**: *[Statement](../classes/_src_statement_.statement.md)‹Stmt›*
 
-*Defined in [src/interfaces.ts:63](https://github.com/kriasoft/node-sqlite/blob/244b720/src/interfaces.ts#L63)*
+*Defined in [src/interfaces.ts:63](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/interfaces.ts#L63)*
 
 Statement object.
 
