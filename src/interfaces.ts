@@ -24,7 +24,7 @@ export namespace ISqlite {
      * Anonymous databases are not persisted and when closing the database
      * handle, their contents are lost.
      */
-    filename?: string
+    filename: string
 
     /**
      * One or more of sqlite3.OPEN_READONLY, sqlite3.OPEN_READWRITE and

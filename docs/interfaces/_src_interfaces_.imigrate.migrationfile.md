@@ -22,7 +22,7 @@
 
 • **down**? : *string*
 
-*Defined in [src/interfaces.ts:103](https://github.com/kriasoft/node-sqlite/blob/244b720/src/interfaces.ts#L103)*
+*Defined in [src/interfaces.ts:103](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/interfaces.ts#L103)*
 
 ___
 
@@ -30,7 +30,7 @@ ___
 
 • **filename**: *string*
 
-*Defined in [src/interfaces.ts:101](https://github.com/kriasoft/node-sqlite/blob/244b720/src/interfaces.ts#L101)*
+*Defined in [src/interfaces.ts:101](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/interfaces.ts#L101)*
 
 ___
 
@@ -38,7 +38,7 @@ ___
 
 • **id**: *number*
 
-*Defined in [src/interfaces.ts:99](https://github.com/kriasoft/node-sqlite/blob/244b720/src/interfaces.ts#L99)*
+*Defined in [src/interfaces.ts:99](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/interfaces.ts#L99)*
 
 ___
 
@@ -46,7 +46,7 @@ ___
 
 • **name**: *string*
 
-*Defined in [src/interfaces.ts:100](https://github.com/kriasoft/node-sqlite/blob/244b720/src/interfaces.ts#L100)*
+*Defined in [src/interfaces.ts:100](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/interfaces.ts#L100)*
 
 ___
 
@@ -54,4 +54,4 @@ ___
 
 • **up**? : *string*
 
-*Defined in [src/interfaces.ts:102](https://github.com/kriasoft/node-sqlite/blob/244b720/src/interfaces.ts#L102)*
+*Defined in [src/interfaces.ts:102](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/interfaces.ts#L102)*

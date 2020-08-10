@@ -14,7 +14,7 @@
 
 ▸ **migrate**(`db`: [Database](../classes/_src_database_.database.md), `config`: [MigrationParams](../interfaces/_src_interfaces_.imigrate.migrationparams.md)): *Promise‹void›*
 
-*Defined in [src/utils/migrate.ts:12](https://github.com/kriasoft/node-sqlite/blob/244b720/src/utils/migrate.ts#L12)*
+*Defined in [src/utils/migrate.ts:12](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/utils/migrate.ts#L12)*
 
 Migrates database schema to the latest version
 

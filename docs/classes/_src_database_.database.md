@@ -49,7 +49,7 @@ Promisified wrapper for the sqlite3#Database interface.
 
 \+ **new Database**(`config`: [Config](../interfaces/_src_interfaces_.isqlite.config.md)): *[Database](_src_database_.database.md)*
 
-*Defined in [src/Database.ts:18](https://github.com/kriasoft/node-sqlite/blob/244b720/src/Database.ts#L18)*
+*Defined in [src/Database.ts:18](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Database.ts#L18)*
 
 **Parameters:**
 
@@ -65,7 +65,7 @@ Name | Type |
 
 • **config**: *[Config](../interfaces/_src_interfaces_.isqlite.config.md)*
 
-*Defined in [src/Database.ts:17](https://github.com/kriasoft/node-sqlite/blob/244b720/src/Database.ts#L17)*
+*Defined in [src/Database.ts:17](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Database.ts#L17)*
 
 ___
 
@@ -73,7 +73,7 @@ ___
 
 • **db**: *Driver*
 
-*Defined in [src/Database.ts:18](https://github.com/kriasoft/node-sqlite/blob/244b720/src/Database.ts#L18)*
+*Defined in [src/Database.ts:18](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Database.ts#L18)*
 
 ## Methods
 
@@ -81,7 +81,7 @@ ___
 
 ▸ **all**‹**T**›(`sql`: [SqlType](../modules/_src_interfaces_.isqlite.md#sqltype), ...`params`: any[]): *Promise‹T›*
 
-*Defined in [src/Database.ts:255](https://github.com/kriasoft/node-sqlite/blob/244b720/src/Database.ts#L255)*
+*Defined in [src/Database.ts:255](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Database.ts#L255)*
 
 Runs the SQL query with the specified parameters. The parameters are the same as the
 Database#run function, with the following differences:
@@ -116,7 +116,7 @@ ___
 
 ▸ **close**(): *Promise‹void›*
 
-*Defined in [src/Database.ts:79](https://github.com/kriasoft/node-sqlite/blob/244b720/src/Database.ts#L79)*
+*Defined in [src/Database.ts:79](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Database.ts#L79)*
 
 Closes the database.
 
@@ -128,7 +128,7 @@ ___
 
 ▸ **configure**(`option`: [ConfigureOption](../modules/_src_interfaces_.isqlite.md#configureoption), `value`: any): *any*
 
-*Defined in [src/Database.ts:94](https://github.com/kriasoft/node-sqlite/blob/244b720/src/Database.ts#L94)*
+*Defined in [src/Database.ts:94](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Database.ts#L94)*
 
 **`see`** https://github.com/mapbox/node-sqlite3/wiki/API#databaseconfigureoption-value
 
@@ -147,7 +147,7 @@ ___
 
 ▸ **each**‹**T**›(`sql`: [SqlType](../modules/_src_interfaces_.isqlite.md#sqltype), ...`params`: any[]): *Promise‹number›*
 
-*Defined in [src/Database.ts:187](https://github.com/kriasoft/node-sqlite/blob/244b720/src/Database.ts#L187)*
+*Defined in [src/Database.ts:187](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Database.ts#L187)*
 
 Runs the SQL query with the specified parameters and calls the callback once for each result
 row. The parameters are the same as the Database#run function, with the following differences:
@@ -188,7 +188,7 @@ ___
 
 ▸ **exec**(`sql`: [SqlType](../modules/_src_interfaces_.isqlite.md#sqltype)): *Promise‹void›*
 
-*Defined in [src/Database.ts:280](https://github.com/kriasoft/node-sqlite/blob/244b720/src/Database.ts#L280)*
+*Defined in [src/Database.ts:280](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Database.ts#L280)*
 
 Runs all SQL queries in the supplied string. No result rows are retrieved. If a query fails,
 no subsequent statements will be executed (wrap it in a transaction if you want all
@@ -213,7 +213,7 @@ ___
 
 ▸ **get**‹**T**›(`sql`: [SqlType](../modules/_src_interfaces_.isqlite.md#sqltype), ...`params`: any[]): *Promise‹T | undefined›*
 
-*Defined in [src/Database.ts:150](https://github.com/kriasoft/node-sqlite/blob/244b720/src/Database.ts#L150)*
+*Defined in [src/Database.ts:150](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Database.ts#L150)*
 
 Runs the SQL query with the specified parameters and resolves with
 with the first result row afterwards. If the result set is empty, returns undefined.
@@ -242,7 +242,7 @@ ___
 
 ▸ **getDatabaseInstance**(): *Driver*
 
-*Defined in [src/Database.ts:36](https://github.com/kriasoft/node-sqlite/blob/244b720/src/Database.ts#L36)*
+*Defined in [src/Database.ts:36](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Database.ts#L36)*
 
 Returns the underlying sqlite3 Database instance
 
@@ -254,7 +254,7 @@ ___
 
 ▸ **loadExtension**(`path`: string): *Promise‹unknown›*
 
-*Defined in [src/Database.ts:325](https://github.com/kriasoft/node-sqlite/blob/244b720/src/Database.ts#L325)*
+*Defined in [src/Database.ts:325](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Database.ts#L325)*
 
 Loads a compiled SQLite extension into the database connection object.
 
@@ -272,7 +272,7 @@ ___
 
 ▸ **migrate**(`config?`: [MigrationParams](../interfaces/_src_interfaces_.imigrate.migrationparams.md)): *Promise‹void›*
 
-*Defined in [src/Database.ts:340](https://github.com/kriasoft/node-sqlite/blob/244b720/src/Database.ts#L340)*
+*Defined in [src/Database.ts:340](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Database.ts#L340)*
 
 Performs a database migration.
 
@@ -290,7 +290,7 @@ ___
 
 ▸ **on**(`event`: string, `listener`: any): *void*
 
-*Defined in [src/Database.ts:29](https://github.com/kriasoft/node-sqlite/blob/244b720/src/Database.ts#L29)*
+*Defined in [src/Database.ts:29](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Database.ts#L29)*
 
 Event handler when verbose mode is enabled.
 
@@ -311,7 +311,7 @@ ___
 
 ▸ **open**(): *Promise‹void›*
 
-*Defined in [src/Database.ts:43](https://github.com/kriasoft/node-sqlite/blob/244b720/src/Database.ts#L43)*
+*Defined in [src/Database.ts:43](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Database.ts#L43)*
 
 Opens the database
 
@@ -323,7 +323,7 @@ ___
 
 ▸ **parallelize**(): *void*
 
-*Defined in [src/Database.ts:360](https://github.com/kriasoft/node-sqlite/blob/244b720/src/Database.ts#L360)*
+*Defined in [src/Database.ts:360](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Database.ts#L360)*
 
 **Returns:** *void*
 
@@ -333,7 +333,7 @@ ___
 
 ▸ **prepare**(`sql`: [SqlType](../modules/_src_interfaces_.isqlite.md#sqltype), ...`params`: any[]): *Promise‹[Statement](_src_statement_.statement.md)‹Stmt››*
 
-*Defined in [src/Database.ts:306](https://github.com/kriasoft/node-sqlite/blob/244b720/src/Database.ts#L306)*
+*Defined in [src/Database.ts:306](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Database.ts#L306)*
 
 Prepares the SQL statement and optionally binds the specified parameters.
 When bind parameters are supplied, they are bound to the prepared statement.
@@ -355,7 +355,7 @@ ___
 
 ▸ **run**(`sql`: [SqlType](../modules/_src_interfaces_.isqlite.md#sqltype), ...`params`: any[]): *Promise‹[RunResult](../interfaces/_src_interfaces_.isqlite.runresult.md)‹Stmt››*
 
-*Defined in [src/Database.ts:112](https://github.com/kriasoft/node-sqlite/blob/244b720/src/Database.ts#L112)*
+*Defined in [src/Database.ts:112](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Database.ts#L112)*
 
 Runs the SQL query with the specified parameters. It does not retrieve any result data.
 The function returns the Database object for which it was called to allow for function chaining.
@@ -377,7 +377,7 @@ ___
 
 ▸ **serialize**(): *void*
 
-*Defined in [src/Database.ts:351](https://github.com/kriasoft/node-sqlite/blob/244b720/src/Database.ts#L351)*
+*Defined in [src/Database.ts:351](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Database.ts#L351)*
 
 The methods underneath requires creative work to implement. PRs / proposals accepted!
 

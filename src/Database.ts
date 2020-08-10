@@ -45,8 +45,8 @@ export class Database<
       let { filename, mode, driver } = this.config
 
       // https://github.com/mapbox/node-sqlite3/wiki/API#new-sqlite3databasefilename-mode-callback
-      if (!filename) {
-        filename = ''
+      if (filename === null || filename === undefined) {
+        throw new Error('sqlite: filename cannot be null / undefined')
       }
 
       if (!driver) {
