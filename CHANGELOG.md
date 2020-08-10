@@ -1,3 +1,11 @@
+## 4.0.13 - Mon Aug 10 2020 00:57:58
+
+**Contributor:** Theo Gravity
+
+- Make filename optional (#124)
+
+This allows for the specification of an anonymous database.
+
 ## 4.0.12 - Mon Jul 20 2020 04:19:01
 
 **Contributor:** dependabot[bot]
