@@ -44,8 +44,9 @@ export class Database<
     return new Promise((resolve, reject) => {
       let { filename, mode, driver } = this.config
 
+      // https://github.com/mapbox/node-sqlite3/wiki/API#new-sqlite3databasefilename-mode-callback
       if (!filename) {
-        throw new Error('sqlite: filename is not defined')
+        filename = ''
       }
 
       if (!driver) {

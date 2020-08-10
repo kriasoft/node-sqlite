@@ -37,6 +37,24 @@ describe('index', () => {
     })
   })
 
+  it('should allow an anonymous database', async () => {
+    const db = await open({
+      filename: '',
+      driver: sqlite3Offline.Database
+    })
+
+    await db.migrate()
+
+    const result = await db.all('SELECT id, name FROM migrations')
+    expect(result).toEqual([
+      { id: 1, name: 'initial' },
+      { id: 2, name: 'some-feature' },
+      { id: 3, name: 'test-cert' }
+    ])
+
+    await db.close()
+  })
+
   it('should allow a custom driver', async () => {
     const db = await open({
       filename: ':memory:',
