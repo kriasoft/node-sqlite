@@ -1,3 +1,9 @@
+## 4.0.15 - Wed Sep 30 2020 16:06:20
+
+**Contributor:** Paul Kiddle
+
+- Make down migrations optional (#129)
+
 ## 4.0.14 - Mon Aug 10 2020 01:08:29
 
 **Contributor:** Theo Gravity
