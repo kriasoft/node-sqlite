@@ -23,7 +23,8 @@ describe('migration function', () => {
     expect(result).toEqual([
       { id: 1, name: 'initial' },
       { id: 2, name: 'some-feature' },
-      { id: 3, name: 'test-cert' }
+      { id: 3, name: 'test-cert' },
+      { id: 4, name: 'no-down' }
     ])
 
     result = await db.all('SELECT * FROM Category')
@@ -38,6 +39,10 @@ describe('migration function', () => {
     expect(result[0].certificate).toBe(
       '-----BEGIN CERTIFICATE-----\nsome contents\n-----END CERTIFICATE-----'
     )
+
+    result = await db.all('SELECT value from downless')
+
+    expect(result[0].value).toBe('down migration is optional')
 
     await db.close()
   })

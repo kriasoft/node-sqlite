@@ -57,14 +57,10 @@ export async function migrate (db: Database, config: MigrationParams = {}) {
             }
 
             const [up, down] = data.split(/^--\s+?down\b/im)
-            if (!down) {
-              const message = `The ${migration.filename} file does not contain '-- Down' separator.`
-              return reject(new Error(message))
-            }
 
             /* eslint-disable no-param-reassign */
             migration.up = up.replace(/^-- .*?$/gm, '').trim() // Remove comments
-            migration.down = down.trim() // and trim whitespaces
+            migration.down = down ? down.trim() : '' // and trim whitespaces
             /* eslint-enable no-param-reassign */
             resolve()
           })
