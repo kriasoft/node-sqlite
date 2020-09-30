@@ -277,7 +277,8 @@ describe('Sqlite3Database', () => {
     expect(result).toEqual([
       { id: 1, name: 'initial' },
       { id: 2, name: 'some-feature' },
-      { id: 3, name: 'test-cert' }
+      { id: 3, name: 'test-cert' },
+      { id: 4, name: 'no-down' }
     ])
 
     await db.close()
