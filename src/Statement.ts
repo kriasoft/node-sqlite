@@ -177,6 +177,11 @@ export class Statement<S extends sqlite.Statement = sqlite.Statement> {
    * @see https://github.com/mapbox/node-sqlite3/wiki/API#statementeachparam--callback-complete
    * @returns Promise<number> Number of rows returned
    */
+  each<T = any> (callback: (err: any, row: T) => void): Promise<number>
+  each<T = any> (param1: any, callback: (err: any, row: T) => void): Promise<number>
+  each<T = any> (param1: any, param2: any, callback: (err: any, row: T) => void): Promise<number>
+  each<T = any> (param1: any, param2: any, param3: any, callback: (err: any, row: T) => void): Promise<number>
+  each<T = any> (...params: any[]): Promise<number>
   each<T = any> (...params: any[]): Promise<number> {
     return new Promise((resolve, reject) => {
       const callback: (err, row: T) => void = params.pop()

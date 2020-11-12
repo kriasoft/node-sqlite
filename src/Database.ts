@@ -184,6 +184,11 @@ export class Database<
    * @see https://github.com/mapbox/node-sqlite3/wiki/API#databaseeachsql-param--callback-complete
    * @returns Promise<number> Number of rows returned
    */
+  each<T = any> (sql: ISqlite.SqlType, callback: (err: any, row: T) => void): Promise<number>
+  each<T = any> (sql: ISqlite.SqlType, param1: any, callback: (err: any, row: T) => void): Promise<number>
+  each<T = any> (sql: ISqlite.SqlType, param1: any, param2: any, callback: (err: any, row: T) => void): Promise<number>
+  each<T = any> (sql: ISqlite.SqlType, param1: any, param2: any, param3: any, callback: (err: any, row: T) => void): Promise<number>
+  each<T = any> (sql: ISqlite.SqlType, ...params: any[]): Promise<number>
   each<T = any> (sql: ISqlite.SqlType, ...params: any[]): Promise<number> {
     return new Promise((resolve, reject) => {
       const callback: (err, row: T) => void = params.pop()
