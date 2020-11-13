@@ -4,8 +4,6 @@
 
 - Add strict types for each() (#131)
 
-* Add strict types for each()
-
 ## 4.0.16 - Fri Nov 13 2020 19:15:24
 
 **Contributor:** Tiger Oakes
