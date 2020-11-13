@@ -1,3 +1,9 @@
+## 4.0.16 - Fri Nov 13 2020 19:15:24
+
+**Contributor:** Tiger Oakes
+
+- Let migrations be read manually (#132)
+
 ## 4.0.15 - Wed Sep 30 2020 16:06:20
 
 **Contributor:** Paul Kiddle
