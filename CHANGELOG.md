@@ -1,3 +1,18 @@
+## 4.0.18 - Fri Dec 04 2020 21:20:15
+
+**Contributor:** dependabot[bot]
+
+- Bump highlight.js from 10.1.2 to 10.4.1 (#133)
+
+Bumps [highlight.js](https://github.com/highlightjs/highlight.js) from 10.1.2 to 10.4.1.
+- [Release notes](https://github.com/highlightjs/highlight.js/releases)
+- [Changelog](https://github.com/highlightjs/highlight.js/blob/master/CHANGES.md)
+- [Commits](https://github.com/highlightjs/highlight.js/compare/10.1.2...10.4.1)
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+
 ## 4.0.17 - Fri Nov 13 2020 19:18:04
 
 **Contributor:** Tiger Oakes
