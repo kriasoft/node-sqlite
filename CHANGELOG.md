@@ -1,3 +1,17 @@
+## 4.0.19 - Wed Dec 30 2020 02:11:07
+
+**Contributor:** dependabot[bot]
+
+- Bump ini from 1.3.5 to 1.3.8 (#135)
+
+Bumps [ini](https://github.com/isaacs/ini) from 1.3.5 to 1.3.8.
+- [Release notes](https://github.com/isaacs/ini/releases)
+- [Commits](https://github.com/isaacs/ini/compare/v1.3.5...v1.3.8)
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+
 ## 4.0.18 - Fri Dec 04 2020 21:20:15
 
 **Contributor:** dependabot[bot]
