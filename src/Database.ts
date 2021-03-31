@@ -345,7 +345,7 @@ export class Database<
    *
    * @param {string} path Filename of the extension to load
    */
-  loadExtension (path: string) {
+  loadExtension (path: string): Promise<void> {
     return new Promise((resolve, reject) => {
       this.db.loadExtension(path, err => {
         if (err) {

@@ -11,6 +11,7 @@
 **note** v4 of `sqlite` has breaking changes compared to v3! Please see `CHANGELOG.md` for more details.
 
 <!-- TOC -->
+
 - [Installation](#installation)
   - [Install `sqlite3`](#install-sqlite3)
   - [Install `sqlite`](#install-sqlite)
