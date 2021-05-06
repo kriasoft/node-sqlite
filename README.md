@@ -359,7 +359,7 @@ The function signature looks like this:
 `async each (sql, [...params], callback)`
 
 - `callback(err, row)` is triggered when the database has a row to return
-- The promise resolves when all rows have returned with the number or rows returned.
+- The promise resolves when all rows have returned with the number of rows returned.
 
 ```typescript
 const rowsCount = await db.each(
