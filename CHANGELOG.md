@@ -1,3 +1,18 @@
+## 4.0.23 - Mon May 24 2021 21:17:44
+
+**Contributor:** dependabot[bot]
+
+- Bump browserslist from 4.16.3 to 4.16.6 (#145)
+
+Bumps [browserslist](https://github.com/browserslist/browserslist) from 4.16.3 to 4.16.6.
+- [Release notes](https://github.com/browserslist/browserslist/releases)
+- [Changelog](https://github.com/browserslist/browserslist/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/browserslist/browserslist/compare/4.16.3...4.16.6)
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+
 ## 4.0.22 - Sun May 09 2021 19:59:28
 
 **Contributor:** dependabot[bot]
