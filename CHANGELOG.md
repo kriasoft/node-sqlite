@@ -1,3 +1,9 @@
+## 4.0.24 - Sun Mar 06 2022 20:12:24
+
+**Contributor:** fresheneesz
+
+- Updating exec to support passed in parameters like the other functions do. (#155)
+
 ## 4.0.23 - Mon May 24 2021 21:17:44
 
 **Contributor:** dependabot[bot]
