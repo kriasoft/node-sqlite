@@ -1,3 +1,13 @@
+## 4.0.25 - Mon Mar 07 2022 08:50:06
+
+**Contributor:** Theo Gravity
+
+- Update packages, fix tests for latest jest (#159)
+
+* Update packages, fix tests for latest jest
+
+* Update node version on ci
+
 ## 4.0.24 - Sun Mar 06 2022 20:12:24
 
 **Contributor:** fresheneesz
