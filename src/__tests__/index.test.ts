@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import * as sqlite3Offline from 'sqlite3-offline'
+import * as sqlite3Offline from 'sqlite3-offline-next'
 import { open } from '..'
 import * as sqlite3 from 'sqlite3'
 
