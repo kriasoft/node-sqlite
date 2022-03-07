@@ -24,41 +24,37 @@ beforeEach(async () => {
 })
 
 describe('#each', () => {
-  it('should throw if Database#each is used without a callback', async done => {
-    try {
+  it('should throw if Database#each is used without a callback', async () => {
+    const fn = async () => {
       await db.each('SELECT * FROM tbl WHERE col = ?', ['something'])
-    } catch (e) {
-      expect(e.message).toContain('must be a callback function')
-      done()
     }
+    await expect(fn).rejects.toThrow('must be a callback function')
   })
 
-  it('should throw if Database#each is used with two callbacks', async done => {
-    try {
+  it('should throw if Database#each is used with two callbacks', async () => {
+    const fn = async () => {
       await db.each(
         'SELECT * FROM tbl WHERE col = ?',
         ['something'],
         () => {},
         () => {}
       )
-    } catch (e) {
-      expect(e.message).toContain('should only have')
-      done()
     }
+
+    await expect(fn).rejects.toThrow('should only have')
   })
 
-  it('should throw if Statement#each is used without a callback', async done => {
-    try {
+  it('should throw if Statement#each is used without a callback', async () => {
+    const fn = async () => {
       const stmt = await db.prepare('SELECT col FROM tbl WHERE col = ?')
       await stmt.each('SELECT * FROM tbl WHERE col = ?', ['something'])
-    } catch (e) {
-      expect(e.message).toContain('must be a callback function')
-      done()
     }
+
+    await expect(fn).rejects.toThrow('must be a callback function')
   })
 
-  it('should throw if Statement#each is used with two callbacks', async done => {
-    try {
+  it('should throw if Statement#each is used with two callbacks', async () => {
+    const fn = async () => {
       const stmt = await db.prepare('SELECT col FROM tbl WHERE col = ?')
       await stmt.each(
         'SELECT * FROM tbl WHERE col = ?',
@@ -66,9 +62,8 @@ describe('#each', () => {
         () => {},
         () => {}
       )
-    } catch (e) {
-      expect(e.message).toContain('should only have')
-      done()
     }
+
+    await expect(fn).rejects.toThrow('should only have')
   })
 })

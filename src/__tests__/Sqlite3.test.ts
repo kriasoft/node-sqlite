@@ -320,7 +320,7 @@ describe('Sqlite3Database', () => {
     await db.close()
   })
 
-  it('should enable verbose mode', async done => {
+  it('should enable verbose mode', async () => {
     sqlite3.verbose()
 
     const db = await open({
@@ -331,8 +331,8 @@ describe('Sqlite3Database', () => {
     await db.open()
 
     db.on('trace', async () => {
+      expect(true).toBeTruthy()
       await db.close()
-      done()
     })
 
     await db.exec('CREATE TABLE tbl (col1 TEXT, col2 TEXT, col3 TEXT)')
