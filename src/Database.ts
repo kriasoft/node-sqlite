@@ -56,7 +56,7 @@ export class Database<
       if (mode) {
         this.db = new driver(filename, mode, err => {
           if (err) {
-            return reject(err)
+            return reject(new Error(err)) // Wrapping to build a stack trace.
           }
 
           resolve()
@@ -64,7 +64,7 @@ export class Database<
       } else {
         this.db = new driver(filename, err => {
           if (err) {
-            return reject(err)
+            return reject(new Error(err)) // Wrapping to build a stack trace.
           }
 
           resolve()
@@ -80,7 +80,7 @@ export class Database<
     return new Promise((resolve, reject) => {
       this.db.close(err => {
         if (err) {
-          return reject(err)
+          return reject(new Error(err)) // Wrapping to build a stack trace.
         }
 
         resolve()
@@ -118,7 +118,7 @@ export class Database<
 
       this.db.run(sqlObj.sql, ...sqlObj.params, function (err) {
         if (err) {
-          return reject(err)
+          return reject(new Error(err)) // Wrapping to build a stack trace.
         }
 
         resolve({
@@ -156,7 +156,7 @@ export class Database<
 
       this.db.get(sqlObj.sql, ...sqlObj.params, (err, row?: T) => {
         if (err) {
-          return reject(err)
+          return reject(new Error(err)) // Wrapping to build a stack trace.
         }
 
         resolve(row)
@@ -243,7 +243,7 @@ export class Database<
         },
         (err, count) => {
           if (err) {
-            return reject(err)
+            return reject(new Error(err)) // Wrapping to build a stack trace.
           }
 
           resolve(count)
@@ -281,7 +281,7 @@ export class Database<
 
       this.db.all(sqlObj.sql, ...sqlObj.params, (err, rows?: T) => {
         if (err) {
-          return reject(err)
+          return reject(new Error(err)) // Wrapping to build a stack trace.
         }
 
         resolve(rows)
@@ -350,7 +350,7 @@ export class Database<
     return new Promise((resolve, reject) => {
       this.db.loadExtension(path, err => {
         if (err) {
-          return reject(err)
+          return reject(new Error(err)) // Wrapping to build a stack trace.
         }
 
         resolve()
