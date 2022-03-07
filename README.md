@@ -46,7 +46,6 @@
 - [Management Tools](#management-tools)
 - [Alternative SQLite libraries](#alternative-sqlite-libraries)
 - [References](#references)
-- [Support](#support)
 - [License](#license)
 
 <!-- TOC END -->
@@ -163,10 +162,10 @@ db.on('trace', (data) => {
 
 You can use an alternative library to `sqlite3` as long as it conforms to the `sqlite3` [API](https://github.com/mapbox/node-sqlite3/wiki/API).
 
-For example, using `sqlite3-offline`:
+For example, using `sqlite3-offline-next`:
 
 ```typescript
-import sqlite3Offline from 'sqlite3-offline'
+import sqlite3Offline from 'sqlite3-offline-next'
 import { open } from 'sqlite'
 
 (async () => {
@@ -507,7 +506,7 @@ fits your use-case. You might want to try these other SQLite libraries:
 - [better-sqlite3](https://github.com/JoshuaWise/better-sqlite3): Totes itself as the fastest and 
 simplest library for SQLite3 in Node.js.
 - [sql.js](https://github.com/sql-js/sql.js): SQLite compiled to Webassembly.
-- [sqlite3-offline](https://github.com/DenisCarriere/sqlite3-offline): Offers pre-compiled `sqlite3` 
+- [sqlite3-offline-next](https://github.com/nicolaiort/sqlite3-offline-next): Offers pre-compiled `sqlite3` 
 binaries if your machine cannot compile it. Should be mostly compatible with this library.
 
 If you know of any others, feel free to open a PR to add them to the list.
@@ -517,11 +516,6 @@ If you know of any others, feel free to open a PR to add them to the list.
 * [Using SQLite with Node.js for Rapid Prototyping](https://medium.com/@tarkus/node-js-and-sqlite-for-rapid-prototyping-bc9cf1f26f10) on Medium.com
 * [SQLite Documentation](https://www.sqlite.org/docs.html), e.g. [SQL Syntax](https://www.sqlite.org/lang.html), [Data Types](https://www.sqlite.org/datatype3.html) etc. on SQLite.org
 * ES6 tagged [sql-template-strings](https://www.npmjs.com/package/sql-template-strings).
-
-## Support
-
-* Join [#node-sqlite](https://gitter.im/kriasoft/node-sqlite) chat room on Gitter to stay up to date regarding the project
-* Join [#sqlite](https://webchat.freenode.net/?channels=sql,sqlite) IRC chat room on Freenode about general discussion about SQLite
 
 ## License
 

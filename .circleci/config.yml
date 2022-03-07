@@ -23,7 +23,7 @@ jobs:
   test:
     executor:
       name: node/default
-      tag: '10'
+      tag: '14'
     working_directory: ~/repo
     steps:
       # Check out the git repo to the working directory
@@ -59,7 +59,7 @@ jobs:
   publish:
     executor:
       name: node/default
-      tag: '10'
+      tag: '14'
     working_directory: ~/repo
     steps:
       # Check out the git repo to the working directory
