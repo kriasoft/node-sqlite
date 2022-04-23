@@ -351,7 +351,7 @@ const result = await stmt.all({ '@thirteen': 13 })
 
 #### `each()`
 
-`each()` is a bit different compared to the other operations.
+`each()` is a bit different compared to the other operations due to its underlying [implementation](https://github.com/TryGhost/node-sqlite3/wiki/API#databaseeachsql-param--callback-complete).
 
 The function signature looks like this:
 
@@ -361,17 +361,23 @@ The function signature looks like this:
 - The promise resolves when all rows have returned with the number of rows returned.
 
 ```typescript
-const rowsCount = await db.each(
-  'SELECT col FROM tbl WHERE ROWID = ?',
-  [2],
-  (err, row) => {
-    if (err) {
-      throw err
-    }
+try {
+  // You need to wrap this in a try / catch for SQL parse / connection errors
+  const rowsCount = await db.each(
+    'SELECT col FROM tbl WHERE ROWID = ?',
+    [2],
+    (err, row) => {
+      if (err) {
+        // This would be if there is an error specific to the row result
+        throw err
+      }
 
-    // row = { col: 'other thing' }
-  }
-)
+      // row = { col: 'other thing' }
+    }
+  )
+} catch (e) {
+  throw e
+}
 
 // rowsCount = 1
 ```
