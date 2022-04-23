@@ -1,5 +1,6 @@
 import * as sqlite from 'sqlite3'
 import { ISqlite } from './interfaces'
+import { formatError } from './utils/format-error'
 
 /**
  * Promisified wrapper for the sqlite3#Statement interface.
@@ -28,7 +29,7 @@ export class Statement<S extends sqlite.Statement = sqlite.Statement> {
     return new Promise((resolve, reject) => {
       this.stmt.bind(...params, err => {
         if (err) {
-          return reject(err)
+          return reject(formatError(err))
         }
 
         resolve()
@@ -59,7 +60,7 @@ export class Statement<S extends sqlite.Statement = sqlite.Statement> {
     return new Promise((resolve, reject) => {
       this.stmt.finalize(err => {
         if (err) {
-          return reject(err)
+          return reject(formatError(err))
         }
 
         resolve()
@@ -88,7 +89,7 @@ export class Statement<S extends sqlite.Statement = sqlite.Statement> {
 
       this.stmt.run(...params, function (err) {
         if (err) {
-          return reject(err)
+          return reject(formatError(err))
         }
 
         resolve({
@@ -119,7 +120,7 @@ export class Statement<S extends sqlite.Statement = sqlite.Statement> {
     return new Promise((resolve, reject) => {
       this.stmt.get(...params, (err, row?: T) => {
         if (err) {
-          return reject(err)
+          return reject(formatError(err))
         }
 
         resolve(row)
@@ -147,7 +148,7 @@ export class Statement<S extends sqlite.Statement = sqlite.Statement> {
     return new Promise((resolve, reject) => {
       this.stmt.all(...params, (err, rows?: T) => {
         if (err) {
-          return reject(err)
+          return reject(formatError(err))
         }
 
         resolve(rows)
@@ -220,14 +221,14 @@ export class Statement<S extends sqlite.Statement = sqlite.Statement> {
         ...params,
         (err, row) => {
           if (err) {
-            return callback(err, null)
+            return callback(formatError(err), null)
           }
 
           callback(null, row)
         },
         (err, count) => {
           if (err) {
-            return reject(err)
+            return reject(formatError(err))
           }
 
           resolve(count)

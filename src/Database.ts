@@ -6,6 +6,7 @@ import { migrate } from './utils/migrate'
 import { toSqlParams } from './utils/strings'
 
 import MigrationParams = IMigrate.MigrationParams
+import { formatError } from './utils/format-error'
 
 /**
  * Promisified wrapper for the sqlite3#Database interface.
@@ -56,7 +57,7 @@ export class Database<
       if (mode) {
         this.db = new driver(filename, mode, err => {
           if (err) {
-            return reject(err)
+            return reject(formatError(err))
           }
 
           resolve()
@@ -64,7 +65,7 @@ export class Database<
       } else {
         this.db = new driver(filename, err => {
           if (err) {
-            return reject(err)
+            return reject(formatError(err))
           }
 
           resolve()
@@ -80,7 +81,7 @@ export class Database<
     return new Promise((resolve, reject) => {
       this.db.close(err => {
         if (err) {
-          return reject(err)
+          return reject(formatError(err))
         }
 
         resolve()
@@ -118,7 +119,7 @@ export class Database<
 
       this.db.run(sqlObj.sql, ...sqlObj.params, function (err) {
         if (err) {
-          return reject(err)
+          return reject(formatError(err))
         }
 
         resolve({
@@ -156,7 +157,7 @@ export class Database<
 
       this.db.get(sqlObj.sql, ...sqlObj.params, (err, row?: T) => {
         if (err) {
-          return reject(err)
+          return reject(formatError(err))
         }
 
         resolve(row)
@@ -236,14 +237,14 @@ export class Database<
         ...sqlObj.params,
         (err, row) => {
           if (err) {
-            return callback(err, null)
+            return callback(formatError(err), null)
           }
 
           callback(null, row)
         },
         (err, count) => {
           if (err) {
-            return reject(err)
+            return reject(formatError(err))
           }
 
           resolve(count)
@@ -281,7 +282,7 @@ export class Database<
 
       this.db.all(sqlObj.sql, ...sqlObj.params, (err, rows?: T) => {
         if (err) {
-          return reject(err)
+          return reject(formatError(err))
         }
 
         resolve(rows)
@@ -307,7 +308,7 @@ export class Database<
 
       this.db.exec(sqlObj.sql, err => {
         if (err) {
-          return reject(err)
+          return reject(formatError(err))
         }
 
         resolve()
@@ -350,7 +351,7 @@ export class Database<
     return new Promise((resolve, reject) => {
       this.db.loadExtension(path, err => {
         if (err) {
-          return reject(err)
+          return reject(formatError(err))
         }
 
         resolve()
