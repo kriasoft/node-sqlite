@@ -84,6 +84,23 @@ describe('Sqlite3Database', () => {
     }
   })
 
+  it('should have stack traces on errors', async () => {
+    db = new Database({
+      filename: ':memory:',
+      driver: sqlite3.Database
+    })
+
+    await db.open()
+
+    try {
+      await db.all('abcd')
+    } catch (e) {
+      expect(e.stack).toBeDefined()
+      // In the native errors, the stack was filled with the message value
+      expect(e.stack).not.toEqual(e.message)
+    }
+  })
+
   it('should allow named parameters to be used', async () => {
     db = new Database({
       filename: ':memory:',
