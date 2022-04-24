@@ -1,3 +1,18 @@
+## 4.1.1 - Sun Apr 24 2022 00:00:52
+
+**Contributor:** Theo Gravity
+
+- Have native sqlite errors contain stack traces (#162)
+
+This ensures that errors thrown from the sqlite driver now
+have stack traces and are of an `Error` type.
+
+Thanks to @fresheneesz for initial troubleshooting and initial
+code to help fix the issue.
+
+This is a minor level version update as to not break implementations
+that may handle errors in their own way prior to this fix.
+
 ## 4.0.25 - Mon Mar 07 2022 08:50:06
 
 **Contributor:** Theo Gravity
