@@ -511,6 +511,7 @@ fits your use-case. You might want to try these other SQLite libraries:
 
 - [better-sqlite3](https://github.com/JoshuaWise/better-sqlite3): Totes itself as the fastest and 
 simplest library for SQLite3 in Node.js.
+- [Bun sqlite3](https://github.com/Jarred-Sumner/bun#bunsqlite-sqlite3-module): `bun:sqlite` is a high-performance builtin SQLite3 module for `bun.js`.
 - [sql.js](https://github.com/sql-js/sql.js): SQLite compiled to Webassembly.
 - [sqlite3-offline-next](https://github.com/nicolaiort/sqlite3-offline-next): Offers pre-compiled `sqlite3` 
 binaries if your machine cannot compile it. Should be mostly compatible with this library.
