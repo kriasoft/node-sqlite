@@ -7,7 +7,8 @@
   "type": "commonjs",
   "exports": {
     "require": "./build/index.js",
-    "import": "./build/index.mjs"
+    "import": "./build/index.mjs",
+    "types": "./build/index.d.ts"
   },
   "scripts": {
     "build": "npm run build:clean && npm run compile && cp -R src/index.mjs src/vendor-typings build",
