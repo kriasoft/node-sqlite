@@ -1,3 +1,9 @@
+## 4.1.2 - Tue Jul 19 2022 16:51:14
+
+**Contributor:** rinsuki
+
+- Support TS 4.7+ node16/next module mode (#164)
+
 ## 4.1.1 - Sun Apr 24 2022 00:00:52
 
 **Contributor:** Theo Gravity
