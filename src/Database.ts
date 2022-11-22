@@ -2,7 +2,7 @@ import * as sqlite3 from 'sqlite3'
 import { ISqlite, IMigrate } from './interfaces'
 
 import { Statement } from './Statement'
-import { migrate } from './utils/migrate'
+import { migrate, rollback } from './utils/migrate'
 import { toSqlParams } from './utils/strings'
 
 import MigrationParams = IMigrate.MigrationParams
@@ -364,6 +364,13 @@ export class Database<
    */
   async migrate (config?: MigrationParams) {
     await migrate(this, config)
+  }
+
+  /**
+   * Rollbacks the database.
+   */
+   async rollback (config?: MigrationParams) {
+    await rollback(this, config)
   }
 
   /**

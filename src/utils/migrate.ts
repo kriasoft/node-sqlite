@@ -61,6 +61,16 @@ export async function readMigrations (migrationPath?: string) {
   )
 }
 
+let createMigrationsTable = (db: Database, table: string) => {
+  // Create a database table for migrations meta data if it doesn't exist
+  return db.run(`CREATE TABLE IF NOT EXISTS "${table}" (
+    id   INTEGER PRIMARY KEY,
+    name TEXT    NOT NULL,
+    up   TEXT    NOT NULL,
+    down TEXT    NOT NULL
+  )`)
+}
+
 /**
  * Migrates database schema to the latest version
  */
@@ -74,12 +84,7 @@ export async function migrate (db: Database, config: MigrationParams = {}) {
     : await readMigrations(config.migrationsPath)
 
   // Create a database table for migrations meta data if it doesn't exist
-  await db.run(`CREATE TABLE IF NOT EXISTS "${table}" (
-  id   INTEGER PRIMARY KEY,
-  name TEXT    NOT NULL,
-  up   TEXT    NOT NULL,
-  down TEXT    NOT NULL
-)`)
+  await createMigrationsTable(db, table)
 
   // Get the list of already applied migrations
   let dbMigrations = await db.all(
@@ -133,5 +138,46 @@ export async function migrate (db: Database, config: MigrationParams = {}) {
         throw err
       }
     }
+  }
+}
+
+/**
+ * Rollbacks entier database schema.  
+ */
+ export async function rollback (db: Database, config: MigrationParams = {}) {
+  config.force = config.force || false
+  config.table = config.table || 'migrations'
+  config.target = config.target || 0
+
+  const { force, table, target } = config
+  const migrations = config.migrations
+    ? config.migrations
+    : await readMigrations(config.migrationsPath)
+
+  // Create a database table for migrations meta data if it doesn't exist
+  await createMigrationsTable(db, table)
+
+  // Get the list of already applied migrations
+  let dbMigrations = await db.all(
+    `SELECT id, name, up, down FROM "${table}" WHERE id >= ${target} ORDER BY id DESC`
+  )
+
+  if (target !== 0 && !dbMigrations.find((value) => value.id === target)) {
+    throw new Error(`No migration exists with id '${target}'.`)
+  }
+
+  // Run "down" command from migrations.
+  for (const migration of dbMigrations
+    .slice()) {
+      await db.run('BEGIN')
+      try {
+        await db.exec(migration.down)
+        await db.run(`DELETE FROM "${table}" WHERE id = ?`, migration.id)
+        await db.run('COMMIT')
+        dbMigrations = dbMigrations.filter(x => x.id !== migration.id)
+      } catch (err) {
+        await db.run('ROLLBACK')
+        throw err
+      }
   }
 }

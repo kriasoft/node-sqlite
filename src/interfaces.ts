@@ -86,6 +86,10 @@ export namespace IMigrate {
      */
     force?: boolean
     /**
+     * Number ID of the last up or down migration to run.
+     */
+    target?: number
+    /**
      * Migrations table name. Default is 'migrations'
      */
     table?: string
