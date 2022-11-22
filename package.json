@@ -11,9 +11,9 @@
     "types": "./build/index.d.ts"
   },
   "scripts": {
-    "build": "npm run build:clean && npm run compile && cp -R src/index.mjs src/vendor-typings build",
+    "build": "npm run build:clean && npm run compile && shx cp -R src/index.mjs src/vendor-typings build",
     "build:docs": "typedoc --options typedoc.js --plugin typedoc-plugin-markdown src/ --out docs",
-    "build:clean": "rm -rf build/*",
+    "build:clean": "shx rm -rf build/*",
     "compile": "tsc",
     "debug": "ts-node-dev --inspect -- src/index.ts",
     "debug:break": "ts-node-dev --inspect-brk -- src/index.ts",
@@ -86,6 +86,7 @@
     "lint-staged": "12.4.0",
     "pre-commit": "1.2.2",
     "prettier-standard": "16.4.1",
+    "shx": "^0.3.4",
     "sql-template-strings": "^2.2.2",
     "sqlite3": "^5.0.5",
     "sqlite3-offline-next": "^5.0.3",
