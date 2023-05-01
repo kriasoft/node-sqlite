@@ -6,9 +6,9 @@
   "types": "build/index.d.ts",
   "type": "commonjs",
   "exports": {
+    "types": "./build/index.d.ts",
     "require": "./build/index.js",
-    "import": "./build/index.mjs",
-    "types": "./build/index.d.ts"
+    "import": "./build/index.mjs"
   },
   "scripts": {
     "build": "npm run build:clean && npm run compile && cp -R src/index.mjs src/vendor-typings build",
