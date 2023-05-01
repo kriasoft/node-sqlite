@@ -1,8 +1,12 @@
-## 4.2.0 - Mon May 01 2023 10:52:06
+## 4.2.0 (4.1.3) - Mon May 01 2023 10:52:06
 
 **Contributor:** Andarist
 
 - move types condition to the front (#171)
+
+Package should have published under `4.2.0` but was also published as `4.1.3`.
+
+Downgrade to `4.1.2` if you are having issues and raise an issue.
 
 ## 4.1.2 - Tue Jul 19 2022 16:51:14
 
