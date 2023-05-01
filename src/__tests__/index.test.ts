@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import * as sqlite3Offline from 'sqlite3-offline-next'
+// import * as sqlite3Offline from 'sqlite3-offline-next'
 import { open } from '..'
 import * as sqlite3 from 'sqlite3'
 
@@ -18,7 +18,9 @@ describe('index', () => {
   ]
 
   driver.forEach(c => {
-    it(`should create an instance of sqlite3, cached = ${c.cached}`, async () => {
+    it(`should create an instance of sqlite3, cached = ${
+      c.cached
+    }`, async () => {
       const db = await open({
         filename: ':memory:',
         driver: c.driver
@@ -38,6 +40,8 @@ describe('index', () => {
     })
   })
 
+  /* disabled since sqlite3-offline-next hasn't been maintained in two years
+  and there are no recent builds compatible with newer versions of node
   it('should allow an anonymous database', async () => {
     const db = await open({
       filename: '',
@@ -75,7 +79,7 @@ describe('index', () => {
 
     await db.close()
   })
-
+*/
   describe('typings', () => {
     it('should allow for a generic driver type definition', async () => {
       const db = await open<sqlite3.Database>({
