@@ -1,3 +1,9 @@
+## 4.2.0 - Mon May 01 2023 10:52:06
+
+**Contributor:** Andarist
+
+- move types condition to the front (#171)
+
 ## 4.1.2 - Tue Jul 19 2022 16:51:14
 
 **Contributor:** rinsuki
