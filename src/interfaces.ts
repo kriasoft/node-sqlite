@@ -2,13 +2,17 @@
 /// <reference types="./vendor-typings/sqlite3" />
 
 import * as sqlite3 from 'sqlite3'
-import { SQLStatement } from 'sql-template-strings'
 import { Statement } from './Statement'
 
 export namespace ISqlite {
   export interface SqlObj {
     sql: string
     params?: any[]
+  }
+
+  export interface SQLStatement {
+    sql: string
+    values?: any[]
   }
 
   /**
