@@ -1,4 +1,3 @@
-/// <reference types="./vendor-typings/sql-template-strings" />
 /// <reference types="./vendor-typings/sqlite3" />
 
 import * as sqlite3 from 'sqlite3'
