@@ -8,10 +8,6 @@
 
 * Remove sql-template-strings from lib
 
----------
-
-Co-authored-by: Theo Gravity <theo@suteki.nu>
-
 ## 4.2.0 (4.1.3) - Mon May 01 2023 10:52:06
 
 **Contributor:** Andarist
