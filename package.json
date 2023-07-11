@@ -1,6 +1,6 @@
 {
   "name": "sqlite",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "SQLite client for Node.js applications with SQL-based migrations API written in Typescript",
   "main": "build/index.js",
   "types": "build/index.d.ts",

@@ -1,3 +1,9 @@
+## 5.0.1 - Tue Jul 11 2023 17:36:14
+
+**Contributor:** Aleksandr Ananin
+
+- Remove `params` parameter from `exec` function (#173)
+
 ## 4.2.1 - Tue May 23 2023 00:58:29
 
 **Contributor:** Blake Embrey
