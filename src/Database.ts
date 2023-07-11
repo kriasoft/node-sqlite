@@ -299,12 +299,11 @@ export class Database<
    * Comments are not allowed and will lead to runtime errors.
    *
    * @param {string} sql The SQL query to run.
-   * @param {any} [params, ...] Same as the `params` parameter of `all`
    * @see https://github.com/mapbox/node-sqlite3/wiki/API#databaseexecsql-callback
    */
-  exec (sql: ISqlite.SqlType, ...params: any[]): Promise<void> {
+  exec (sql: ISqlite.SqlType): Promise<void> {
     return new Promise((resolve, reject) => {
-      const sqlObj = toSqlParams(sql, params)
+      const sqlObj = toSqlParams(sql)
 
       this.db.exec(sqlObj.sql, err => {
         if (err) {
