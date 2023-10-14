@@ -2,7 +2,9 @@
 
 **Contributor:** Aleksandr Ananin
 
-- Remove `params` parameter from `exec` function (#173)
+**Breaking Change:**
+
+- Remove `params` parameter from `exec` function ([#173](https://github.com/kriasoft/node-sqlite/pull/173))
 
 ## 4.2.1 - Tue May 23 2023 00:58:29
 
