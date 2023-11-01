@@ -1,3 +1,9 @@
+## 5.1.1 - Wed Nov 01 2023 23:59:09
+
+**Contributor:** Theo Gravity
+
+- Update vendor typings to use sqlite3 (#176)
+
 ## 5.0.1 - Tue Jul 11 2023 17:36:14
 
 **Contributor:** Aleksandr Ananin
