@@ -1,6 +1,6 @@
 {
   "name": "sqlite",
-  "version": "5.0.1",
+  "version": "5.1.0",
   "description": "SQLite client for Node.js applications with SQL-based migrations API written in Typescript",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -87,7 +87,7 @@
     "pre-commit": "1.2.2",
     "prettier-standard": "^15.0.1",
     "sql-template-strings": "^2.2.2",
-    "sqlite3": "^5.0.5",
+    "sqlite3": "^5.1.6",
     "sqlite3-offline-next": "^5.0.3",
     "standardx": "^7.0.0",
     "toc-md-alt": "^0.4.6",
