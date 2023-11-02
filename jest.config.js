@@ -2,14 +2,12 @@ module.exports = {
   preset: 'ts-jest',
   collectCoverageFrom: [
     'src/**/*.ts',
-    '!src/vendor-typings/**'
   ],
   testResultsProcessor: './node_modules/jest-junit-reporter',
   testEnvironment: 'node',
   testPathIgnorePatterns: [
     '/build',
     '/node_modules/',
-    '/vendor-typings'
   ],
   coverageThreshold: {
     global: {

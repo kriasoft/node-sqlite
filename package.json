@@ -11,9 +11,9 @@
     "import": "./build/index.mjs"
   },
   "scripts": {
-    "build": "npm run build:clean && npm run compile && cp -R src/index.mjs src/vendor-typings build",
+    "build": "npm run build:clean && npm run compile && cp -R src/index.mjs build",
     "build:docs": "typedoc --options typedoc.js --plugin typedoc-plugin-markdown src/ --out docs",
-    "build:clean": "rm -rf build/*",
+    "build:clean": "rm -rf 'build/*'",
     "compile": "tsc",
     "debug": "ts-node-dev --inspect -- src/index.ts",
     "debug:break": "ts-node-dev --inspect-brk -- src/index.ts",
