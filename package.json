@@ -25,6 +25,7 @@
     "toc": "toc-md README.md README.md",
     "lint-staged": "lint-staged",
     "prepare-publish": "npm run changelog:prepare && version-bump && npm run changelog:release && npm run changelog:stamp",
+    "prepare": "npm run build",
     "add-readme": "git add README.md",
     "version-bump": "version-bump",
     "changelog:help": "changelog-version",
