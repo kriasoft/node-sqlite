@@ -1,5 +1,3 @@
-/// <reference types="./vendor-typings/sqlite3" />
-
 import * as sqlite3 from 'sqlite3'
 import { Statement } from './Statement'
 

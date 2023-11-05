@@ -11,9 +11,9 @@
     "import": "./build/index.mjs"
   },
   "scripts": {
-    "build": "npm run build:clean && npm run compile && cp -R src/index.mjs src/vendor-typings build",
+    "build": "npm run build:clean && npm run compile && cp -R src/index.mjs build",
     "build:docs": "typedoc --options typedoc.js --plugin typedoc-plugin-markdown src/ --out docs",
-    "build:clean": "rm -rf build/*",
+    "build:clean": "rm -rf 'build/*'",
     "compile": "tsc",
     "debug": "ts-node-dev --inspect -- src/index.ts",
     "debug:break": "ts-node-dev --inspect-brk -- src/index.ts",
@@ -25,6 +25,7 @@
     "toc": "toc-md README.md README.md",
     "lint-staged": "lint-staged",
     "prepare-publish": "npm run changelog:prepare && version-bump && npm run changelog:release && npm run changelog:stamp",
+    "prepare": "npm run build",
     "add-readme": "git add README.md",
     "version-bump": "version-bump",
     "changelog:help": "changelog-version",
@@ -70,12 +71,14 @@
     "url": "https://github.com/kriasoft/node-sqlite/issues"
   },
   "homepage": "https://github.com/kriasoft/node-sqlite#readme",
+  "dependencies": {
+    "@types/sqlite3": "^3.1.8"
+  },
   "devDependencies": {
     "@theo.gravity/changelog-version": "2.1.11",
     "@theo.gravity/version-bump": "2.0.14",
     "@types/jest": "27.4.1",
     "@types/node": "^17.0.25",
-    "@types/sqlite3": "^3.1.8",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
     "eslint": "8.14.0",
