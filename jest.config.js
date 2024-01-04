@@ -9,7 +9,8 @@ module.exports = {
   testPathIgnorePatterns: [
     '/build',
     '/node_modules/',
-    '/vendor-typings'
+    '/vendor-typings',
+    '__tests__/data'
   ],
   coverageThreshold: {
     global: {
