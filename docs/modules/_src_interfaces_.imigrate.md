@@ -6,5 +6,5 @@
 
 ### Interfaces
 
-* [MigrationFile](../interfaces/_src_interfaces_.imigrate.migrationfile.md)
-* [MigrationParams](../interfaces/_src_interfaces_.imigrate.migrationparams.md)
+- [MigrationFile](../interfaces/_src_interfaces_.imigrate.migrationfile.md)
+- [MigrationParams](../interfaces/_src_interfaces_.imigrate.migrationparams.md)

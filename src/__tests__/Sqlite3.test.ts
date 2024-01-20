@@ -3,7 +3,7 @@
 import { Database } from '../Database'
 import SQL from 'sql-template-strings'
 import * as sqlite3 from 'sqlite3'
-import { open } from '..'
+import { Migrations, open } from '..'
 
 let db: Database
 
@@ -288,7 +288,8 @@ describe('Sqlite3Database', () => {
     })
 
     await db.open()
-    await db.migrate()
+    const migrationsInstance = new Migrations(db)
+    await migrationsInstance.migrate()
 
     const result = await db.all('SELECT id, name FROM migrations')
     expect(result).toEqual([

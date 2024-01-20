@@ -6,24 +6,24 @@
 
 ### Functions
 
-* [toSqlParams](_src_utils_strings_.md#tosqlparams)
+- [toSqlParams](_src_utils_strings_.md#tosqlparams)
 
 ## Functions
 
-###  toSqlParams
+### toSqlParams
 
-▸ **toSqlParams**(`sql`: [SqlType](_src_interfaces_.isqlite.md#sqltype), `params`: any[]): *[SqlObj](../interfaces/_src_interfaces_.isqlite.sqlobj.md)*
+▸ **toSqlParams**(`sql`: [SqlType](_src_interfaces_.isqlite.md#sqltype), `params`: any[]): _[SqlObj](../interfaces/\_src_interfaces_.isqlite.sqlobj.md)\_
 
-*Defined in [src/utils/strings.ts:10](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/utils/strings.ts#L10)*
+_Defined in [src/utils/strings.ts:10](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/utils/strings.ts#L10)_
 
 Allows for using strings and `sql-template-strings`. Converts both to a
 format that's usable by the SQL methods
 
 **Parameters:**
 
-Name | Type | Default | Description |
------- | ------ | ------ | ------ |
-`sql` | [SqlType](_src_interfaces_.isqlite.md#sqltype) | - | A SQL string or `sql-template-strings` object |
-`params` | any[] | [] | An array of parameters  |
+| Name     | Type                                           | Default | Description                                   |
+| -------- | ---------------------------------------------- | ------- | --------------------------------------------- |
+| `sql`    | [SqlType](_src_interfaces_.isqlite.md#sqltype) | -       | A SQL string or `sql-template-strings` object |
+| `params` | any[]                                          | []      | An array of parameters                        |
 
-**Returns:** *[SqlObj](../interfaces/_src_interfaces_.isqlite.sqlobj.md)*
+**Returns:** _[SqlObj](../interfaces/\_src_interfaces_.isqlite.sqlobj.md)\_

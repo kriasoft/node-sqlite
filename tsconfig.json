@@ -9,20 +9,11 @@
     "outDir": "build",
     "baseUrl": ".",
     "declaration": true,
-    "lib": [
-      "ES2018",
-      "dom"
-    ],
+    "lib": ["ES2018", "dom"],
     "paths": {
-      "*": [
-        "node_modules/*"
-      ]
+      "*": ["node_modules/*"]
     }
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "src/**/__tests__/*"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["src/**/__tests__/*"]
 }

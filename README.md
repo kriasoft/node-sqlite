@@ -1,11 +1,11 @@
 # SQLite Client for Node.js Apps
 
 [![NPM version](https://img.shields.io/npm/v/sqlite.svg?style=flat-square)](https://www.npmjs.com/package/sqlite)
-[![CircleCI](https://circleci.com/gh/kriasoft/node-sqlite.svg?style=svg)](https://circleci.com/gh/kriasoft/node-sqlite) 
-![built with typescript](https://camo.githubusercontent.com/92e9f7b1209bab9e3e9cd8cdf62f072a624da461/68747470733a2f2f666c61742e62616467656e2e6e65742f62616467652f4275696c74253230576974682f547970655363726970742f626c7565) 
+[![CircleCI](https://circleci.com/gh/kriasoft/node-sqlite.svg?style=svg)](https://circleci.com/gh/kriasoft/node-sqlite)
+![built with typescript](https://camo.githubusercontent.com/92e9f7b1209bab9e3e9cd8cdf62f072a624da461/68747470733a2f2f666c61742e62616467656e2e6e65742f62616467652f4275696c74253230576974682f547970655363726970742f626c7565)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-> A wrapper library written in Typescript with **ZERO** dependencies that adds ES6 promises 
+> A wrapper library written in Typescript with **ZERO** dependencies that adds ES6 promises
 > and SQL-based migrations API to [sqlite3](https://github.com/mapbox/node-sqlite3/) ([docs](https://github.com/mapbox/node-sqlite3/wiki)).
 
 **note** v4 of `sqlite` has breaking changes compared to v3! Please see `CHANGELOG.md` for more details.
@@ -54,10 +54,10 @@
 
 ### Install `sqlite3`
 
-Most people who use this library will use [sqlite3](https://github.com/mapbox/node-sqlite3/) 
-as the database driver. 
+Most people who use this library will use [sqlite3](https://github.com/mapbox/node-sqlite3/)
+as the database driver.
 
-Any library that conforms to the `sqlite3` ([API](https://github.com/mapbox/node-sqlite3/wiki/API)) 
+Any library that conforms to the `sqlite3` ([API](https://github.com/mapbox/node-sqlite3/wiki/API))
 should also work.
 
 `$ npm install sqlite3 --save`
@@ -86,15 +86,16 @@ except that all its API methods return ES6 Promises and do not accept callback a
 import sqlite3 from 'sqlite3'
 import { open } from 'sqlite'
 
-// this is a top-level await 
-(async () => {
-    // open the database
-    const db = await open({
-      filename: '/tmp/database.db',
-      driver: sqlite3.Database
-    })
+// this is a top-level await
+;(async () => {
+  // open the database
+  const db = await open({
+    filename: '/tmp/database.db',
+    driver: sqlite3.Database
+  })
 })()
 ```
+
 or
 
 ```typescript
@@ -104,7 +105,7 @@ import { open } from 'sqlite'
 open({
   filename: '/tmp/database.db',
   driver: sqlite3.Database
-}).then((db) => {
+}).then(db => {
   // do your thing
 })
 ```
@@ -131,12 +132,11 @@ If you want to enable the [database object cache](https://github.com/mapbox/node
 ```typescript
 import sqlite3 from 'sqlite3'
 import { open } from 'sqlite'
-
-(async () => {
-    const db = await open({
-      filename: '/tmp/database.db',
-      driver: sqlite3.cached.Database
-    })
+;(async () => {
+  const db = await open({
+    filename: '/tmp/database.db',
+    driver: sqlite3.cached.Database
+  })
 })()
 ```
 
@@ -153,9 +153,7 @@ sqlite3.verbose()
 For more info, see this [doc](https://github.com/mapbox/node-sqlite3/wiki/Debugging#databaseontrace-callback).
 
 ```typescript
-db.on('trace', (data) => {
-  
-})
+db.on('trace', data => {})
 ```
 
 #### With a custom driver
@@ -167,12 +165,11 @@ For example, using `sqlite3-offline-next`:
 ```typescript
 import sqlite3Offline from 'sqlite3-offline-next'
 import { open } from 'sqlite'
-
-(async () => {
-    const db = await open({
-      filename: '/tmp/database.db',
-      driver: sqlite3Offline.Database
-    })
+;(async () => {
+  const db = await open({
+    filename: '/tmp/database.db',
+    driver: sqlite3Offline.Database
+  })
 })()
 ```
 
@@ -181,8 +178,7 @@ import { open } from 'sqlite'
 ```typescript
 import sqlite3 from 'sqlite3'
 import { open } from 'sqlite'
-
-(async () => {
+;(async () => {
   const [db1, db2] = await Promise.all([
     open({
       filename: '/tmp/database.db',
@@ -191,7 +187,7 @@ import { open } from 'sqlite'
     open({
       filename: '/tmp/database2.db',
       driver: sqlite3.Database
-    }),
+    })
   ])
 
   await db1.migrate({
@@ -206,7 +202,7 @@ import { open } from 'sqlite'
 
 #### `open` config params
 
-```typescript
+````typescript
 
 // db is an instance of `sqlite#Database`
 // which is a wrapper around `sqlite3#Database`
@@ -240,7 +236,7 @@ const db = await open({
    */
   driver: any
 })
-```
+````
 
 ### Examples
 
@@ -288,10 +284,7 @@ const result = await db.all('SELECT col FROM tbl')
 #### Inserting rows
 
 ```typescript
-const result = await db.run(
-  'INSERT INTO tbl (col) VALUES (?)',
-  'foo'
-)
+const result = await db.run('INSERT INTO tbl (col) VALUES (?)', 'foo')
 
 /*
 {
@@ -404,10 +397,12 @@ This module is compatible with [sql-template-strings](https://www.npmjs.com/pack
 ```js
 import SQL from 'sql-template-strings'
 
-const book = 'harry potter';
-const author = 'J. K. Rowling';
+const book = 'harry potter'
+const author = 'J. K. Rowling'
 
-const data = await db.all(SQL`SELECT author FROM books WHERE name = ${book} AND author = ${author}`);
+const data = await db.all(
+  SQL`SELECT author FROM books WHERE name = ${book} AND author = ${author}`
+)
 ```
 
 ### Migrations
@@ -420,7 +415,7 @@ and call the `migrate()` method to run the SQL in the directory against the data
 See this project's `migrations/` folder for examples.
 
 ```typescript
-await db.migrate({    
+await db.migrate({
     /**
     * If true, will force the migration API to rollback and re-apply the latest migration over
     * again each time when Node.js app launches.
@@ -466,7 +461,6 @@ and the typescript compiler to perform better static type analysis.
 #### Get example
 
 ```typescript
-
 interface Row {
   col: string
 }
@@ -485,7 +479,7 @@ interface Row {
 // Result is an array of rows, you can now have array-autocompletion data
 const result = await db.all<Row[]>('SELECT col FROM tbl')
 
-result.each((row) => {
+result.each(row => {
   // row should have type information now!
 })
 ```
@@ -498,35 +492,36 @@ See the [`docs`](docs/globals.md) directory for full documentation.
 
 - [Beekeeper Studio](https://www.beekeeperstudio.io/): Open Source SQL Editor and Database Manager
 - [DB Browser for SQLite](https://github.com/sqlitebrowser/sqlitebrowser): Desktop-based browser.
-- [datasette](https://github.com/simonw/datasette): Datasette is a tool for exploring and publishing 
-data. Starts up a server that provides a web interface to your SQLite data.
+- [datasette](https://github.com/simonw/datasette): Datasette is a tool for exploring and publishing
+  data. Starts up a server that provides a web interface to your SQLite data.
 - [SQLite Studio](https://github.com/pawelsalawa/sqlitestudio): A free, open source, multi-platform SQLite database manager written in C++, with use of Qt framework.
 - [HeidiSQL](https://www.heidisql.com/): Full-featured database editor.
-- [DBeaver](https://dbeaver.io/): Full-featured multi-platform database tool and designer.   
+- [DBeaver](https://dbeaver.io/): Full-featured multi-platform database tool and designer.
 
 ## Alternative SQLite libraries
 
 This library and the library it primarily supports, `sqlite3`, may not be the best library that
 fits your use-case. You might want to try these other SQLite libraries:
 
-- [better-sqlite3](https://github.com/JoshuaWise/better-sqlite3): Totes itself as the fastest and 
-simplest library for SQLite3 in Node.js.
+- [better-sqlite3](https://github.com/JoshuaWise/better-sqlite3): Totes itself as the fastest and
+  simplest library for SQLite3 in Node.js.
 - [Bun sqlite3](https://github.com/Jarred-Sumner/bun#bunsqlite-sqlite3-module): `bun:sqlite` is a high-performance builtin SQLite3 module for `bun.js`.
 - [sql.js](https://github.com/sql-js/sql.js): SQLite compiled to Webassembly.
-- [sqlite3-offline-next](https://github.com/nicolaiort/sqlite3-offline-next): Offers pre-compiled `sqlite3` 
-binaries if your machine cannot compile it. Should be mostly compatible with this library.
+- [sqlite3-offline-next](https://github.com/nicolaiort/sqlite3-offline-next): Offers pre-compiled `sqlite3`
+  binaries if your machine cannot compile it. Should be mostly compatible with this library.
 
 If you know of any others, feel free to open a PR to add them to the list.
 
 ## References
 
-* [Using SQLite with Node.js for Rapid Prototyping](https://medium.com/@tarkus/node-js-and-sqlite-for-rapid-prototyping-bc9cf1f26f10) on Medium.com
-* [SQLite Documentation](https://www.sqlite.org/docs.html), e.g. [SQL Syntax](https://www.sqlite.org/lang.html), [Data Types](https://www.sqlite.org/datatype3.html) etc. on SQLite.org
-* ES6 tagged [sql-template-strings](https://www.npmjs.com/package/sql-template-strings).
+- [Using SQLite with Node.js for Rapid Prototyping](https://medium.com/@tarkus/node-js-and-sqlite-for-rapid-prototyping-bc9cf1f26f10) on Medium.com
+- [SQLite Documentation](https://www.sqlite.org/docs.html), e.g. [SQL Syntax](https://www.sqlite.org/lang.html), [Data Types](https://www.sqlite.org/datatype3.html) etc. on SQLite.org
+- ES6 tagged [sql-template-strings](https://www.npmjs.com/package/sql-template-strings).
 
 ## License
 
 The MIT License © 2020-present Kriasoft / Theo Gravity. All rights reserved.
 
 ---
+
 Made with ♥ by [Konstantin Tarkus](https://github.com/koistya) ([@koistya](https://twitter.com/koistya)), [Theo Gravity](https://github.com/theogravity) and [contributors](https://github.com/kriasoft/node-sqlite/graphs/contributors)

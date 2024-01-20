@@ -6,64 +6,64 @@ Promisified wrapper for the sqlite3#Statement interface.
 
 ## Type parameters
 
-▪ **S**: *Statement*
+▪ **S**: _Statement_
 
 ## Hierarchy
 
-* **Statement**
+- **Statement**
 
 ## Index
 
 ### Constructors
 
-* [constructor](_src_statement_.statement.md#constructor)
+- [constructor](_src_statement_.statement.md#constructor)
 
 ### Properties
 
-* [stmt](_src_statement_.statement.md#stmt)
+- [stmt](_src_statement_.statement.md#stmt)
 
 ### Methods
 
-* [all](_src_statement_.statement.md#all)
-* [bind](_src_statement_.statement.md#bind)
-* [each](_src_statement_.statement.md#each)
-* [finalize](_src_statement_.statement.md#finalize)
-* [get](_src_statement_.statement.md#get)
-* [getStatementInstance](_src_statement_.statement.md#getstatementinstance)
-* [reset](_src_statement_.statement.md#reset)
-* [run](_src_statement_.statement.md#run)
+- [all](_src_statement_.statement.md#all)
+- [bind](_src_statement_.statement.md#bind)
+- [each](_src_statement_.statement.md#each)
+- [finalize](_src_statement_.statement.md#finalize)
+- [get](_src_statement_.statement.md#get)
+- [getStatementInstance](_src_statement_.statement.md#getstatementinstance)
+- [reset](_src_statement_.statement.md#reset)
+- [run](_src_statement_.statement.md#run)
 
 ## Constructors
 
-###  constructor
+### constructor
 
-\+ **new Statement**(`stmt`: S): *[Statement](_src_statement_.statement.md)*
+\+ **new Statement**(`stmt`: S): _[Statement](\_src_statement_.statement.md)\_
 
-*Defined in [src/Statement.ts:8](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Statement.ts#L8)*
+_Defined in [src/Statement.ts:8](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Statement.ts#L8)_
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`stmt` | S |
+| Name   | Type |
+| ------ | ---- |
+| `stmt` | S    |
 
-**Returns:** *[Statement](_src_statement_.statement.md)*
+**Returns:** _[Statement](\_src_statement_.statement.md)\_
 
 ## Properties
 
-###  stmt
+### stmt
 
-• **stmt**: *S*
+• **stmt**: _S_
 
-*Defined in [src/Statement.ts:8](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Statement.ts#L8)*
+_Defined in [src/Statement.ts:8](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Statement.ts#L8)_
 
 ## Methods
 
-###  all
+### all
 
-▸ **all**‹**T**›(...`params`: any[]): *Promise‹T›*
+▸ **all**‹**T**›(...`params`: any[]): _Promise‹T›_
 
-*Defined in [src/Statement.ts:146](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Statement.ts#L146)*
+_Defined in [src/Statement.ts:146](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Statement.ts#L146)_
 
 Binds parameters, executes the statement and calls the callback with all result rows.
 The parameters are the same as the Statement#run function, with the following differences:
@@ -80,19 +80,19 @@ Like with Statement#run, the statement will not be finalized after executing thi
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`...params` | any[] |
+| Name        | Type  |
+| ----------- | ----- |
+| `...params` | any[] |
 
-**Returns:** *Promise‹T›*
+**Returns:** _Promise‹T›_
 
-___
+---
 
-###  bind
+### bind
 
-▸ **bind**(...`params`: any[]): *Promise‹void›*
+▸ **bind**(...`params`: any[]): _Promise‹void›_
 
-*Defined in [src/Statement.ts:27](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Statement.ts#L27)*
+_Defined in [src/Statement.ts:27](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Statement.ts#L27)_
 
 Binds parameters to the prepared statement.
 
@@ -101,19 +101,19 @@ and removes all previously bound parameters, if any.
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`...params` | any[] |
+| Name        | Type  |
+| ----------- | ----- |
+| `...params` | any[] |
 
-**Returns:** *Promise‹void›*
+**Returns:** _Promise‹void›_
 
-___
+---
 
-###  each
+### each
 
-▸ **each**‹**T**›(...`params`: any[]): *Promise‹number›*
+▸ **each**‹**T**›(...`params`: any[]): _Promise‹number›_
 
-*Defined in [src/Statement.ts:180](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Statement.ts#L180)*
+_Defined in [src/Statement.ts:180](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Statement.ts#L180)_
 
 Binds parameters, executes the statement and calls the callback for each result row.
 
@@ -125,12 +125,12 @@ Like with Statement#run, the statement will not be finalized after executing thi
 
 There is currently no way to abort execution!
 
-The last parameter to each() *must* be a callback function, where the first parameter will
+The last parameter to each() _must_ be a callback function, where the first parameter will
 be the returned row.
 
 **`example`** await stmt.each('someParamValue', (err, row) => {
-  // row contains the row data
-  // each() resolves when there are no more rows to fetch
+// row contains the row data
+// each() resolves when there are no more rows to fetch
 })
 
 **`see`** https://github.com/mapbox/node-sqlite3/wiki/API#statementeachparam--callback-complete
@@ -141,21 +141,21 @@ be the returned row.
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`...params` | any[] |
+| Name        | Type  |
+| ----------- | ----- |
+| `...params` | any[] |
 
-**Returns:** *Promise‹number›*
+**Returns:** _Promise‹number›_
 
 Promise<number> Number of rows returned
 
-___
+---
 
-###  finalize
+### finalize
 
-▸ **finalize**(): *Promise‹void›*
+▸ **finalize**(): _Promise‹void›_
 
-*Defined in [src/Statement.ts:58](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Statement.ts#L58)*
+_Defined in [src/Statement.ts:58](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Statement.ts#L58)_
 
 Finalizes the statement. This is typically optional, but if you experience long delays before
 the next query is executed, explicitly finalizing your statement might be necessary.
@@ -163,15 +163,15 @@ This might be the case when you run an exclusive query (see section Control Flow
 After the statement is finalized, all further function calls on that statement object
 will throw errors.
 
-**Returns:** *Promise‹void›*
+**Returns:** _Promise‹void›_
 
-___
+---
 
-###  get
+### get
 
-▸ **get**‹**T**›(...`params`: any[]): *Promise‹T | undefined›*
+▸ **get**‹**T**›(...`params`: any[]): _Promise‹T | undefined›_
 
-*Defined in [src/Statement.ts:118](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Statement.ts#L118)*
+_Defined in [src/Statement.ts:118](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Statement.ts#L118)_
 
 Binds parameters, executes the statement and retrieves the first result row.
 The parameters are the same as the Statement#run function, with the following differences:
@@ -187,44 +187,44 @@ or reset (with Statement#reset) the statement.
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`...params` | any[] |
+| Name        | Type  |
+| ----------- | ----- |
+| `...params` | any[] |
 
-**Returns:** *Promise‹T | undefined›*
+**Returns:** _Promise‹T | undefined›_
 
-___
+---
 
-###  getStatementInstance
+### getStatementInstance
 
-▸ **getStatementInstance**(): *S*
+▸ **getStatementInstance**(): _S_
 
-*Defined in [src/Statement.ts:17](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Statement.ts#L17)*
+_Defined in [src/Statement.ts:17](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Statement.ts#L17)_
 
 Returns the underlying sqlite3 Statement instance
 
-**Returns:** *S*
+**Returns:** _S_
 
-___
+---
 
-###  reset
+### reset
 
-▸ **reset**(): *Promise‹void›*
+▸ **reset**(): _Promise‹void›_
 
-*Defined in [src/Statement.ts:43](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Statement.ts#L43)*
+_Defined in [src/Statement.ts:43](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Statement.ts#L43)_
 
 Resets the row cursor of the statement and preserves the parameter bindings.
 Use this function to re-execute the same query with the same bindings.
 
-**Returns:** *Promise‹void›*
+**Returns:** _Promise‹void›_
 
-___
+---
 
-###  run
+### run
 
-▸ **run**(...`params`: any[]): *Promise‹[RunResult](../interfaces/_src_interfaces_.isqlite.runresult.md)›*
+▸ **run**(...`params`: any[]): _Promise‹[RunResult](../interfaces/\_src_interfaces_.isqlite.runresult.md)›\_
 
-*Defined in [src/Statement.ts:85](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Statement.ts#L85)*
+_Defined in [src/Statement.ts:85](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/Statement.ts#L85)_
 
 Binds parameters and executes the statement.
 
@@ -236,8 +236,8 @@ statement will not be finalized after it is run. This means you can run it multi
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`...params` | any[] |
+| Name        | Type  |
+| ----------- | ----- |
+| `...params` | any[] |
 
-**Returns:** *Promise‹[RunResult](../interfaces/_src_interfaces_.isqlite.runresult.md)›*
+**Returns:** _Promise‹[RunResult](../interfaces/\_src_interfaces_.isqlite.runresult.md)›\_

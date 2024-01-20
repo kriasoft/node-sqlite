@@ -1,8 +1,15 @@
 /* eslint-env jest */
 
 // import * as sqlite3Offline from 'sqlite3-offline-next'
-import { open } from '..'
+import { Migrations, open } from '..'
 import * as sqlite3 from 'sqlite3'
+
+import {
+  initial001,
+  noDown004,
+  someFeature002,
+  testCert003
+} from './data/migrations.data'
 
 describe('index', () => {
   // enable the sqlite cached database or not
@@ -18,15 +25,14 @@ describe('index', () => {
   ]
 
   driver.forEach(c => {
-    it(`should create an instance of sqlite3, cached = ${
-      c.cached
-    }`, async () => {
+    it(`should create an instance of sqlite3, cached = ${c.cached}`, async () => {
       const db = await open({
         filename: ':memory:',
         driver: c.driver
       })
+      const migrationsInstance = new Migrations(db)
 
-      await db.migrate()
+      await migrationsInstance.migrate()
 
       const result = await db.all('SELECT id, name FROM migrations')
       expect(result).toEqual([
@@ -34,6 +40,54 @@ describe('index', () => {
         { id: 2, name: 'some-feature' },
         { id: 3, name: 'test-cert' },
         { id: 4, name: 'no-down' }
+      ])
+
+      await db.close()
+    })
+  })
+
+  driver.forEach(c => {
+    it(`should return list of migrations with name, id, down and up variables, cached = ${c.cached}`, async () => {
+      // const expectedData =
+      const db = await open({
+        filename: ':memory:',
+        driver: c.driver
+      })
+      const migrationsInstance = new Migrations(db)
+
+      await migrationsInstance.migrate()
+
+      const migrations = await migrationsInstance.readMigrations()
+
+      expect(migrations).toEqual([
+        {
+          id: 1,
+          name: 'initial',
+          up: initial001.up,
+          down: initial001.down,
+          filename: '001-initial.sql'
+        },
+        {
+          id: 2,
+          name: 'some-feature',
+          up: someFeature002.up,
+          down: someFeature002.down,
+          filename: '002-some-feature.sql'
+        },
+        {
+          id: 3,
+          name: 'test-cert',
+          up: testCert003.up,
+          down: testCert003.down,
+          filename: '003-test-cert.sql'
+        },
+        {
+          id: 4,
+          name: 'no-down',
+          up: noDown004.up,
+          down: '',
+          filename: '004-no-down.sql'
+        }
       ])
 
       await db.close()

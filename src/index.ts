@@ -3,6 +3,7 @@
 import * as sqlite3 from 'sqlite3'
 import { Statement } from './Statement'
 import { Database } from './Database'
+import { Migrations } from './Migrations'
 import { ISqlite, IMigrate } from './interfaces'
 
 /**
@@ -19,4 +20,4 @@ async function open<
   return db
 }
 
-export { open, Statement, Database, ISqlite, IMigrate }
+export { open, Statement, Database, Migrations, ISqlite, IMigrate }

@@ -4,27 +4,27 @@
 
 ## Hierarchy
 
-* **SqlObj**
+- **SqlObj**
 
 ## Index
 
 ### Properties
 
-* [params](_src_interfaces_.isqlite.sqlobj.md#optional-params)
-* [sql](_src_interfaces_.isqlite.sqlobj.md#sql)
+- [params](_src_interfaces_.isqlite.sqlobj.md#optional-params)
+- [sql](_src_interfaces_.isqlite.sqlobj.md#sql)
 
 ## Properties
 
 ### `Optional` params
 
-• **params**? : *any[]*
+• **params**? : _any[]_
 
-*Defined in [src/interfaces.ts:11](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/interfaces.ts#L11)*
+_Defined in [src/interfaces.ts:11](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/interfaces.ts#L11)_
 
-___
+---
 
-###  sql
+### sql
 
-• **sql**: *string*
+• **sql**: _string_
 
-*Defined in [src/interfaces.ts:10](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/interfaces.ts#L10)*
+_Defined in [src/interfaces.ts:10](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/interfaces.ts#L10)_

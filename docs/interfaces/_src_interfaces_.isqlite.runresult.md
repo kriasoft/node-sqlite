@@ -4,53 +4,53 @@
 
 ## Type parameters
 
-▪ **Stmt**: *Statement*
+▪ **Stmt**: _Statement_
 
 ## Hierarchy
 
-* **RunResult**
+- **RunResult**
 
 ## Index
 
 ### Properties
 
-* [changes](_src_interfaces_.isqlite.runresult.md#optional-changes)
-* [lastID](_src_interfaces_.isqlite.runresult.md#optional-lastid)
-* [stmt](_src_interfaces_.isqlite.runresult.md#stmt)
+- [changes](_src_interfaces_.isqlite.runresult.md#optional-changes)
+- [lastID](_src_interfaces_.isqlite.runresult.md#optional-lastid)
+- [stmt](_src_interfaces_.isqlite.runresult.md#stmt)
 
 ## Properties
 
 ### `Optional` changes
 
-• **changes**? : *number*
+• **changes**? : _number_
 
-*Defined in [src/interfaces.ts:77](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/interfaces.ts#L77)*
+_Defined in [src/interfaces.ts:77](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/interfaces.ts#L77)_
 
 Number of rows changed.
 
 Only contains valid information when the query was a
 successfully completed UPDATE or DELETE statement.
 
-___
+---
 
 ### `Optional` lastID
 
-• **lastID**? : *number*
+• **lastID**? : _number_
 
-*Defined in [src/interfaces.ts:70](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/interfaces.ts#L70)*
+_Defined in [src/interfaces.ts:70](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/interfaces.ts#L70)_
 
 Row id of the inserted row.
 
 Only contains valid information when the query was a successfully
 completed INSERT statement.
 
-___
+---
 
-###  stmt
+### stmt
 
-• **stmt**: *[Statement](../classes/_src_statement_.statement.md)‹Stmt›*
+• **stmt**: _[Statement](../classes/\_src_statement_.statement.md)‹Stmt›\_
 
-*Defined in [src/interfaces.ts:63](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/interfaces.ts#L63)*
+_Defined in [src/interfaces.ts:63](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/interfaces.ts#L63)_
 
 Statement object.
 

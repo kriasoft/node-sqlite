@@ -6,5 +6,5 @@
 
 ### Namespaces
 
-* [IMigrate](_src_interfaces_.imigrate.md)
-* [ISqlite](_src_interfaces_.isqlite.md)
+- [IMigrate](_src_interfaces_.imigrate.md)
+- [ISqlite](_src_interfaces_.isqlite.md)
