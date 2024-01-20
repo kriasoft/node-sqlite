@@ -6,4 +6,4 @@
 
 ### Classes
 
-* [Database](../classes/_src_database_.database.md)
+- [Database](../classes/_src_database_.database.md)

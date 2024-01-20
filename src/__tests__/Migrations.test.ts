@@ -1,7 +1,7 @@
 /* eslint-env jest */
 
-import { migrate, readMigrations } from '../migrate'
-import { Database } from '../../Database'
+import { Migrations } from '../Migrations'
+import { Database } from '../Database'
 import * as sqlite3 from 'sqlite3'
 
 let db
@@ -17,7 +17,8 @@ beforeEach(async () => {
 
 describe('migration function', () => {
   it('Should migrate the database', async () => {
-    await migrate(db)
+    const migrationsInstance = new Migrations(db)
+    await migrationsInstance.migrate()
 
     let result = await db.all('SELECT id, name FROM migrations')
     expect(result).toEqual([
@@ -30,11 +31,11 @@ describe('migration function', () => {
     result = await db.all('SELECT * FROM Category')
     expect(result).toEqual([{ id: 1, name: 'Test' }])
 
-    await migrate(db, {
-      force: true
-    })
+    const migrationsInstanceForce = new Migrations(db, { force: true })
+    await migrationsInstanceForce.migrate()
+    console.log('heer')
 
-    result = await db.all('SELECT certificate from whatever')
+    result = await db.all('SELECT certificate FROM whatever')
 
     expect(result[0].certificate).toBe(
       '-----BEGIN CERTIFICATE-----\nsome contents\n-----END CERTIFICATE-----'
@@ -48,12 +49,15 @@ describe('migration function', () => {
   })
 
   it('Should migrate the database without reading disk', async () => {
-    let migrations = await readMigrations()
+    const migrationsInstanceMigrations = new Migrations(db)
+
+    let migrations = await migrationsInstanceMigrations.readMigrations()
     migrations = migrations.slice(0, 2)
 
-    await migrate(db, { migrations })
+    const migrationsInstance = new Migrations(db, { migrations })
+    await migrationsInstance.migrate()
 
-    let result = await db.all('SELECT id, name FROM migrations')
+    let result = await db.all('SELECT id, name FROM "migrations"')
     expect(result).toEqual([
       { id: 1, name: 'initial' },
       { id: 2, name: 'some-feature' }

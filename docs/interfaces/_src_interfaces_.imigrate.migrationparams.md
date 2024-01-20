@@ -4,43 +4,43 @@
 
 ## Hierarchy
 
-* **MigrationParams**
+- **MigrationParams**
 
 ## Index
 
 ### Properties
 
-* [force](_src_interfaces_.imigrate.migrationparams.md#optional-force)
-* [migrationsPath](_src_interfaces_.imigrate.migrationparams.md#optional-migrationspath)
-* [table](_src_interfaces_.imigrate.migrationparams.md#optional-table)
+- [force](_src_interfaces_.imigrate.migrationparams.md#optional-force)
+- [migrationsPath](_src_interfaces_.imigrate.migrationparams.md#optional-migrationspath)
+- [table](_src_interfaces_.imigrate.migrationparams.md#optional-table)
 
 ## Properties
 
 ### `Optional` force
 
-• **force**? : *boolean*
+• **force**? : _boolean_
 
-*Defined in [src/interfaces.ts:87](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/interfaces.ts#L87)*
+_Defined in [src/interfaces.ts:87](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/interfaces.ts#L87)_
 
 If true, will force the migration API to rollback and re-apply the latest migration over
 again each time when Node.js app launches.
 
-___
+---
 
 ### `Optional` migrationsPath
 
-• **migrationsPath**? : *string*
+• **migrationsPath**? : _string_
 
-*Defined in [src/interfaces.ts:95](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/interfaces.ts#L95)*
+_Defined in [src/interfaces.ts:95](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/interfaces.ts#L95)_
 
 Path to the migrations folder. Default is `path.join(process.cwd(), 'migrations')`
 
-___
+---
 
 ### `Optional` table
 
-• **table**? : *string*
+• **table**? : _string_
 
-*Defined in [src/interfaces.ts:91](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/interfaces.ts#L91)*
+_Defined in [src/interfaces.ts:91](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/interfaces.ts#L91)_
 
 Migrations table name. Default is 'migrations'

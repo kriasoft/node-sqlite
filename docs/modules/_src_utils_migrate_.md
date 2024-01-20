@@ -6,23 +6,23 @@
 
 ### Functions
 
-* [migrate](_src_utils_migrate_.md#migrate)
+- [migrate](_src_utils_migrate_.md#migrate)
 
 ## Functions
 
-###  migrate
+### migrate
 
-▸ **migrate**(`db`: [Database](../classes/_src_database_.database.md), `config`: [MigrationParams](../interfaces/_src_interfaces_.imigrate.migrationparams.md)): *Promise‹void›*
+▸ **migrate**(`db`: [Database](../classes/_src_database_.database.md), `config`: [MigrationParams](../interfaces/_src_interfaces_.imigrate.migrationparams.md)): _Promise‹void›_
 
-*Defined in [src/utils/migrate.ts:12](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/utils/migrate.ts#L12)*
+_Defined in [src/utils/migrate.ts:12](https://github.com/kriasoft/node-sqlite/blob/d15b22e/src/utils/migrate.ts#L12)_
 
 Migrates database schema to the latest version
 
 **Parameters:**
 
-Name | Type | Default |
------- | ------ | ------ |
-`db` | [Database](../classes/_src_database_.database.md) | - |
-`config` | [MigrationParams](../interfaces/_src_interfaces_.imigrate.migrationparams.md) | {} |
+| Name     | Type                                                                          | Default |
+| -------- | ----------------------------------------------------------------------------- | ------- |
+| `db`     | [Database](../classes/_src_database_.database.md)                             | -       |
+| `config` | [MigrationParams](../interfaces/_src_interfaces_.imigrate.migrationparams.md) | {}      |
 
-**Returns:** *Promise‹void›*
+**Returns:** _Promise‹void›_
