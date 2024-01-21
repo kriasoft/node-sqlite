@@ -2,7 +2,7 @@ import * as sqlite3 from 'sqlite3'
 import { ISqlite, IMigrate } from './interfaces'
 
 import { Statement } from './Statement'
-import { migrate, readMigrations } from './utils/migrate'
+import { migrate } from './utils/migrate'
 import { toSqlParams } from './utils/strings'
 
 import MigrationParams = IMigrate.MigrationParams
@@ -363,15 +363,6 @@ export class Database<
    */
   async migrate (config?: MigrationParams) {
     await migrate(this, config)
-  }
-
-  /**
-   * Performs a database migration read operation.
-   * @returns List of objects with name, id of migrations and SQL code for up and down migration
-   * You can run up and down with `db.exec(migrations[0].up)` or `db.exec(migrations[0].down)`. Or with other commands that can run SQL code.
-   */
-  readMigrations (migrationPath?: string): Promise<IMigrate.MigrationData[]> {
-    return readMigrations(migrationPath)
   }
 
   /**

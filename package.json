@@ -85,7 +85,7 @@
     "jest-junit-reporter": "1.1.0",
     "lint-staged": "12.4.0",
     "pre-commit": "1.2.2",
-    "prettier-standard": "^15.0.1",
+    "prettier-standard": "^16.4.1",
     "sql-template-strings": "^2.2.2",
     "sqlite3": "^5.1.6",
     "sqlite3-offline-next": "^5.0.3",
