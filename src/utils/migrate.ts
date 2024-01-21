@@ -49,11 +49,8 @@ export async function readMigrations (migrationPath?: string) {
               return reject(err)
             }
 
-            const [up, down] = data
-              .split(/^--\s+?down\b/im)
-              .map(value => value.replace(/^-{3,}$/gim, '').trim())
+            const [up, down] = data.split(/^--\s+?down\b/im)
 
-            delete migration.filename
             const migrationData = migration as Partial<MigrationData>
             migrationData.up = up.replace(/^-- .*?$/gm, '').trim() // Remove comments
             migrationData.down = down ? down.trim() : '' // and trim whitespaces
