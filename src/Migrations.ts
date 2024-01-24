@@ -71,51 +71,37 @@ export class Migrations<Driver extends Database> {
    * for each migration in the config.migrations
    */
   async migrate (): Promise<void> {
-    const table = this.config.table
     const migrations = this.config.migrations ?? (await this.readMigrations())
 
     // Create a database table for migrations meta data if it doesn't exist
-    await this.db.run(`CREATE TABLE IF NOT EXISTS "${table}" (
-      id   INTEGER PRIMARY KEY,
-      name TEXT    NOT NULL,
-      up   TEXT    NOT NULL,
-      down TEXT    NOT NULL
-    )`)
+    await this.createMigrationsTable()
 
     // Get the list of already applied migrations
-    let dbMigrations = await this.db.all(
-      `SELECT id, name, up, down FROM "${table}" ORDER BY id ASC`
-    )
+    let appliedMigrations = await this.selectAllMigrationsData()
 
-    await this.downMigrations(dbMigrations, migrations)
-    await this.upNewMigrations(dbMigrations, migrations)
+    await this.downMigrations(appliedMigrations, migrations)
+    await this.upNewMigrations(appliedMigrations, migrations)
   }
 
   /**
    * Apply pending migrations
    *
-   * @param dbMigrations exists migrations in the `table`
+   * @param appliedMigrations exists migrations in the `table`
    * @param migrations IMigrate.MigrationData
    */
   private async upNewMigrations (
-    dbMigrations: any[],
+    appliedMigrations: MigrationData[],
     migrations: readonly MigrationData[]
   ): Promise<void> {
-    const lastMigrationId = dbMigrations.length
-      ? dbMigrations[dbMigrations.length - 1].id
+    const lastMigrationId = appliedMigrations.length
+      ? appliedMigrations[appliedMigrations.length - 1].id
       : 0
     for (const migration of migrations) {
       if (migration.id > lastMigrationId) {
         await this.db.run('BEGIN')
         try {
           await this.db.exec(migration.up)
-          await this.db.run(
-            `INSERT INTO "${this.config.table}" (id, name, up, down) VALUES (?, ?, ?, ?)`,
-            migration.id,
-            migration.name,
-            migration.up,
-            migration.down
-          )
+          await this.insertMigration(migration)
           await this.db.run('COMMIT')
         } catch (err) {
           await this.db.run('ROLLBACK')
@@ -129,15 +115,15 @@ export class Migrations<Driver extends Database> {
    * Undo migrations that exist only in the database but not in files,
    * also undo the last migration if the `force` option is enabled.
    *
-   * @param dbMigrations exists migrations in the `table`
+   * @param appliedMigrations exists migrations in the `table`
    * @param migrations IMigrate.MigrationData
    */
   private async downMigrations (
-    dbMigrations: any[],
+    appliedMigrations: MigrationData[],
     migrations: readonly MigrationData[]
   ): Promise<void> {
     const lastMigration = migrations[migrations.length - 1]
-    for (const migration of dbMigrations
+    for (const migration of appliedMigrations
       .slice()
       .sort((a, b) => Math.sign(b.id - a.id))) {
       if (
@@ -147,12 +133,11 @@ export class Migrations<Driver extends Database> {
         await this.db.run('BEGIN')
         try {
           await this.db.exec(migration.down)
-          await this.db.run(
-            `DELETE FROM "${this.config.table}" WHERE id = ?`,
-            migration.id
-          )
+          await this.deleteMigration(migration.id)
           await this.db.run('COMMIT')
-          dbMigrations = dbMigrations.filter(x => x.id !== migration.id)
+          appliedMigrations = appliedMigrations.filter(
+            x => x.id !== migration.id
+          )
         } catch (err) {
           await this.db.run('ROLLBACK')
           throw err
@@ -200,5 +185,40 @@ export class Migrations<Driver extends Database> {
     return filenames
       .map(x => ({ id: Number(x[1]), name: x[2], filename: x[0] }))
       .sort((a, b) => Math.sign(a.id - b.id))
+  }
+
+  private async createMigrationsTable (): Promise<void> {
+    // Create a database table for migrations meta data if it doesn't exist
+    await this.db.run(`CREATE TABLE IF NOT EXISTS "${this.config.table}" (
+      id        INTEGER PRIMARY KEY,
+      name      TEXT    NOT NULL,
+      up        TEXT    NOT NULL,
+      down      TEXT    NOT NULL,
+      filename  TEXT    DEFAULT NULL
+    )`)
+  }
+
+  private selectAllMigrationsData (): Promise<MigrationData[]> {
+    return this.db.all<MigrationData[]>(
+      `SELECT id, name, up, down, filename FROM "${this.config.table}" ORDER BY id ASC`
+    )
+  }
+
+  private async insertMigration (migration: MigrationData): Promise<void> {
+    await this.db.run(
+      `INSERT INTO "${this.config.table}" (id, name, up, down, filename) VALUES (?, ?, ?, ?, ?)`,
+      migration.id,
+      migration.name,
+      migration.up,
+      migration.down,
+      migration.filename
+    )
+  }
+
+  private async deleteMigration (migrationId: number): Promise<void> {
+    await this.db.run(
+      `DELETE FROM "${this.config.table}" WHERE id = ?`,
+      migrationId
+    )
   }
 }
