@@ -18,9 +18,7 @@ describe('index', () => {
   ]
 
   driver.forEach(c => {
-    it(`should create an instance of sqlite3, cached = ${
-      c.cached
-    }`, async () => {
+    it(`should create an instance of sqlite3, cached = ${c.cached}`, async () => {
       const db = await open({
         filename: ':memory:',
         driver: c.driver

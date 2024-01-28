@@ -114,5 +114,6 @@ export namespace IMigrate {
     name: string
     up: string
     down: string
+    filename?: string
   }
 }
